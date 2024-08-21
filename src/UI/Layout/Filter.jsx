@@ -105,13 +105,7 @@ export default function Filter({ paramName, options }) {
             disabled={option.value === paramValue}
             activebutton={option.value === paramValue}
           >
-            <Heading color={option.color}>{option.label}</Heading>
-            {/* <Value>
-              {option.value
-                .split('-')
-                .map((val) => val[0].toUpperCase() + val.slice(1))
-                .join('-')}
-            </Value> */}
+            {<Heading color={option.color}>{option.label}</Heading>}
           </RiskCreditContainer>
         ))}
       </FilterContainer>

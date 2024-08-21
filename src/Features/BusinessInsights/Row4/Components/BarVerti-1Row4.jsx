@@ -1,7 +1,7 @@
 import BarChart from '../../Charts/BarChart';
 import { StyledChartContainer } from '../../Charts/StyledChartContainers';
 
-export default function BarVerti1Row3() {
+export default function BarVerti1Row4() {
   return (
     <StyledChartContainer padding={'2rem'} width={'30rem'}>
       <BarChart

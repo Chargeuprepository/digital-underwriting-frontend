@@ -1,23 +1,23 @@
-import Bar1Row5 from './Components/Bar1Row5';
-import Bar2Row5 from './Components/Bar2Row5';
-import PieRow5 from './Components/PieRow5';
 import RowLayoutBusiInsights from '../Charts/RowLayoutBusi-Insights';
+import BarRow5 from './Components/BarRow5';
+import DonutRow5 from './Components/DonutRow5';
+import PieRow5 from './Components/PieRow5';
 
-export default function Row5Layout() {
+export default function Row4Layout() {
   return (
-    <RowLayoutBusiInsights row="5">
-      <Bar1Row5 />
+    <RowLayoutBusiInsights row="5" backgroundcolor={'var(--color-gray-10)'}>
+      <BarRow5 />
+      <DonutRow5 />
       <PieRow5 />
-      <Bar2Row5 />
     </RowLayoutBusiInsights>
   );
 }
 
-// const purpleColors = [
-//   '#800080', // Base Purple
-//   '#D8BFD8', // Thistle
-//   '#E6E6FA', // Lavender
-//   '#9370DB', // Medium Purple
-//   '#8A2BE2', // Blue Violet
-//   '#4B0082', // Indigo
+// const orangeColors = [
+//   '#FFA500', // Base Orange
+//   '#FFB347', // Light Orange
+//   '#FFCC99', // Peach
+//   '#FF8C00', // Dark Orange
+//   '#FF7F50', // Coral
+//   '#FF4500', // Deep Orange
 // ];

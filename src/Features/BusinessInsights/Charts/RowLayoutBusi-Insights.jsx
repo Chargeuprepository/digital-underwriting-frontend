@@ -6,7 +6,7 @@ const RowLayoutBusiInsights = styled.div`
   /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); */
   padding: 1rem;
   transition: transform 0.6s ease;
-  /* background-color: var(--color-gray-1); */
+  background-color: ${(props) => props.backgroundcolor};
   display: flex;
   align-items: center;
   justify-content: space-around;

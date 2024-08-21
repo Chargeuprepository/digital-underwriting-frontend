@@ -1,22 +1,21 @@
 import BarChart from '../../Charts/BarChart';
 import { StyledChartContainer } from '../../Charts/StyledChartContainers';
 
-export default function Bar1Row5() {
+export default function Bar2Row3() {
   return (
-    <StyledChartContainer padding={'2rem 3rem 2rem 0.2rem'} width={'30rem'}>
+    <StyledChartContainer padding={'2rem 3rem 2rem 1rem'} width={'45rem'}>
       <BarChart
-        heading="Identity Confidence Score"
+        heading="Drivers Using UPI"
         direction="horizontal"
         format=""
         height="100%"
         width="100%"
         // total={600}
         labelSize={'12px'}
-        colors={['#800080', '#9370DB', '#b16db1']}
+        colors={['#800080', '#9370DB']}
         data={[
-          { label: 'High', value: 364 },
-          { label: 'Medium', value: 332 },
-          { label: 'Low', value: 240 },
+          { label: 'Yes', value: 555 },
+          { label: 'No', value: 381 },
         ]}
       />
     </StyledChartContainer>

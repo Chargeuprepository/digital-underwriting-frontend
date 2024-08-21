@@ -3,22 +3,22 @@ import { StyledChartContainer } from '../../Charts/StyledChartContainers';
 
 export default function PieRow5() {
   return (
-    <StyledChartContainer padding={'1.5rem 4rem 0 0'} width={'40rem'}>
+    <StyledChartContainer padding={'2rem 6rem 1rem 0'} width={'45rem'}>
       <Pie
-        labels={['>650', '300-550', '<300']}
-        colors={['#4B0082', '#9370DB', '#D8BFD8']}
-        series={[142, 73, 11]}
-        heading="Phone Name Match Score"
+        labels={['Prepaid', 'Postpaid']}
+        colors={['#FFCC99', '#FF4500']}
+        series={[97, 3]}
+        heading="Phone Network"
       />
     </StyledChartContainer>
   );
 }
 
-// const purpleColors = [
-//   '#800080', // Base Purple
-//   '#D8BFD8', // Thistle
-//   '#E6E6FA', // Lavender
-//   '#9370DB', // Medium Purple
-//   '#8A2BE2', // Blue Violet
-//   '#4B0082', // Indigo
+// const orangeColors = [
+//   '#FFA500', // Base Orange
+//   '#FFB347', // Light Orange
+//   '#FFCC99', // Peach
+//   '#FF8C00', // Dark Orange
+//   '#FF7F50', // Coral
+//   '#FF4500', // Deep Orange
 // ];

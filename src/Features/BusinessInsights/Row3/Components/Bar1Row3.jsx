@@ -1,26 +1,29 @@
 import BarChart from '../../Charts/BarChart';
 import { StyledChartContainer } from '../../Charts/StyledChartContainers';
 
-export default function Bar2Row5() {
+export default function Bar1Row3() {
   return (
-    <StyledChartContainer padding={'2rem 3rem 2rem 1rem'} width={'45rem'}>
+    <StyledChartContainer padding={'2rem 3rem 2rem 0.2rem'} width={'30rem'}>
       <BarChart
-        heading="Drivers Using UPI"
+        heading="Identity Confidence Score"
         direction="horizontal"
         format=""
         height="100%"
         width="100%"
         // total={600}
         labelSize={'12px'}
-        colors={['#800080', '#9370DB']}
+        colors={['#962fbf', '#d62976', '#ff54a1']}
         data={[
-          { label: 'Yes', value: 555 },
-          { label: 'No', value: 381 },
+          { label: 'High', value: 364 },
+          { label: 'Medium', value: 332 },
+          { label: 'Low', value: 240 },
         ]}
       />
     </StyledChartContainer>
   );
 }
+
+// Light yellow (Hex: #feda75 and RGB: 254,218,117), orange (Hex: #fa7e1e and RGB: 250,126,30), pink (Hex: #d62976 and RGB: 214,41,118), purple (Hex: #962fbf and RGB: 150,47,191) and blue (Hex: #4f5bd5 and RGB: 79,91,213).
 
 // const purpleColors = [
 //   '#800080', // Base Purple

@@ -1,23 +1,14 @@
-import BarRow4 from './Components/BarRow4';
-import DonutRow4 from './Components/DonutRow4';
-import PieRow4 from './Components/PieRow4';
 import RowLayoutBusiInsights from '../Charts/RowLayoutBusi-Insights';
+import SocialMedia from './Components/SocialMedia';
+import BarVerti1Row4 from './Components/BarVerti-1Row4';
+import DonutRow4 from './Components/DonutRow4';
 
-export default function Row4Layout() {
+export default function Row3Layout() {
   return (
-    <RowLayoutBusiInsights row="4">
-      <BarRow4 />
+    <RowLayoutBusiInsights row="4" backgroundcolor={'var(--color-gray-10)'}>
+      <BarVerti1Row4 />
       <DonutRow4 />
-      <PieRow4 />
+      <SocialMedia />
     </RowLayoutBusiInsights>
   );
 }
-
-// const orangeColors = [
-//   '#FFA500', // Base Orange
-//   '#FFB347', // Light Orange
-//   '#FFCC99', // Peach
-//   '#FF8C00', // Dark Orange
-//   '#FF7F50', // Coral
-//   '#FF4500', // Deep Orange
-// ];

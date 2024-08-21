@@ -11,7 +11,7 @@ export default function BarHoriRow2({}) {
         height="90%"
         width="90%"
         total={157 + 158}
-        colors={['#4169E1', '#87CEFA']}
+        colors={['#1E90FF', '#87CEFA']}
         data={[
           { label: 'Yes', value: 157 },
           { label: 'No', value: 158 },

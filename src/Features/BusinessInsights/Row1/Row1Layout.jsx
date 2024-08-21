@@ -31,11 +31,11 @@ const DriverContainer = styled.button`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   border: none;
-  padding: 2rem 2.6rem;
+  padding: 1.2rem 2.6rem;
   background: linear-gradient(
     45deg,
-    var(--color-brand-blue-300),
-    var(--color-brand-blue-500)
+    var(--color-brand-original-green-400),
+    var(--color-brand-green-600)
   );
 
   transition: transform 0.3s ease-in-out;
@@ -59,37 +59,10 @@ export const DriverHeading = styled.div`
 `;
 export const DriverValue = styled.div`
   font-size: 1.2rem;
-  color: var(--color-gray-100);
+  color: var(--color-gray-50);
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
-`;
-
-export const StyledZone = styled.div`
-  width: 16rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-gray-50);
-  background: linear-gradient(
-    45deg,
-    var(--color-brand-blue-300),
-    var(--color-brand-blue-500)
-  );
-
-  svg {
-    height: 2.4rem;
-    width: 2.4rem;
-    color: #ffffff;
-    background-color: var(--color-brand-green-500);
-    border-radius: 50%;
-  }
 `;
 
 export default function Row1Layout() {

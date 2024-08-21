@@ -17,7 +17,7 @@ export default function GuageRow2() {
         total={900}
         score={602}
         heading="Avg. Credit Score"
-        color={'#0000FF'}
+        color={'#c1c1fc'}
       />
     </StyledChartContainer>
   );

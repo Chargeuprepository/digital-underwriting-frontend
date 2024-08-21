@@ -1,14 +1,23 @@
-import BarVerti1Row3 from './Components/BarVerti-1Row3';
-import DonutRow3 from './Components/DonutRow3';
+import Bar1Row3 from './Components/Bar1Row3';
 import RowLayoutBusiInsights from '../Charts/RowLayoutBusi-Insights';
-import SocialMedia from './Components/SocialMedia';
+import PieRow3 from './Components/PieRow3';
+import Bar2Row3 from './Components/Bar2Row3';
 
-export default function Row3Layout() {
+export default function Row5Layout() {
   return (
-    <RowLayoutBusiInsights row="3">
-      <BarVerti1Row3 />
-      <DonutRow3 />
-      <SocialMedia />
+    <RowLayoutBusiInsights row="3" backgroundcolor={'var(--color-gray-10)'}>
+      <Bar1Row3 />
+      <PieRow3 />
+      <Bar2Row3 />
     </RowLayoutBusiInsights>
   );
 }
+
+// const purpleColors = [
+//   '#800080', // Base Purple
+//   '#D8BFD8', // Thistle
+//   '#E6E6FA', // Lavender
+//   '#9370DB', // Medium Purple
+//   '#8A2BE2', // Blue Violet
+//   '#4B0082', // Indigo
+// ];

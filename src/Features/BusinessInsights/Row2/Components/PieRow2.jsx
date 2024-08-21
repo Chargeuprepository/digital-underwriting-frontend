@@ -6,7 +6,7 @@ export default function PieRow2({}) {
     <StyledChartContainer padding={'1.5rem 4rem 0 0'} width={'40rem'}>
       <Pie
         labels={['>650', '300-550', '<300']}
-        colors={['#87CEFA', '#1E90FF', '#0000FF']}
+        colors={['#ADD8E6', '#87CEEB', '#4169E1']}
         series={[142, 73, 11]}
         heading="Credit Score Range"
       />

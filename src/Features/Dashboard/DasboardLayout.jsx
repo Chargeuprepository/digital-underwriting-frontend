@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import BusinessStats from './Components/BusinessStats';
-import RunningKMDonut from './Components/RunningKMDonut';
 import DistanceTenureMonths from './Components/DistanceTenureMonths';
 import Churned from './Components/Churned';
 import ConfusionMatrix from './Components/ConfusionMatrix';
-// import CreditRange from './Components/CreditRange/CreditRange';
 import CreditVsRisk from './Components/CreditVsRisk';
 import CreditVsKarma from './Components/CreditVsKarma';
 

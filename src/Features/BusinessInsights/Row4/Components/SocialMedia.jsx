@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import BarChart from '../../Charts/BarChart';
 import { StyledChartContainer } from '../../Charts/StyledChartContainers';
 import Heading from '../../Charts/Heading';
 

@@ -12,6 +12,7 @@ import {
   LabelInputErrorContainer,
   InputErrorContainer,
 } from './Form-UI';
+import { useLocation } from 'react-router-dom';
 
 const StyledMLForm = styled.div`
   padding: 3rem 4rem;
@@ -19,10 +20,10 @@ const StyledMLForm = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  margin: 2rem 8rem;
+  margin: 3rem 0rem 3rem 16rem;
   border-radius: 1rem;
   /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
-  background: var(--color-gray-10);
+  background: var(--color-gray-50);
   margin-bottom: auto;
   margin-top: auto;
 `;
@@ -55,105 +56,18 @@ const PlaceHolder = styled.div`
   font-weight: 400;
   margin-left: auto;
 `;
-const data1 = {
-  heading: "Predicting Driver's Payment Behaviour",
-  data: [
-    {
-      label: 'Tenure',
-      type: 'text',
-      message: 'Provide your name.',
-      formValueType: 'input',
-      placeholder: 'Total no. of months',
-    },
-    {
-      label: 'Down Payment',
-      type: 'text',
-      message: 'Provide your name.',
-      formValueType: 'input',
-      placeholder: 'Ex: ₹8000',
-    },
-    {
-      label: 'Monthly Emi Amount',
-      type: 'text',
-      message: 'Provide your name.',
-      formValueType: 'input',
-      placeholder: 'Ex: ₹3000',
-    },
-    {
-      label: 'Loan Amount',
-      type: 'text',
-      message: 'Provide your name.',
-      formValueType: 'input',
-      placeholder: 'Ex: ₹20,000',
-    },
-    {
-      label: 'Amount Repaid',
-      type: 'text',
-      message: 'Provide your address.',
-      formValueType: 'input',
-      placeholder: 'Ex: ₹2000',
-    },
-    {
-      label: 'Remaining Amount',
-      type: 'number',
-      message: 'Provide your number.',
-      formValueType: 'input',
-      placeholder: 'Ex: ₹3000',
-    },
-    {
-      label: 'Avg distance in 7 days in km',
-      type: 'number',
-      message: 'Provide your number.',
-      formValueType: 'input',
-      placeholder: 'Ex: 300KM',
-    },
-    {
-      label: 'Digital Footprint',
-      type: 'number',
-      message: 'Provide your number.',
-      formValueType: 'input',
-      placeholder: 'Yes',
-    },
-    {
-      label: 'Identity Confidence',
-      type: 'option',
-      values: ['Male', 'Female', 'Other'],
-      message: 'Provide your gender.',
-      formValueType: 'select',
-    },
-    {
-      label: 'Social Footprint Score',
-      type: 'option',
-      values: ['Male', 'Female', 'Other'],
-      message: 'Provide your gender.',
-      formValueType: 'select',
-    },
-    // {
-    //   label: 'Own Residence',
-    //   type: 'option',
-    //   values: ['Male', 'Female', 'Other'],
-    //   message: 'Provide your gender.',
-    //   formValueType: 'select',
-    // },
-    // {
-    //   label: 'VehicleStatus',
-    //   type: 'option',
-    //   values: ['Male', 'Female', 'Other'],
-    //   message: 'Provide your gender.',
-    //   formValueType: 'select',
-    // },
-  ],
-};
-
-const { heading, data } = data1;
 
 export default function MLForm() {
-  const { register, formState, getValues, handleSubmit, reset } = useForm();
+  const { register, formState, handleSubmit, reset } = useForm();
   const { errors } = formState;
   console.log(errors);
 
-  function onSubmit(data) {
-    console.log(data);
+  const location = useLocation();
+  const inputs = location.state?.data;
+  const { data, heading } = inputs;
+
+  function onSubmit(result) {
+    console.log(result);
     reset();
   }
 
@@ -178,23 +92,40 @@ export default function MLForm() {
                       step={`${val.type === 'number' && 0.01}`}
                       placeholder={val.placeholder}
                       // disabled={isLoading}
-                      {...register(`${val.label.split(' ').join('')}`, {
-                        required: val.message,
-                        maxLength: {
-                          value: 10,
-                          message: 'Password needs a minimum of 8 chracters',
-                        },
-                      })}
+                      {...register(
+                        `${val.label
+                          .split(' ')
+                          .map(
+                            (value) => value[0].toUpperCase() + value.slice(1)
+                          )
+                          .join('')}`,
+                        {
+                          required: val.message,
+                          // maxLength: {
+                          //   value: 10,
+                          //   message: 'Password needs a minimum of 8 chracters',
+                          // },
+                        }
+                      )}
                     />
                   )}
                   {val.formValueType === 'select' && (
-                    <Select {...register('gender')}>
-                      <Option disabled key={0} value="">
+                    <Select
+                      {...register(
+                        `${val.label
+                          .split(' ')
+                          .map(
+                            (value) => value[0].toUpperCase() + value.slice(1)
+                          )
+                          .join('')}`
+                      )}
+                    >
+                      <Option disabled key={'0'} value="">
                         Select
                       </Option>
-                      {val.values.map((option) => {
+                      {val.values.map((option, i) => {
                         return (
-                          <Option key={option} value={option}>
+                          <Option key={i + 1} value={option}>
                             {option}
                           </Option>
                         );
@@ -203,8 +134,20 @@ export default function MLForm() {
                   )}
 
                   <Error>
-                    {errors?.[val.label.split(' ').join('')]?.message ? (
-                      errors?.[val.label.split(' ').join('')]?.message
+                    {errors?.[
+                      val.label
+                        .split(' ')
+                        .map((value) => value[0].toUpperCase() + value.slice(1))
+                        .join('')
+                    ]?.message ? (
+                      errors?.[
+                        val.label
+                          .split(' ')
+                          .map(
+                            (value) => value[0].toUpperCase() + value.slice(1)
+                          )
+                          .join('')
+                      ]?.message
                     ) : (
                       <PlaceHolder></PlaceHolder>
                     )}
@@ -214,7 +157,7 @@ export default function MLForm() {
             );
           })}
         </LabelInputErrorContainer>
-        <Button type="submit">Let's Predict</Button>
+        <Button type="submit">Let&apos;s Predict</Button>
       </Form>
     </StyledMLForm>
   );

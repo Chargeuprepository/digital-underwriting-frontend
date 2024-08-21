@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import MLCard from './Components/MLCard';
 import PaymentBehaviour from './Components/PaymentBehaviour';
 import KarmaScore from './Components/KarmaScore';
 import CustomerDefault from './Components/CustomerDefault';

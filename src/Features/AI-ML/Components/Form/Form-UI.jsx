@@ -29,7 +29,7 @@ export const InputErrorContainer = styled.div`
 export const LabelInputErrorContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem 6rem;
+  gap: 0.3rem 6rem;
 `;
 export const Input = styled.input`
   border-radius: 0.4rem;
@@ -42,8 +42,8 @@ export const Input = styled.input`
   padding-left: 1rem;
   background: linear-gradient(
     to right,
-    var(--color-gray-10),
-    var(--color-gray-25)
+    var(--color-gray-25),
+    var(--color-gray-50)
   );
 
   &::placeholder {
@@ -59,6 +59,7 @@ export const Option = styled.option`
   font-size: 1.4rem;
   font-weight: 400;
   color: var(--color-gray-700);
+  background-color: var(--color-gray-50);
 `;
 export const Select = styled.select`
   border: 1px solid var(--color-gray-600);
@@ -70,8 +71,8 @@ export const Select = styled.select`
   color: var(--color-gray-700);
   background: linear-gradient(
     to right,
-    var(--color-gray-10),
-    var(--color-gray-25)
+    var(--color-gray-25),
+    var(--color-gray-50)
   );
 `;
 export const Error = styled.div`

@@ -5,7 +5,7 @@ import RowLayoutBusiInsights from '../Charts/RowLayoutBusi-Insights';
 
 export default function Row2Layout() {
   return (
-    <RowLayoutBusiInsights row="2">
+    <RowLayoutBusiInsights row="2" backgroundcolor={'var(--color-gray-10)'}>
       <GuageRow2 />
       <PieRow2 />
       <BarHoriRow2 />
