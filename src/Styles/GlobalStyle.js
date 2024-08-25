@@ -49,6 +49,8 @@ const GlobalStyle = createGlobalStyle`
   --color-blue-light: #081ead;
   --color-blue-dark: #02137d;
 
+  --backdrop-color: rgba(255, 255, 255, 0.1);
+
   &, &.light-mode{
   /* Grey */
   --color-grey-0: #fff;

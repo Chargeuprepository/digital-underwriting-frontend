@@ -13,6 +13,7 @@ import EditUser from './Pages/EditUser';
 import AIMLModels from './Pages/AIMLModels';
 import Check from '../Check';
 import MLFormPage from './Pages/MLFormPage';
+import Testing from '../Testing';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="createUser" element={<CreateUser />} />
         <Route path="editUser" element={<EditUser />} />
         <Route path="deleteUser" element={<DeleteUser />} />
+        <Route path="testing" element={<Testing />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

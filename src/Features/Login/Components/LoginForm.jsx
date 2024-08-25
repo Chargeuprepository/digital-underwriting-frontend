@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const FormContainer = styled.div`
   max-width: 40rem;
-  background-color: var(--color-gray-25);
+  background-color: var(--color-gray-50);
   display: flex;
   flex-direction: column;
   gap: 3rem;
