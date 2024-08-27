@@ -39,6 +39,13 @@ export const VerificationName = styled.span`
   align-items: center;
   min-width: 15rem;
 `;
+export const Astrick = styled.span`
+  position: absolute;
+  margin-left: 0.2rem;
+  font-size: 1.5rem;
+  color: #ff5959;
+  /* color: #ffff00; */
+`;
 
 export const VerificationNameSpan = styled.span`
   color: #ffff00;

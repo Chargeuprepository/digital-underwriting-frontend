@@ -68,7 +68,7 @@ const Value = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   color: var(--color-gray-700);
   font-weight: 600;
   border-radius: 0.4rem;
@@ -144,10 +144,10 @@ export default function ConfusionMatrix() {
           </Heading>
         </RowHeader>
         <Matrix>
-          <Value backgroundColor={colors[0]}>89</Value>
-          <Value backgroundColor={colors[1]}>16</Value>
-          <Value backgroundColor={colors[2]}>20</Value>
-          <Value backgroundColor={colors[3]}>91</Value>
+          <Value backgroundcolor={colors[0]}>89</Value>
+          <Value backgroundcolor={colors[1]}>16</Value>
+          <Value backgroundcolor={colors[2]}>20</Value>
+          <Value backgroundcolor={colors[3]}>91</Value>
         </Matrix>
       </RowMatrixContainer>
     </ConfusionMatrixContainer>

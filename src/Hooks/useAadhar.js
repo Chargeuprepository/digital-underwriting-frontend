@@ -4,7 +4,7 @@ export default function useAadhar() {
   const [aadhaar, setAadhaar] = useState('');
   console.log(+aadhaar.split(' ').join(''));
 
-  const handleInputChange = (e) => {
+  const handleAadharChange = (e) => {
     let input = e.target.value.replace(/\D/g, ''); // Remove non-digit characters
 
     // Limit input to 12 digits
@@ -26,16 +26,18 @@ export default function useAadhar() {
     setAadhaar(input);
   };
 
-  return (
-    <div>
-      <label>Aadhaar Number:</label>
-      <input
-        type="text"
-        value={aadhaar}
-        onChange={handleInputChange}
-        maxLength="14" // Max length includes spaces
-        placeholder="1234 5678 9012"
-      />
-    </div>
-  );
+  return { aadhaar, handleAadharChange };
+
+  // return (
+  //   <div>
+  //     <label>Aadhaar Number:</label>
+  //     <input
+  //       type="text"
+  //       value={aadhaar}
+  //       onChange={handleAadharChange}
+  //       maxLength="14" // Max length includes spaces
+  //       placeholder="1234 5678 9012"
+  //     />
+  //   </div>
+  // );
 }

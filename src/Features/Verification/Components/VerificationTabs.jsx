@@ -5,6 +5,7 @@ import {
   VerificationNameSpan,
 } from '../UI';
 import VerificationForm from './Form/VerificationForm';
+import useOutsideClick from '../../../Hooks/useOutsideClick';
 
 const data = [
   {
@@ -21,13 +22,13 @@ const data = [
         placeholder: 'Ex: Amit shankar',
       },
       {
-        label: 'mobile-no.',
+        label: 'mobile no.',
         type: 'input',
         valueType: 'number',
         required: true,
         message: 'Provide the Mobile no.',
         placeholder: 'Ex: 0987654321',
-        max: 10,
+        max: 12,
       },
       {
         label: 'email',
@@ -35,6 +36,30 @@ const data = [
         valueType: 'text',
         required: false,
         placeholder: 'Ex: qwerty@example.com',
+      },
+      {
+        label: 'country code',
+        type: 'input',
+        valueType: 'text',
+        required: true,
+        disabled: true,
+        value: 'IND',
+      },
+      {
+        label: 'derived signals',
+        type: 'input',
+        valueType: 'text',
+        required: true,
+        disabled: true,
+        value: 'true',
+      },
+      {
+        label: 'enhanced coverage',
+        type: 'input',
+        valueType: 'text',
+        disabled: true,
+        required: true,
+        value: 'true',
       },
     ],
   },
@@ -59,7 +84,7 @@ const data = [
     bgimage: 'CreditVerify.png',
     parameters: [
       {
-        label: 'first-name',
+        label: 'first name',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -67,7 +92,7 @@ const data = [
         placeholder: 'Ex: aman',
       },
       {
-        label: 'last-name',
+        label: 'last name',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -75,7 +100,7 @@ const data = [
         placeholder: 'Ex: sharma',
       },
       {
-        label: 'PAN-number',
+        label: 'PAN number',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -86,10 +111,11 @@ const data = [
       {
         label: 'gender',
         type: 'select',
+        required: true,
         options: ['male', 'female', 'others'],
       },
       {
-        label: 'mobile-no.',
+        label: 'mobile no.',
         type: 'input',
         valueType: 'number',
         required: true,
@@ -97,7 +123,7 @@ const data = [
         placeholder: 'Ex: 098****321',
       },
       {
-        label: 'address-1',
+        label: 'address 1',
         type: 'address',
         valueType: 'text',
         required: true,
@@ -105,7 +131,7 @@ const data = [
         placeholder: 'No special characters',
       },
       {
-        label: 'address-2',
+        label: 'address 2',
         type: 'address',
         valueType: 'text',
         required: true,
@@ -118,7 +144,7 @@ const data = [
         valueType: 'text',
         required: true,
         message: 'Provide last name',
-        placeholder: 'sharma',
+        placeholder: 'DD/MM/YYYY',
       },
       {
         label: 'city',
@@ -137,7 +163,7 @@ const data = [
         placeholder: 'Ex: haryana',
       },
       {
-        label: 'pincode',
+        label: 'pin code',
         type: 'input',
         valueType: 'number',
         required: true,
@@ -152,7 +178,7 @@ const data = [
     bgimage: 'PANVerify.png',
     parameters: [
       {
-        label: 'PAN-no.',
+        label: 'PAN no.',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -168,7 +194,7 @@ const data = [
     bgimage: 'AadharVerify.png',
     parameters: [
       {
-        label: 'aadhar-no.',
+        label: 'aadhar no.',
         type: 'aadhar',
         valueType: 'number',
         max: 14,
@@ -183,6 +209,7 @@ const data = [
 export default function VerificationTabs() {
   const [state, setState] = useState(false);
   const [formParams, setFormParams] = useState({});
+  const { refStyledModal } = useOutsideClick(setState);
 
   function handleClick(value) {
     setState((state) => !state);
@@ -210,7 +237,12 @@ export default function VerificationTabs() {
           </StyledVerificationTab>
         );
       })}
-      {state && <VerificationForm formParams={formParams} />}
+      {state && (
+        <VerificationForm
+          refStyledModal={refStyledModal}
+          formParams={formParams}
+        />
+      )}
     </>
   );
 }
