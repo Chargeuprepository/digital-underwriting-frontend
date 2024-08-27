@@ -49,7 +49,7 @@ const data = [
         valueType: 'text',
         required: true,
         message: 'Provide the RC No.',
-        placeholder: 'Ex: DL4cv3040',
+        placeholder: 'Ex: DL4****40',
       },
     ],
   },
@@ -81,7 +81,7 @@ const data = [
         required: true,
         message: 'Provide PAN number',
         max: 10,
-        placeholder: 'Ex: BOTJL4999K',
+        placeholder: 'Ex: BO******9K',
       },
       {
         label: 'gender',
@@ -94,7 +94,7 @@ const data = [
         valueType: 'number',
         required: true,
         message: 'Provide mobile no.',
-        placeholder: 'Ex: 0987654321',
+        placeholder: 'Ex: 098****321',
       },
       {
         label: 'address-1',
@@ -142,7 +142,7 @@ const data = [
         valueType: 'number',
         required: true,
         message: 'Provide pin code',
-        placeholder: 'Ex: 110056',
+        placeholder: 'Ex: 11***6',
       },
     ],
   },
@@ -158,7 +158,7 @@ const data = [
         required: true,
         max: 10,
         message: 'Provide PAN no.',
-        placeholder: 'Ex: BOTJL4999K',
+        placeholder: 'Ex: BOT*****9K',
       },
     ],
   },
@@ -174,7 +174,7 @@ const data = [
         max: 14,
         required: true,
         message: 'Provide aadhar no.',
-        placeholder: 'Ex: 4321 5678 3542',
+        placeholder: 'Ex: 43** **** **42',
       },
     ],
   },
@@ -182,12 +182,11 @@ const data = [
 
 export default function VerificationTabs() {
   const [state, setState] = useState(false);
-  const [formParams, setFormParams] = useState([]);
+  const [formParams, setFormParams] = useState({});
 
-  function handleClick(parameters) {
+  function handleClick(value) {
     setState((state) => !state);
-    setFormParams(parameters);
-    console.log(parameters);
+    setFormParams(value);
   }
 
   return (
@@ -195,7 +194,7 @@ export default function VerificationTabs() {
       {data.map((val) => {
         return (
           <StyledVerificationTab
-            onClick={() => handleClick(val.parameters)}
+            onClick={() => handleClick(val)}
             bgimage={val.bgimage}
             shade1={'rgba(240, 238, 253, 0.6)'}
             shade2={'rgba(167, 159, 242, 0.6)'}

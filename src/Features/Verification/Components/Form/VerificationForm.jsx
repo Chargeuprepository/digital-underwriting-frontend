@@ -23,15 +23,44 @@ const StyledModal = styled.div`
   box-shadow: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
   padding: 3.2rem 4rem;
   transition: all 0.5s;
+  background: radial-gradient(
+    circle,
+    var(--color-brand-green-200),
+    var(--color-brand-blue-600)
+  );
+  width: 60%;
+  height: 60%;
+`;
+const Heading = styled.div`
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gray-700);
+  text-transform: uppercase;
+`;
+const Button = styled.button`
+  border: none;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--color-gray-600);
+`;
+const FormContainer = styled.div`
+  color: aliceblue;
 `;
 
 export default function VerificationForm({ formParams }) {
-  if (!formParams.length) return;
+  if (Object.keys(formParams).length === 0) return;
   console.log(formParams);
 
   return createPortal(
     <Overlay>
-      <StyledModal>StyledModal</StyledModal>
+      <StyledModal>
+        <Heading>{formParams.name}</Heading>
+        <FormContainer>
+          {formParams.parameters.length >= 4 ? 1 : 2}
+        </FormContainer>
+        <Button>check</Button>
+      </StyledModal>
     </Overlay>,
     document.body
   );
