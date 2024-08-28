@@ -2,8 +2,9 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import { Astrick } from '../../UI';
 import useAddress from '../../../../Hooks/useAddress';
-import useDate from '../../../../Hooks/useDate';
 import useAadhar from '../../../../Hooks/useAadhar';
+import { IoCloseCircleOutline } from 'react-icons/io5';
+import UseDate from '../../../../Hooks/useDate';
 
 const Overlay = styled.div`
   position: fixed;
@@ -57,13 +58,13 @@ const Button = styled.button`
     transform: scale(0.98);
   }
 `;
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   color: aliceblue;
 `;
 const GridTypeOne = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.2rem 6rem;
+  gap: 0rem 6rem;
   padding: 0rem 8rem;
 `;
 const GridTypeTwo = styled.div`
@@ -73,6 +74,7 @@ const GridTypeTwo = styled.div`
 const FormRowGridOne = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
 `;
 const FormRowGridTwo = styled.div`
   display: flex;
@@ -144,17 +146,45 @@ const Placeholder = styled.div`
   color: #ff5959;
   height: 1.5rem;
 `;
+const Icon = styled.div`
+  position: absolute;
+  right: 3rem;
+  top: 2rem;
+  cursor: pointer;
 
-export default function VerificationForm({ refStyledModal, formParams }) {
-  const { address, handleAddressChange } = useAddress();
-  const { selectedDate, handleDateChange, StyledDatePicker } = useDate();
+  &:active {
+    transform: scale(0.96);
+  }
+
+  svg {
+    color: var(--color-gray-100);
+    height: 3.5rem;
+    width: 3.5rem;
+    transition: all 0.14s;
+  }
+  svg:hover {
+    color: #ff2e2e;
+  }
+`;
+
+export default function VerificationForm({
+  refStyledModal,
+  formParams,
+  setState,
+}) {
+  const { address1, address2, handleAddress1Change, handleAddress2Change } =
+    useAddress();
+  const { selectedDate, handleDateChange, StyledDatePicker } = UseDate();
   const { aadhaar, handleAadharChange } = useAadhar();
 
   if (Object.keys(formParams).length === 0) return;
 
   return createPortal(
-    <Overlay>
-      <StyledModal ref={refStyledModal}>
+    <Overlay onClick={() => setState(false)}>
+      <StyledModal onClick={(e) => e.stopPropagation()}>
+        <Icon onClick={() => setState(false)}>
+          <IoCloseCircleOutline />
+        </Icon>
         <Heading>{formParams.name}</Heading>
         <FormContainer>
           {formParams.parameters.length >= 4 ? (
@@ -190,11 +220,19 @@ export default function VerificationForm({ refStyledModal, formParams }) {
                           })}
                         </Select>
                       )}
-                      {param.type === 'address' && (
+                      {param.type === 'address1' && (
                         <Input
                           type="text"
-                          value={address}
-                          onChange={handleAddressChange}
+                          value={address1}
+                          onChange={handleAddress1Change}
+                          placeholder={param.placeholder}
+                        />
+                      )}
+                      {param.type === 'address2' && (
+                        <Input
+                          type="text"
+                          value={address2}
+                          onChange={handleAddress2Change}
                           placeholder={param.placeholder}
                         />
                       )}
@@ -205,6 +243,7 @@ export default function VerificationForm({ refStyledModal, formParams }) {
                           format="DD/MM/YYYY"
                           placeholder={param.placeholder}
                         />
+                        // <UseDate placeholder={param.placeholder} />
                       )}
                       <Placeholder />
                       {/* <Error>xyz</Error> */}
@@ -220,7 +259,7 @@ export default function VerificationForm({ refStyledModal, formParams }) {
               {formParams.parameters.map((param) => {
                 return (
                   <FormRowGridTwo type={'row'} key={param.label}>
-                    <Label>
+                    <Label style={{ paddingTop: '0.4rem' }}>
                       {param.label}
                       {param.required && <Astrick>*</Astrick>}
                     </Label>

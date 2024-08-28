@@ -29,7 +29,7 @@ const StyledDatePicker = styled(DatePicker)`
   }
 `;
 
-export default function useDate() {
+export default function UseDate() {
   const [selectedDate, setSelectedDate] = useState(null);
   console.log(selectedDate);
 
@@ -40,12 +40,10 @@ export default function useDate() {
   return { selectedDate, handleDateChange, StyledDatePicker };
 
   // return (
-  //   <div>
-  //     <DatePicker
-  //       value={selectedDate}
-  //       onChange={handleDateChange}
-  //       format="DD/MM/YYYY"
-  //     />
-  //   </div>
+  //   <StyledDatePicker
+  //     value={selectedDate}
+  //     onChange={handleDateChange}
+  //     format="DD/MM/YYYY"
+  //   />
   // );
 }

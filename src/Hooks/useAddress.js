@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 
 export default function useAddress() {
-  const [address, setAddress] = useState('');
+  const [address1, setAddress1] = useState('');
+  const [address2, setAddress2] = useState('');
 
-  const handleAddressChange = (e) => {
+  const handleAddress1Change = (e) => {
     // Remove any special characters, allowing only letters, numbers, spaces, and basic punctuation (e.g., commas, periods)
     const input = e.target.value.replace(/[^a-zA-Z0-9\s.,-]/g, '');
 
-    setAddress(input);
+    setAddress1(input);
+  };
+  const handleAddress2Change = (e) => {
+    // Remove any special characters, allowing only letters, numbers, spaces, and basic punctuation (e.g., commas, periods)
+    const input = e.target.value.replace(/[^a-zA-Z0-9\s.,-]/g, '');
+
+    setAddress2(input);
   };
 
-  return { address, handleAddressChange };
+  return { address1, address2, handleAddress1Change, handleAddress2Change };
 
   // return (
   //   <div>

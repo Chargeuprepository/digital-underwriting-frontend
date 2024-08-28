@@ -5,7 +5,6 @@ import {
   VerificationNameSpan,
 } from '../UI';
 import VerificationForm from './Form/VerificationForm';
-import useOutsideClick from '../../../Hooks/useOutsideClick';
 
 const data = [
   {
@@ -124,7 +123,7 @@ const data = [
       },
       {
         label: 'address 1',
-        type: 'address',
+        type: 'address1',
         valueType: 'text',
         required: true,
         message: 'Provide address 1',
@@ -132,7 +131,7 @@ const data = [
       },
       {
         label: 'address 2',
-        type: 'address',
+        type: 'address2',
         valueType: 'text',
         required: true,
         message: 'Provide address 2',
@@ -209,7 +208,6 @@ const data = [
 export default function VerificationTabs() {
   const [state, setState] = useState(false);
   const [formParams, setFormParams] = useState({});
-  const { refStyledModal } = useOutsideClick(setState);
 
   function handleClick(value) {
     setState((state) => !state);
@@ -238,10 +236,7 @@ export default function VerificationTabs() {
         );
       })}
       {state && (
-        <VerificationForm
-          refStyledModal={refStyledModal}
-          formParams={formParams}
-        />
+        <VerificationForm formParams={formParams} setState={setState} />
       )}
     </>
   );
