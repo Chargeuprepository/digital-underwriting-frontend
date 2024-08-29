@@ -4,7 +4,7 @@ import {
   VerificationName,
   VerificationNameSpan,
 } from '../UI';
-import VerificationForm from './Form/VerificationForm';
+import VerificationForm from './VerificationForm';
 
 const data = [
   {
