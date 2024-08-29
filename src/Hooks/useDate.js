@@ -31,7 +31,6 @@ const StyledDatePicker = styled(DatePicker)`
 
 export default function UseDate() {
   const [selectedDate, setSelectedDate] = useState(null);
-  console.log(selectedDate);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);

@@ -41,7 +41,7 @@ export default function useDate() {
 
   return (
     <StyledDatePicker
-      value={selectedDate}
+      // value={selectedDate}
       onChange={handleDateChange}
       format="DD/MM/YYYY"
     />

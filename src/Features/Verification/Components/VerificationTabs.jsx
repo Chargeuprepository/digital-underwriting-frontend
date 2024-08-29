@@ -21,13 +21,13 @@ const data = [
         placeholder: 'Ex: Amit shankar',
       },
       {
-        label: 'mobile no.',
+        label: 'mobile number',
         type: 'input',
         valueType: 'number',
         required: true,
         message: 'Provide the Mobile no.',
-        placeholder: 'Ex: 0987654321',
-        max: 12,
+        placeholder: 'Ex: 91098****321',
+        max: '12',
       },
       {
         label: 'email',
@@ -68,7 +68,7 @@ const data = [
     bgimage: 'VehicleVerify.png',
     parameters: [
       {
-        label: 'RC-number',
+        label: 'RC number',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -104,7 +104,7 @@ const data = [
         valueType: 'text',
         required: true,
         message: 'Provide PAN number',
-        max: 10,
+        max: '10',
         placeholder: 'Ex: BO******9K',
       },
       {
@@ -114,12 +114,13 @@ const data = [
         options: ['male', 'female', 'others'],
       },
       {
-        label: 'mobile no.',
+        label: 'mobile number',
         type: 'input',
         valueType: 'number',
         required: true,
+        max: '12',
         message: 'Provide mobile no.',
-        placeholder: 'Ex: 098****321',
+        placeholder: 'Ex: 91098****321',
       },
       {
         label: 'address 1',
@@ -166,6 +167,7 @@ const data = [
         type: 'input',
         valueType: 'number',
         required: true,
+        max: '6',
         message: 'Provide pin code',
         placeholder: 'Ex: 11***6',
       },
@@ -177,7 +179,7 @@ const data = [
     bgimage: 'PANVerify.png',
     parameters: [
       {
-        label: 'PAN no.',
+        label: 'PAN number',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -193,10 +195,10 @@ const data = [
     bgimage: 'AadharVerify.png',
     parameters: [
       {
-        label: 'aadhar no.',
+        label: 'aadhar number',
         type: 'aadhar',
         valueType: 'number',
-        max: 14,
+        max: 12,
         required: true,
         message: 'Provide aadhar no.',
         placeholder: 'Ex: 43** **** **42',

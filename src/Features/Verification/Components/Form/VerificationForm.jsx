@@ -5,6 +5,7 @@ import useAddress from '../../../../Hooks/useAddress';
 import useAadhar from '../../../../Hooks/useAadhar';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import UseDate from '../../../../Hooks/useDate';
+import { Controller, useForm } from 'react-hook-form';
 
 const Overlay = styled.div`
   position: fixed;
@@ -29,8 +30,6 @@ const StyledModal = styled.div`
   padding: 3.2rem 4rem;
   transition: all 0.5s;
   background: linear-gradient(to top, #41295a, #2f0743);
-  display: flex;
-  flex-direction: column;
 `;
 const Heading = styled.div`
   font-size: 2rem;
@@ -60,6 +59,8 @@ const Button = styled.button`
 `;
 const FormContainer = styled.form`
   color: aliceblue;
+  display: flex;
+  flex-direction: column;
 `;
 const GridTypeOne = styled.div`
   display: grid;
@@ -167,17 +168,21 @@ const Icon = styled.div`
   }
 `;
 
-export default function VerificationForm({
-  refStyledModal,
-  formParams,
-  setState,
-}) {
+export default function VerificationForm({ formParams, setState }) {
   const { address1, address2, handleAddress1Change, handleAddress2Change } =
     useAddress();
-  const { selectedDate, handleDateChange, StyledDatePicker } = UseDate();
-  const { aadhaar, handleAadharChange } = useAadhar();
+  const { StyledDatePicker } = UseDate();
+  const { register, formState, handleSubmit, reset, control } = useForm();
+  const { errors } = formState;
+  console.log(errors);
 
   if (Object.keys(formParams).length === 0) return;
+
+  function onSubmit(result) {
+    console.log(result);
+    reset();
+    console.log('Gaurav');
+  }
 
   return createPortal(
     <Overlay onClick={() => setState(false)}>
@@ -186,13 +191,14 @@ export default function VerificationForm({
           <IoCloseCircleOutline />
         </Icon>
         <Heading>{formParams.name}</Heading>
-        <FormContainer>
+        {/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */}
+        <FormContainer onSubmit={handleSubmit(onSubmit)}>
           {formParams.parameters.length >= 4 ? (
             <GridTypeOne>
               {formParams.parameters.map((param) => {
                 return (
                   <FormRowGridOne key={param.label}>
-                    <Label>
+                    <Label htmlFor={param.label}>
                       {param.label}
                       {param.required && <Astrick>*</Astrick>}
                     </Label>
@@ -200,13 +206,65 @@ export default function VerificationForm({
                       {param.type === 'input' && (
                         <Input
                           value={param.value && param.value}
-                          disabled={param.value && true}
+                          defaultValue={param.defaultValue}
+                          disabled={param.disabled && true}
                           placeholder={param.placeholder}
                           type={param.valueType}
+                          id={param.label}
+                          autoComplete="off"
+                          maxLength={
+                            param.valueType === 'text' ? param.max : undefined
+                          }
+                          onInput={(e) => {
+                            if (param.valueType === 'number') {
+                              e.target.value = e.target.value.slice(
+                                0,
+                                param.max
+                              );
+                            }
+                          }}
+                          {...register(
+                            `${param.label
+                              .split(' ')
+                              .map(
+                                (value) =>
+                                  value[0].toUpperCase() + value.slice(1)
+                              )
+                              .join('')}`,
+                            {
+                              required: param.message,
+                            }
+                          )}
+                        />
+                      )}
+                      {param.disabled && (
+                        <Input
+                          type="hidden"
+                          value={param.value}
+                          {...register(
+                            `${param.label
+                              .split(' ')
+                              .map(
+                                (value) =>
+                                  value[0].toUpperCase() + value.slice(1)
+                              )
+                              .join('')}`,
+                            { value: param.value } // Ensure value is set
+                          )}
                         />
                       )}
                       {param.type === 'select' && (
-                        <Select>
+                        <Select
+                          {...register(
+                            `${param.label
+                              .split(' ')
+                              .map(
+                                (value) =>
+                                  value[0].toUpperCase() + value.slice(1)
+                              )
+                              .join('')}`
+                          )}
+                        >
                           <Option disabled key={'0'} value="">
                             Select
                           </Option>
@@ -221,32 +279,102 @@ export default function VerificationForm({
                         </Select>
                       )}
                       {param.type === 'address1' && (
-                        <Input
-                          type="text"
-                          value={address1}
-                          onChange={handleAddress1Change}
-                          placeholder={param.placeholder}
+                        <Controller
+                          name={`${param.label
+                            .split(' ')
+                            .map(
+                              (value) => value[0].toUpperCase() + value.slice(1)
+                            )
+                            .join('')}`}
+                          control={control}
+                          defaultValue={address1}
+                          rules={{ required: param.message }}
+                          render={({ field }) => (
+                            <Input
+                              {...field}
+                              value={address1} // Use the controlled state value here
+                              onChange={(e) => {
+                                field.onChange(e); // Update RHF value
+                                handleAddress1Change(e); // Update local state
+                              }}
+                              placeholder={param.placeholder}
+                              autoComplete="off"
+                              id={param.label}
+                            />
+                          )}
                         />
                       )}
                       {param.type === 'address2' && (
-                        <Input
-                          type="text"
-                          value={address2}
-                          onChange={handleAddress2Change}
-                          placeholder={param.placeholder}
+                        <Controller
+                          name={`${param.label
+                            .split(' ')
+                            .map(
+                              (value) => value[0].toUpperCase() + value.slice(1)
+                            )
+                            .join('')}`}
+                          control={control}
+                          defaultValue={address2}
+                          rules={{ required: param.message }}
+                          render={({ field }) => (
+                            <Input
+                              {...field}
+                              value={address2} // Use the controlled state value here
+                              onChange={(e) => {
+                                field.onChange(e); // Update RHF value
+                                handleAddress2Change(e); // Update local state
+                              }}
+                              placeholder={param.placeholder}
+                              autoComplete="off"
+                              id={param.label}
+                            />
+                          )}
                         />
                       )}
                       {param.type === 'dob' && (
-                        <StyledDatePicker
-                          value={selectedDate}
-                          onChange={handleDateChange}
-                          format="DD/MM/YYYY"
-                          placeholder={param.placeholder}
+                        <Controller
+                          name={`${param.label
+                            .split(' ')
+                            .map(
+                              (value) => value[0].toUpperCase() + value.slice(1)
+                            )
+                            .join('')}`}
+                          control={control} // Ensure the control prop is passed here
+                          rules={{ required: param.message }}
+                          render={({ field }) => (
+                            <StyledDatePicker
+                              {...field}
+                              format="DD/MM/YYYY"
+                              placeholder={param.placeholder}
+                              onChange={(date) => field.onChange(date)} // Correctly pass the onChange function
+                              value={field.value} // Ensure the value is managed properly
+                            />
+                          )}
                         />
-                        // <UseDate placeholder={param.placeholder} />
                       )}
-                      <Placeholder />
-                      {/* <Error>xyz</Error> */}
+                      {errors?.[
+                        param.label
+                          .split(' ')
+                          .map(
+                            (value) => value[0].toUpperCase() + value.slice(1)
+                          )
+                          .join('')
+                      ]?.message ? (
+                        <Error>
+                          {
+                            errors?.[
+                              param.label
+                                .split(' ')
+                                .map(
+                                  (value) =>
+                                    value[0].toUpperCase() + value.slice(1)
+                                )
+                                .join('')
+                            ]?.message
+                          }
+                        </Error>
+                      ) : (
+                        <Placeholder />
+                      )}
                     </GridInputError>
                   </FormRowGridOne>
                 );
@@ -259,37 +387,69 @@ export default function VerificationForm({
               {formParams.parameters.map((param) => {
                 return (
                   <FormRowGridTwo type={'row'} key={param.label}>
-                    <Label style={{ paddingTop: '0.4rem' }}>
+                    <Label
+                      style={{ paddingTop: '0.4rem' }}
+                      htmlFor={param.label}
+                    >
                       {param.label}
                       {param.required && <Astrick>*</Astrick>}
                     </Label>
                     <GridInputError>
-                      {param.type === 'aadhar' ? (
-                        <Input
-                          type="text"
-                          value={aadhaar}
-                          onChange={handleAadharChange}
-                          maxLength={param.max}
-                          placeholder={param.placeholder}
-                        />
-                      ) : (
+                      {
                         <Input
                           value={param.value && param.value}
                           disabled={param.value && true}
+                          id={param.label}
+                          autoComplete="off"
+                          maxLength={param.max}
+                          {...register(
+                            `${param.label
+                              .split(' ')
+                              .map(
+                                (value) =>
+                                  value[0].toUpperCase() + value.slice(1)
+                              )
+                              .join('')}`,
+                            {
+                              required: param.message,
+                            }
+                          )}
                         />
+                        // )
+                      }
+                      {errors?.[
+                        param.label
+                          .split(' ')
+                          .map(
+                            (value) => value[0].toUpperCase() + value.slice(1)
+                          )
+                          .join('')
+                      ]?.message ? (
+                        <Error>
+                          {
+                            errors?.[
+                              param.label
+                                .split(' ')
+                                .map(
+                                  (value) =>
+                                    value[0].toUpperCase() + value.slice(1)
+                                )
+                                .join('')
+                            ]?.message
+                          }
+                        </Error>
+                      ) : (
+                        <Placeholder />
                       )}
-                      <Placeholder>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                      </Placeholder>
-                      {/* <Error>xyz</Error> */}
                     </GridInputError>
                   </FormRowGridTwo>
                 );
               })}
             </GridTypeTwo>
           )}
+          <Button type="submit">verify</Button>
         </FormContainer>
-        <Button>verify</Button>
+        {/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */}
       </StyledModal>
     </Overlay>,
     document.body

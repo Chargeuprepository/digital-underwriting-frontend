@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 
 export default function useAadhar() {
   const [aadhaar, setAadhaar] = useState('');
-  console.log(+aadhaar.split(' ').join(''));
 
   const handleAadharChange = (e) => {
     let input = e.target.value.replace(/\D/g, ''); // Remove non-digit characters
-
+    console.log('gaurav');
     // Limit input to 12 digits
     if (input.length > 12) {
       input = input.substring(0, 12);
