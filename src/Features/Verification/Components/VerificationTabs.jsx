@@ -50,7 +50,7 @@ const data = [
         valueType: 'text',
         required: true,
         disabled: true,
-        value: 'true',
+        value: true,
       },
       {
         label: 'enhanced coverage',
@@ -58,7 +58,7 @@ const data = [
         valueType: 'text',
         disabled: true,
         required: true,
-        value: 'true',
+        value: true,
       },
     ],
   },
@@ -223,8 +223,8 @@ export default function VerificationTabs() {
           <StyledVerificationTab
             onClick={() => handleClick(val)}
             bgimage={val.bgimage}
-            shade1={'rgba(240, 238, 253, 0.6)'}
-            shade2={'rgba(167, 159, 242, 0.6)'}
+            shade1={'rgba(240, 238, 253, 0.35)'}
+            shade2={'rgba(167, 159, 242, 0.35)'}
             key={val.name}
           >
             <VerificationName>

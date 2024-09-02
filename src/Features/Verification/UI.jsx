@@ -28,7 +28,7 @@ export const VerificationName = styled.span`
   font-size: 1.7rem;
   font-weight: 800;
   color: var(--color-gray-25);
-  background-color: rgba(43, 43, 43, 0.632);
+  background-color: rgba(43, 43, 43, 0.8);
   border-radius: 0.6rem;
   padding: 0.5rem 1.4rem;
   text-transform: uppercase;

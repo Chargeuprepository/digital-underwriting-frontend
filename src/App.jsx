@@ -11,7 +11,7 @@ import BusinessInsights from './Pages/BusinessInsights';
 import PageNotFound from './Pages/PageNotFound';
 import EditUser from './Pages/EditUser';
 import AIMLModels from './Pages/AIMLModels';
-import Check from '../Check';
+// import Check from '../Check';
 import MLFormPage from './Pages/MLFormPage';
 import Testing from '../Testing';
 import RiskVerification from './Pages/RiskVerification';
@@ -29,7 +29,7 @@ function App() {
           <Route path="businessInsights" element={<BusinessInsights />} />
           <Route path="AI-ML-models" element={<AIMLModels />} />
 
-          <Route path="check" element={<Check />} />
+          {/* <Route path="check" element={<Check />} /> */}
         </Route>
         <Route path="/riskverification" element={<RiskVerification />} />
         <Route path="/ML-form/:formName" element={<MLFormPage />} />
