@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+import GridTab from '../../UI/GridTab';
 
 const StyledTelecomAttributes = styled.div`
-  /* grid-row: 6; */
   grid-column: 1 / -1;
+  background-color: #5a9933;
 `;
 
 export default function TelecomAttributes() {
-  return <StyledTelecomAttributes>TelecomAttributes</StyledTelecomAttributes>;
+  return (
+    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#5a9933">
+      TelecomAttributes
+    </GridTab>
+  );
 }

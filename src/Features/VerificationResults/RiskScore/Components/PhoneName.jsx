@@ -1,12 +1,15 @@
 import styled from 'styled-components';
+import GridTab from '../../UI/GridTab';
 
 const StyledPhoneNameAttributes = styled.div`
-  /* grid-row: 7; */
+  background-color: #339799;
   grid-column: 1 / -1;
 `;
 
 export default function PhoneNameAttributes() {
   return (
-    <StyledPhoneNameAttributes>PhoneNameAttributes</StyledPhoneNameAttributes>
+    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#339799">
+      PhoneNameAttributes
+    </GridTab>
   );
 }

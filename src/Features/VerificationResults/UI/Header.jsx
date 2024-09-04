@@ -4,17 +4,21 @@ import { Link } from 'react-router-dom';
 export const Header = styled.div`
   width: 100vw;
   height: 9rem;
-  background-color: var(--color-gray-10);
+  background-color: var(--color-gray-0);
   /* background: linear-gradient(
-    45deg,
-    var(--color-brand-blue-200),
-    var(--color-brand-blue-500)
+    to top,
+    var(--color-brand-blue-300),
+    var(--color-brand-blue-600)
   ); */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-gray-50);
   padding: 0 8rem 0 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 `;
 
 export const LogoVerificationContainer = styled.div`

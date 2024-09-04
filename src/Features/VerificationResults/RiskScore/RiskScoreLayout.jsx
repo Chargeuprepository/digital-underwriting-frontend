@@ -9,13 +9,15 @@ import TelecomAttributes from './Components/Telecom';
 import PhoneNameAttributes from './Components/PhoneName';
 
 const StyledRiskScoreLayout = styled.div`
-  width: 100%;
+  box-sizing: border-box;
 `;
 const RiskVerificationInsights = styled.div`
   display: grid;
   grid-template-columns: 1.1fr 1fr 1fr;
-  grid-template-rows: 0.55fr 1fr 1fr 1fr 1fr 1fr;
-  width: 100%;
+  grid-template-rows: 0.6fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 9rem;
 `;
 
 export default function RiskScoreLayout() {
@@ -33,10 +35,10 @@ export default function RiskScoreLayout() {
         <RiskScore />
         <PositiveNegative />
         <RiskInsights />
-        {/* <SocialAttributes />
+        <SocialAttributes />
         <VPAAttributes />
         <TelecomAttributes />
-        <PhoneNameAttributes /> */}
+        <PhoneNameAttributes />
       </RiskVerificationInsights>
     </StyledRiskScoreLayout>
   );
