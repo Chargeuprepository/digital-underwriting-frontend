@@ -4,7 +4,7 @@ const StyledWhereYouStandTable = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  padding: 6rem 2rem 2rem 2rem;
+  padding: 4rem 2rem 2rem 2rem;
 `;
 const RowContainer = styled.div`
   display: grid;
@@ -28,8 +28,8 @@ const ColorColumn = styled.div`
 `;
 
 const data = [
-  { score: '0-400', percent: '30%', color: '#0dee0d' },
-  { score: '401-500', percent: '53%', color: '#80ed3d' },
+  { score: '0-400', percent: '30%', color: '#00953c' },
+  { score: '401-500', percent: '53%', color: '#1aa050' },
   { score: '501-600', percent: '16%', color: '#f9f906' },
   { score: '601-750', percent: '0.9%', color: '#ff9c38' },
   { score: '751-999', percent: '0.1%', color: '#f01010' },

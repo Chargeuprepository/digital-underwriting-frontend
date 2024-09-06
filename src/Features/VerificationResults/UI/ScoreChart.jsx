@@ -9,7 +9,7 @@ export default function ScoreChart({ param }) {
     <GaugeChart
       id="gauge-chart"
       nrOfLevels={20}
-      colors={['#0dee0d', '#f9f906', '#f01010']}
+      colors={['#00953c', '#f9f906', '#f01010']}
       arcWidth={0.3}
       percent={percentValue}
       textColor="var(--color-brand-original-blue-400)"
@@ -18,8 +18,8 @@ export default function ScoreChart({ param }) {
       formatTextValue={(value) => `${Math.floor(value * 10)}`}
       animate={true}
       style={{
-        width: '35rem',
-        height: '13rem',
+        width: '34rem',
+        height: '12rem',
         fontWeight: '500',
       }}
     />

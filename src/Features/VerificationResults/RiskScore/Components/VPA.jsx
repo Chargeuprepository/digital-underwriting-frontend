@@ -4,12 +4,12 @@ import GridTab from '../../UI/GridTab';
 const StyledVPAAttributes = styled.div`
   /* grid-row: 5; */
   grid-column: 1 / -1;
-  background-color: #e98282;
+  background-color: #b8b7ff;
 `;
 
 export default function VPAAttributes() {
   return (
-    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#e98282">
+    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
       VPAAttributes
     </GridTab>
   );

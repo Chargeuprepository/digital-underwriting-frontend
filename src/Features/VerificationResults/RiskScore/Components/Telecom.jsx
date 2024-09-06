@@ -3,12 +3,12 @@ import GridTab from '../../UI/GridTab';
 
 const StyledTelecomAttributes = styled.div`
   grid-column: 1 / -1;
-  background-color: #5a9933;
+  background-color: #b8b7ff;
 `;
 
 export default function TelecomAttributes() {
   return (
-    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#5a9933">
+    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
       TelecomAttributes
     </GridTab>
   );

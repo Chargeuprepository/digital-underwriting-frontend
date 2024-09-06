@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import GridTab from '../../UI/GridTab';
 import ScoreChart from '../../UI/ScoreChart';
 import WhereYouStandTable from '../../UI/WhereYouStandTable';
-import { useState } from 'react';
 
 const RiskScoreContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: var(--color-gray-25);
+  background-color: var(--color-gray-10);
   border-radius: 0.6rem;
+  border: 1px solid var(--color-gray-100);
   padding: 3rem;
   display: grid;
   grid-template-columns: 1fr;
@@ -30,12 +30,9 @@ const ChartContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const WhereYouStand = styled.div`
-  /* background-color: #85ca57; */
-`;
+const WhereYouStand = styled.div``;
 
-export default function RiskScore() {
-  const [score, setScore] = useState(578);
+export default function RiskScore({ score }) {
   const heightprop = 'calc(100vh - 13rem)';
 
   return (
