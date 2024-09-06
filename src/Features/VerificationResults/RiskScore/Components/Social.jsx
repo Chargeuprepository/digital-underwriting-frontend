@@ -6,9 +6,9 @@ const StyledSocialAttributes = styled.div`
   background-color: #b8b7ff;
 `;
 
-export default function SocialAttributes() {
+export default function SocialAttributes({ socialRef }) {
   return (
-    <GridTab gridcolumn={' 1 / -1'} backgroundcolor="#b8b7ff">
+    <GridTab ref={socialRef} gridcolumn={' 1 / -1'} backgroundcolor="#b8b7ff">
       SocialAttributes
     </GridTab>
   );

@@ -7,6 +7,7 @@ const RiskScoreContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: var(--color-gray-10);
+  background: linear-gradient(to bottom, #def1f4, #ccede8);
   border-radius: 0.6rem;
   border: 1px solid var(--color-gray-100);
   padding: 3rem;

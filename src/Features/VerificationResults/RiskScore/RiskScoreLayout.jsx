@@ -7,7 +7,7 @@ import SocialAttributes from './Components/Social';
 import VPAAttributes from './Components/VPA';
 import TelecomAttributes from './Components/Telecom';
 import PhoneNameAttributes from './Components/PhoneName';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const StyledRiskScoreLayout = styled.div`
   box-sizing: border-box;
@@ -47,7 +47,7 @@ const riskInsightsData = {
     current_network_region: 'delhi',
     phone_footprint_strength: 'low',
   },
-  identity: { identityRisk: 'medium' },
+  identity: { identity_risk: 'medium' },
   social: {
     social_score: '320',
     social_media_count: 6,
@@ -58,8 +58,11 @@ const riskInsightsData = {
 };
 
 export default function RiskScoreLayout() {
-  const [score, setScore] = useState(436);
+  const [score, setScore] = useState(789);
   const [positiveNegative, setPositiveNegative] = useState(data);
+  const socialRef = useRef(null);
+  const digitalRef = useRef(null);
+  const telecomRef = useRef(null);
 
   return (
     <StyledRiskScoreLayout>
@@ -74,10 +77,13 @@ export default function RiskScoreLayout() {
       <RiskVerificationInsights>
         <RiskScore score={score} />
         <PositiveNegative positiveNegative={positiveNegative} />
-        <RiskInsights riskInsightsData={riskInsightsData} />
-        <SocialAttributes />
-        <VPAAttributes />
-        <TelecomAttributes />
+        <RiskInsights
+          riskInsightsData={riskInsightsData}
+          allRef={[socialRef, digitalRef, telecomRef]}
+        />
+        <SocialAttributes socialRef={socialRef} />
+        <VPAAttributes digitalRef={digitalRef} />
+        <TelecomAttributes telecomRef={telecomRef} />
         <PhoneNameAttributes />
       </RiskVerificationInsights>
     </StyledRiskScoreLayout>

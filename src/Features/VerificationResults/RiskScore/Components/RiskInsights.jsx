@@ -6,6 +6,7 @@ import {
   InsightLabel,
   InsightValue,
 } from '../../UI/Flex-Grid';
+import scrollToSection from '../../../../Hooks/useScrollIntoView';
 
 const StyledRiskInsights = styled.div`
   height: 100%;
@@ -33,7 +34,8 @@ const EachInsightOverview = styled.div`
   overflow-y: hidden;
 `;
 
-export default function RiskInsights({ riskInsightsData }) {
+export default function RiskInsights({ riskInsightsData, allRef }) {
+  const [socialRef, digitalRef, telecomRef] = allRef;
   const renderContent = (value) => {
     if (typeof value === 'object' && value !== null) {
       return Object.entries(value).map(([key, val]) => (
@@ -50,25 +52,34 @@ export default function RiskInsights({ riskInsightsData }) {
       <StyledRiskInsights>
         <DigitalTelecomIdentityOverview>
           <EachInsightOverview>
-            <StyledDigiTelSocioFlex backgroundcolor={['#fff', '#fff']}>
+            <StyledDigiTelSocioFlex backgroundcolor={['#519bb9', '#69eae6']}>
               {renderContent(riskInsightsData.identity)}
             </StyledDigiTelSocioFlex>
           </EachInsightOverview>
           <DigitalTelecomOverview>
             <EachInsightOverview>
-              <StyledDigiTelSocioFlex backgroundcolor={['#76b852', '#8dc26f']}>
+              <StyledDigiTelSocioFlex
+                onClick={() => scrollToSection(digitalRef)}
+                backgroundcolor={['#6190e8', '#6190e8']}
+              >
                 {renderContent(riskInsightsData.digital)}
               </StyledDigiTelSocioFlex>
             </EachInsightOverview>
             <EachInsightOverview>
-              <StyledDigiTelSocioFlex backgroundcolor={['#6190e8', '#6190e8']}>
+              <StyledDigiTelSocioFlex
+                onClick={() => scrollToSection(telecomRef)}
+                backgroundcolor={['#76b852', '#8dc26f']}
+              >
                 {renderContent(riskInsightsData.telecom)}
               </StyledDigiTelSocioFlex>
             </EachInsightOverview>
           </DigitalTelecomOverview>
         </DigitalTelecomIdentityOverview>
         <EachInsightOverview backgroundcolor={[]}>
-          <StyledDigiTelSocioFlex backgroundcolor={['#ac8881', '#b99088']}>
+          <StyledDigiTelSocioFlex
+            onClick={() => scrollToSection(socialRef)}
+            backgroundcolor={['#ac8881', '#b99088']}
+          >
             {renderContent(riskInsightsData.social)}
           </StyledDigiTelSocioFlex>
         </EachInsightOverview>

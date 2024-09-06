@@ -7,7 +7,6 @@ export const StyledDigiTelSocioFlex = styled.div`
   gap: 2rem;
   padding: 0 2rem;
   height: 100%;
-  /* border-radius: 0.6rem; */
   background: linear-gradient(to bottom, #237a57, #237a57);
   background: linear-gradient(
     to top,
@@ -18,6 +17,10 @@ export const StyledDigiTelSocioFlex = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  > :first-child {
+    border: 2px solid var(--color-gray-1);
+  }
 `;
 
 export const InsightLabelValueContainer = styled.div`
@@ -26,25 +29,22 @@ export const InsightLabelValueContainer = styled.div`
   gap: 1rem;
   border: 1px solid var(--color-gray-100);
   padding: 1rem 3rem;
-  /* background-color: aliceblue; */
   border-radius: 0.6rem;
-  /* background: linear-gradient(to bottom, #e3dcf0, #dfd394); */
-  /* min-width: 20rem; */
   flex: 0 0 auto;
 `;
 export const InsightLabel = styled.div`
   text-transform: uppercase;
   display: flex;
   justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--color-gray-900);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-gray-800);
 `;
 export const InsightValue = styled.div`
   text-transform: capitalize;
   display: flex;
   justify-content: center;
-  font-size: 1.29rem;
-  font-weight: 600;
-  color: var(--color-gray-800);
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: var(--color-gray-700);
 `;

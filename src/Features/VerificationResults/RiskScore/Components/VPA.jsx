@@ -7,9 +7,9 @@ const StyledVPAAttributes = styled.div`
   background-color: #b8b7ff;
 `;
 
-export default function VPAAttributes() {
+export default function VPAAttributes({ digitalRef }) {
   return (
-    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
+    <GridTab ref={digitalRef} gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
       VPAAttributes
     </GridTab>
   );

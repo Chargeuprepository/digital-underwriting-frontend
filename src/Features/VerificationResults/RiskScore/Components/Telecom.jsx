@@ -6,9 +6,9 @@ const StyledTelecomAttributes = styled.div`
   background-color: #b8b7ff;
 `;
 
-export default function TelecomAttributes() {
+export default function TelecomAttributes({ telecomRef }) {
   return (
-    <GridTab gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
+    <GridTab ref={telecomRef} gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
       TelecomAttributes
     </GridTab>
   );
