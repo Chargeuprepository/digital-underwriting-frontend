@@ -1,15 +1,20 @@
-import styled from 'styled-components';
-import GridTab from '../../UI/GridTab';
+import GridTab from '../UI/GridTab';
+import {
+  DigiTelSocioTabContainer,
+  renderContent,
+  StyledTelDigiSocioAttributes,
+  TabsHeadingDigiTelSocio,
+} from '../UI/Flex-Grid';
 
-const StyledTelecomAttributes = styled.div`
-  grid-column: 1 / -1;
-  background-color: #b8b7ff;
-`;
-
-export default function TelecomAttributes({ telecomRef }) {
+export default function TelecomAttributes({ telecomRef, telecomData }) {
   return (
     <GridTab ref={telecomRef} gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
-      TelecomAttributes
+      <DigiTelSocioTabContainer backgroundcolor={['#6190e8', '#6190e8']}>
+        <TabsHeadingDigiTelSocio>telecom attributes</TabsHeadingDigiTelSocio>
+        <StyledTelDigiSocioAttributes>
+          {renderContent(telecomData)}
+        </StyledTelDigiSocioAttributes>
+      </DigiTelSocioTabContainer>
     </GridTab>
   );
 }

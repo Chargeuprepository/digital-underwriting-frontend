@@ -1,16 +1,20 @@
-import styled from 'styled-components';
-import GridTab from '../../UI/GridTab';
+import GridTab from '../UI/GridTab';
+import {
+  DigiTelSocioTabContainer,
+  renderContent,
+  StyledTelDigiSocioAttributes,
+  TabsHeadingDigiTelSocio,
+} from '../UI/Flex-Grid';
 
-const StyledVPAAttributes = styled.div`
-  /* grid-row: 5; */
-  grid-column: 1 / -1;
-  background-color: #b8b7ff;
-`;
-
-export default function VPAAttributes({ digitalRef }) {
+export default function VPAAttributes({ digitalRef, digitalData }) {
   return (
     <GridTab ref={digitalRef} gridcolumn={'1 / -1'} backgroundcolor="#b8b7ff">
-      VPAAttributes
+      <DigiTelSocioTabContainer backgroundcolor={['#7dcc50', '#76b852']}>
+        <TabsHeadingDigiTelSocio>digital attributes</TabsHeadingDigiTelSocio>
+        <StyledTelDigiSocioAttributes>
+          {renderContent(digitalData)}
+        </StyledTelDigiSocioAttributes>
+      </DigiTelSocioTabContainer>
     </GridTab>
   );
 }

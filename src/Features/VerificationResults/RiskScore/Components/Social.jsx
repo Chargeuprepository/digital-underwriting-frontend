@@ -1,15 +1,20 @@
-import styled from 'styled-components';
-import GridTab from '../../UI/GridTab';
+import GridTab from '../UI/GridTab';
+import {
+  DigiTelSocioTabContainer,
+  renderSocialContent,
+  StyledTelDigiSocioAttributes,
+  TabsHeadingDigiTelSocio,
+} from '../UI/Flex-Grid';
 
-const StyledSocialAttributes = styled.div`
-  grid-column: 1 / -1;
-  background-color: #b8b7ff;
-`;
-
-export default function SocialAttributes({ socialRef }) {
+export default function SocialAttributes({ socialRef, socialData }) {
   return (
     <GridTab ref={socialRef} gridcolumn={' 1 / -1'} backgroundcolor="#b8b7ff">
-      SocialAttributes
+      <DigiTelSocioTabContainer backgroundcolor={['#f4a93f', '#f4a93f']}>
+        <TabsHeadingDigiTelSocio>social attributes</TabsHeadingDigiTelSocio>
+        <StyledTelDigiSocioAttributes social={'TRUE'}>
+          {renderSocialContent(socialData)}
+        </StyledTelDigiSocioAttributes>
+      </DigiTelSocioTabContainer>
     </GridTab>
   );
 }

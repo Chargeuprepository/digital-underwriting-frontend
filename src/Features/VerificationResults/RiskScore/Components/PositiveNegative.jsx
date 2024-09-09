@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import GridTab from '../../UI/GridTab';
+import GridTab from '../UI/GridTab';
 import { RiArrowDropRightFill } from 'react-icons/ri';
 
 const StyledPositiveNegative = styled.div`

@@ -28,17 +28,17 @@ const Value = styled.div`
   color: var(--color-gray-700);
 `;
 const Icon = styled.img`
-  height: 5rem;
-  width: 5rem;
+  height: 4rem;
+  width: 4rem;
 `;
 
 const obj = [
-  { label: 'Whatsapp', value: 80 },
-  { label: 'Paytm', value: 60 },
-  { label: 'Instagram', value: 90 },
-  { label: 'Flipkart', value: 80 },
-  { label: 'Amazon', value: 90 },
-  { label: 'Indiamart', value: 40 },
+  { label: 'whatsapp', value: 80 },
+  { label: 'paytm', value: 60 },
+  { label: 'instagram', value: 90 },
+  { label: 'flipkart', value: 80 },
+  { label: 'amazon', value: 90 },
+  { label: 'indiamart', value: 40 },
 ];
 
 const sorted = obj.sort((a, b) => b.value - a.value);
@@ -50,7 +50,7 @@ export default function SocialMedia() {
       <ParentContainer>
         {sorted.map((val) => (
           <MediaContainer key={val.label}>
-            <Icon src={`/img/${val.label}SVG.svg`} />
+            <Icon src={`/img/${val.label}.svg`} />
             <Value>{val.value}</Value>
           </MediaContainer>
         ))}

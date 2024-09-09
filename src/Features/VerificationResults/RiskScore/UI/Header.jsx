@@ -39,7 +39,7 @@ export const Logo = styled(Link)`
 export const VerificationNav = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.7rem;
   text-transform: capitalize;
   font-size: 1.8rem;
   font-weight: 500;
