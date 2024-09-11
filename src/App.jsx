@@ -15,6 +15,7 @@ import AIMLModels from './Pages/AIMLModels';
 import MLFormPage from './Pages/MLFormPage';
 import Testing from '../Testing';
 import RiskVerification from './Pages/RiskVerification';
+import VehicleVerification from './Pages/VehicleVerification';
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
 
           {/* <Route path="check" element={<Check />} /> */}
         </Route>
-        <Route path="/riskverification" element={<RiskVerification />} />
+        <Route path="/riskVerification" element={<RiskVerification />} />
+        <Route path="/vehicleVerification" element={<VehicleVerification />} />
         <Route path="/ML-form/:formName" element={<MLFormPage />} />
 
         <Route path="login" element={<Login />} />

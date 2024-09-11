@@ -14,7 +14,7 @@ import {
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import { IoMdCall } from 'react-icons/io';
 import { FaIdCard } from 'react-icons/fa';
-import { FaGreaterThan } from 'react-icons/fa6';
+import { FaGreaterThan } from 'react-icons/fa';
 
 export default function VerificationHeader({ verification, data }) {
   return (

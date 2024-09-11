@@ -8,18 +8,10 @@ import VPAAttributes from './Components/VPA';
 import TelecomAttributes from './Components/Telecom';
 import { useEffect, useRef, useState } from 'react';
 import { categorizePlatforms } from '../UI/fun';
-
-const StyledRiskScoreLayout = styled.div`
-  box-sizing: border-box;
-`;
-const RiskVerificationInsights = styled.div`
-  display: grid;
-  grid-template-columns: 0.9fr 1fr 1fr;
-  grid-template-rows: 19rem auto auto auto auto;
-  gap: 2rem;
-  padding: 2rem;
-  margin-top: 9rem;
-`;
+import {
+  AllVerificationGridDesign,
+  AllVerificationLayout,
+} from '../UI/GridTab';
 
 const posNegData = {
   positiveInsights: [
@@ -125,7 +117,7 @@ export default function RiskScoreLayout() {
   }, []);
 
   return (
-    <StyledRiskScoreLayout>
+    <AllVerificationLayout>
       <VerificationHeader
         verification="risk verification"
         data={{
@@ -134,7 +126,10 @@ export default function RiskScoreLayout() {
           secondIcon: 'mobile',
         }}
       />
-      <RiskVerificationInsights>
+      <AllVerificationGridDesign
+        column={'0.9fr 1fr 1fr'}
+        row={'19rem, repeat(4, auto)'}
+      >
         <RiskScore score={score} />
         <PositiveNegative positiveNegative={positiveNegative} />
         <RiskInsights
@@ -144,7 +139,7 @@ export default function RiskScoreLayout() {
         <TelecomAttributes telecomRef={telecomRef} telecomData={telecomData} />
         <VPAAttributes digitalRef={digitalRef} digitalData={digitalData} />
         <SocialAttributes socialRef={socialRef} socialData={socialData} />
-      </RiskVerificationInsights>
-    </StyledRiskScoreLayout>
+      </AllVerificationGridDesign>
+    </AllVerificationLayout>
   );
 }

@@ -59,7 +59,7 @@ export const Back = styled(Link)`
   }
 `;
 export const GreaterThan = styled.div`
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
 `;

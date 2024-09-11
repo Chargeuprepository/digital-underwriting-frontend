@@ -6,8 +6,10 @@ const StyledGridTab = styled.div`
   grid-column: ${(props) => props.gridcolumn};
   height: ${(props) => props.height};
   background-color: ${(props) => props.backgroundcolor};
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: ${(props) =>
+    props.boxshadow === 'false' ? '' : '0 10px 20px rgba(0, 0, 0, 0.2)'};
   border-radius: 0.6rem;
+  padding: ${(props) => props.padding};
 `;
 
 export const StyledDigiTelSocioFlex = styled.div`
@@ -38,9 +40,11 @@ export const StyledDigiTelSocioFlex = styled.div`
 export const InsightLabelValueContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   border: 1px solid var(--color-gray-100);
-  padding: 1rem 2.2rem;
+  padding: 1.2rem 2.2rem;
   border-radius: 0.6rem;
   flex: 0 0 auto;
 `;
@@ -58,6 +62,7 @@ export const InsightValue = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-size: 1.32rem;
   font-weight: 600;
   color: var(--color-gray-700);
@@ -85,4 +90,23 @@ export function OverviewRiskInsightsTabs({ backgroundcolor, data, refVal }) {
     </StyledDigiTelSocioFlex>
   );
 }
+
+export const AllVerificationLayout = styled.div``;
+export const AllVerificationGridDesign = styled.div`
+  display: grid;
+  grid-template-columns: ${(props) => props.column};
+  grid-template-rows: ${(props) => props.row};
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 9rem;
+`;
+export const AllVerificationComponentGridDesign = styled.div`
+  display: grid;
+  grid-template-columns: ${(props) => props.column};
+  grid-template-rows: ${(props) => props.row};
+  gap: ${(props) => props.gap};
+  padding: ${(props) => props.padding};
+  height: ${(props) => props.height};
+`;
+
 export default StyledGridTab;
