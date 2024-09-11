@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import GridTab from '../UI/GridTab';
+import GridTab from '../../UI/GridTab';
 import { RiArrowDropRightFill } from 'react-icons/ri';
+import { camelCaseConversion } from '../../UI/fun';
 
 const StyledPositiveNegative = styled.div`
   display: grid;
@@ -54,15 +55,17 @@ const ValueIconContainer = styled.div`
 `;
 
 export default function PositiveNegative({ positiveNegative }) {
-  const { positives, negatives } = positiveNegative;
+  const { positiveInsights, negativeInsights } = positiveNegative;
 
   return (
     <GridTab gridcolumn={'2 / -1'} backgroundcolor="#ffffff">
       <StyledPositiveNegative>
         <PosNegColumn>
-          <PosNegHeading color="red">negatives</PosNegHeading>
+          <PosNegHeading color="red">
+            {camelCaseConversion('positiveInsights')}
+          </PosNegHeading>
           <PosNeg>
-            {negatives.map((val, i) => {
+            {negativeInsights.map((val, i) => {
               return (
                 <ValueIconContainer key={i}>
                   <div>
@@ -75,9 +78,11 @@ export default function PositiveNegative({ positiveNegative }) {
           </PosNeg>
         </PosNegColumn>
         <PosNegColumn>
-          <PosNegHeading color="green">positives</PosNegHeading>
+          <PosNegHeading color="green">
+            {camelCaseConversion('negativeInsights')}
+          </PosNegHeading>
           <PosNeg>
-            {positives.map((val, i) => {
+            {positiveInsights.map((val, i) => {
               return (
                 <ValueIconContainer key={i}>
                   <div>

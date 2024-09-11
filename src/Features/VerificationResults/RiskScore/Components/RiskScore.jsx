@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import GridTab from '../UI/GridTab';
-import ScoreChart from '../UI/ScoreChart';
-import WhereYouStandTable from '../UI/WhereYouStandTable';
+import GridTab from '../../UI/GridTab';
+import ScoreChart from '../../UI/ScoreChart';
+import WhereYouStandTable from '../RiskUI/WhereYouStandTable';
 
 const RiskScoreContainer = styled.div`
   width: 100%;

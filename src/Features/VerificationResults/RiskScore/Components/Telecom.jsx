@@ -1,10 +1,9 @@
-import GridTab from '../UI/GridTab';
+import GridTab, { renderContent } from '../../UI/GridTab';
 import {
   DigiTelSocioTabContainer,
-  renderContent,
   StyledTelDigiSocioAttributes,
   TabsHeadingDigiTelSocio,
-} from '../UI/Flex-Grid';
+} from '../RiskUI/Flex-Grid';
 
 export default function TelecomAttributes({ telecomRef, telecomData }) {
   return (

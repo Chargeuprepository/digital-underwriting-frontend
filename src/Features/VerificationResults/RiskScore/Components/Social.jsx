@@ -1,10 +1,10 @@
-import GridTab from '../UI/GridTab';
+import GridTab from '../../UI/GridTab';
 import {
   DigiTelSocioTabContainer,
   renderSocialContent,
   StyledTelDigiSocioAttributes,
   TabsHeadingDigiTelSocio,
-} from '../UI/Flex-Grid';
+} from '../RiskUI/Flex-Grid';
 
 export default function SocialAttributes({ socialRef, socialData }) {
   return (

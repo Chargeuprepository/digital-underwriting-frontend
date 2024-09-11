@@ -10,7 +10,7 @@ import {
   SingleDetailContainer,
   VerificationName,
   VerificationNav,
-} from './Header';
+} from './HeaderUI';
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import { IoMdCall } from 'react-icons/io';
 import { FaIdCard } from 'react-icons/fa';

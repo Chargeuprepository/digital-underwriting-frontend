@@ -58,3 +58,7 @@ export function categorizePlatforms(data) {
 
   return categories;
 }
+
+export function camelCaseConversion(text) {
+  return text.replace(/([A-Z])/g, ' $1');
+}

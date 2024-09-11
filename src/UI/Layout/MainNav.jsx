@@ -87,12 +87,12 @@ export default function MainNav() {
             <span>Onboarded Drivers</span>
           </SideNavElement>
         </li>
-        <li>
+        {/* <li>
           <SideNavElement to={'/AI-ML-models'}>
             <GiArtificialIntelligence />
             <span>AI/ML Models</span>
           </SideNavElement>
-        </li>
+        </li> */}
         <li>
           <SideNavElement to={'/createUser'}>
             <HiMiniUserPlus />
