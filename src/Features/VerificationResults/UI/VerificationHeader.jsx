@@ -37,7 +37,7 @@ export default function VerificationHeader({ verification, data }) {
           <Name>{data.name}</Name>
         </SingleDetailContainer>
         <SingleDetailContainer color="var(--color-gray-500)">
-          {data.secondIcon === 'mobile' ? <IoMdCall /> : <FaIdCard />}
+          {data.mobile && <IoMdCall />}
           <Mobile>{data[Object.keys(data)[1]]}</Mobile>
         </SingleDetailContainer>
       </NameMobileContainer>

@@ -1,14 +1,13 @@
-import styled from 'styled-components';
-import StyledGridTab from '../../UI/GridTab';
+import AllVerificationAllCategoryTabs from '../../UI/AllVerificationAllCategoryTabs';
 
-const StyledInsurance = styled.div``;
-
-export default function Insurance() {
+export default function Insurance({ insuranceData }) {
   return (
-    <StyledInsurance>
-      <StyledGridTab height={''} backgroundcolor={'#b9c3fc'}>
-        Insurance
-      </StyledGridTab>
-    </StyledInsurance>
+    <AllVerificationAllCategoryTabs
+      height={''}
+      backgroundcolor={'#c8ffab'}
+      padding={'3rem 4rem 6rem 4rem'}
+      categoryName={'insurance data'}
+      data={insuranceData}
+    />
   );
 }

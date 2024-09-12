@@ -1,14 +1,13 @@
-import styled from 'styled-components';
-import StyledGridTab from '../../UI/GridTab';
+import AllVerificationAllCategoryTabs from '../../UI/AllVerificationAllCategoryTabs';
 
-const StyledRegistration = styled.div``;
-
-export default function Registration() {
+export default function Registration({ registrationData }) {
   return (
-    <StyledRegistration>
-      <StyledGridTab height={''} backgroundcolor={'#b6fef5'}>
-        Registration
-      </StyledGridTab>
-    </StyledRegistration>
+    <AllVerificationAllCategoryTabs
+      height={''}
+      backgroundcolor={'#ffe8a9'}
+      padding={'3rem 4rem 6rem 4rem'}
+      categoryName={'registration data'}
+      data={registrationData}
+    />
   );
 }

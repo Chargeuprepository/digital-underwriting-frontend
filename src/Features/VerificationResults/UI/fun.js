@@ -62,3 +62,26 @@ export function categorizePlatforms(data) {
 export function camelCaseConversion(text) {
   return text.replace(/([A-Z])/g, ' $1');
 }
+
+export const dateSubtractor = function (manufactureDateStr) {
+  const [day, month, year] = manufactureDateStr.split('-');
+  const manufactureDate = new Date(`${year}-${month}-${day}`);
+
+  const currentDate = new Date();
+
+  // Calculate the total difference in months
+  let totalMonths =
+    (currentDate.getFullYear() - manufactureDate.getFullYear()) * 12;
+  totalMonths -= manufactureDate.getMonth();
+  totalMonths += currentDate.getMonth();
+
+  // Calculate the difference in years and months
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  const formattedAge = `${
+    years > 0 ? `${years} ${years > 1 ? 'years' : 'year'}` : ''
+  } ${months > 0 ? `${months} ${months > 1 ? 'months' : 'month'}` : ''}`;
+
+  return formattedAge;
+};

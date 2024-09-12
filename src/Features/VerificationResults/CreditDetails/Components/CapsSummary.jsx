@@ -1,13 +1,13 @@
 import AllVerificationAllCategoryTabs from '../../UI/AllVerificationAllCategoryTabs';
 
-export default function Additional({ additionalData }) {
+export default function CapsSummary({ capsSummary }) {
   return (
     <AllVerificationAllCategoryTabs
       height={''}
-      backgroundcolor={'#ffe8a9'}
+      backgroundcolor={'#51aa7c'}
       padding={'3rem 4rem 6rem 4rem'}
-      categoryName={'additional data'}
-      data={additionalData}
+      categoryName={'CAPS summary'}
+      data={capsSummary}
     />
   );
 }

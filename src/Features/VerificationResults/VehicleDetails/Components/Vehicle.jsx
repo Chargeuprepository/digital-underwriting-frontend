@@ -1,14 +1,25 @@
-import StyledGridTab, { renderContent } from '../../UI/GridTab';
-import StyledVehicleInfoGridMaker from '../UI/StyledVehicleInfoGridMaker';
-import { VehicleHeading } from '../UI/VehicleHeading';
+import AllVerificationAllCategoryTabs from '../../UI/AllVerificationAllCategoryTabs';
+import { useEffect, useState } from 'react';
+import { dateSubtractor } from '../../UI/fun';
 
-export default function Vehicle({ vehicleData }) {
+export default function Vehicle({ vehicleData, registrationDate }) {
+  const [vehicleState, setVehicleState] = useState(vehicleData);
+  useEffect(function () {
+    const dateSubtracted = dateSubtractor(registrationDate);
+    setVehicleState((vehicleState) => ({
+      vehicleAge: dateSubtracted,
+      ...vehicleState,
+    }));
+    console.log(vehicleState);
+  }, []);
+
   return (
-    <StyledGridTab backgroundcolor={'#bafca4'} padding={'3rem 4rem'}>
-      <VehicleHeading>vehicle datails</VehicleHeading>
-      <StyledVehicleInfoGridMaker>
-        {renderContent(vehicleData)}
-      </StyledVehicleInfoGridMaker>
-    </StyledGridTab>
+    <AllVerificationAllCategoryTabs
+      height={''}
+      backgroundcolor={'#c8ffab'}
+      padding={'3rem 4rem 6rem 4rem'}
+      categoryName={'vehicle data'}
+      data={vehicleState}
+    />
   );
 }
