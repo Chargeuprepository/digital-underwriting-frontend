@@ -18,7 +18,7 @@ export default function ScoreChart({ param }) {
       formatTextValue={(value) => `${Math.floor(value * 10)}`}
       animate={true}
       style={{
-        width: '34rem',
+        width: '30rem',
         height: '12rem',
         fontWeight: '500',
       }}

@@ -17,7 +17,14 @@ export default function useAddress() {
     setAddress2(input);
   };
 
-  return { address1, address2, handleAddress1Change, handleAddress2Change };
+  return {
+    address1,
+    address2,
+    handleAddress1Change,
+    handleAddress2Change,
+    setAddress1,
+    setAddress2,
+  };
 
   // return (
   //   <div>

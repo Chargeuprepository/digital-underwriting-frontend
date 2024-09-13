@@ -1,3 +1,5 @@
+import OnboardedDriversLayout from '../Features/OnboardedDrivers/OnboardedDriversLayout';
+
 export default function OnboardedDrivers() {
-  return <div>OnboardedDrivers</div>;
+  return <OnboardedDriversLayout></OnboardedDriversLayout>;
 }

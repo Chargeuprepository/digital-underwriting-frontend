@@ -49,6 +49,12 @@ const GlobalStyle = createGlobalStyle`
   --color-blue-light: #081ead;
   --color-blue-dark: #02137d;
 
+  --color-verification-credit-light: #FFDAB9;
+  --color-verification-credit-dark: #B0C4DE;
+
+  --color-verification-vehicle-light: #FFE4E1;
+  --color-verification-vehicle-dark: #90EE90;
+
   --backdrop-color: rgba(255, 255, 255, 0.1);
 
   &, &.light-mode{

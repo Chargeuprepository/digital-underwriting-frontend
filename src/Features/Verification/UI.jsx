@@ -160,6 +160,8 @@ export const Select = styled.select`
   font-weight: 500;
   padding-left: 1rem;
   text-transform: uppercase;
+  max-height: '200px';
+  overflow-y: 'auto';
 
   &:active {
     background-color: #fffa9f;

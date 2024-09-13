@@ -25,8 +25,14 @@ import UseDate from '../../../Hooks/useDate';
 import { Controller, useForm } from 'react-hook-form';
 
 export default function VerificationForm({ formParams, setState }) {
-  const { address1, address2, handleAddress1Change, handleAddress2Change } =
-    useAddress();
+  const {
+    address1,
+    address2,
+    handleAddress1Change,
+    handleAddress2Change,
+    setAddress1,
+    setAddress2,
+  } = useAddress();
   const { StyledDatePicker } = UseDate();
   const { register, formState, handleSubmit, reset, control } = useForm();
   const { errors } = formState;
@@ -37,7 +43,8 @@ export default function VerificationForm({ formParams, setState }) {
   function onSubmit(result) {
     console.log(result);
     reset();
-    console.log('Gaurav');
+    setAddress1('');
+    setAddress2('');
   }
 
   return createPortal(
@@ -126,7 +133,7 @@ export default function VerificationForm({ formParams, setState }) {
 
                           {param.options.map((option, i) => {
                             return (
-                              <Option key={i + 1} value={option}>
+                              <Option key={i + 1} value={param.values[i]}>
                                 {option}
                               </Option>
                             );

@@ -65,6 +65,12 @@ const otherDetails = {
 };
 
 export default function CreditDetailsLayout() {
+  const heroData = {
+    creditScore: accountSummary.bureauScore,
+    outstandingBalanceAll: accountSummary.outstandingBalanceAll,
+    accountActive: accountSummary.creditAccountActive,
+    accountDefault: accountSummary.creditAccountDefault,
+  };
   return (
     <AllVerificationLayout>
       <VerificationHeader
@@ -75,12 +81,12 @@ export default function CreditDetailsLayout() {
           secondIcon: 'mobile',
         }}
       />
-      <AllVerificationGridDesign column={'1fr'} row={'12rem repeat(5, auto)'}>
-        <HeroCredit />
+      <AllVerificationGridDesign column={'1fr'} row={'20rem repeat(5, auto)'}>
+        <HeroCredit heroData={heroData} />
+        <AccountSummary accountSummary={accountSummary} />
         <PersonalDetails personalDetails={personalDetails} />
         <ApplicationDetails applicationDetails={applicationDetails} />
         <CapsSummary capsSummary={capsSummary} />
-        <AccountSummary accountSummary={accountSummary} />
         <OtherDetails otherDetails={otherDetails} />
       </AllVerificationGridDesign>
     </AllVerificationLayout>
