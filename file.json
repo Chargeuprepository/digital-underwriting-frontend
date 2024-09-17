@@ -1,58 +1,308 @@
-[
-  {
-    "Phone Number": 918178242637,
-    "name": "Amit kumar",
-    "Phone to Name.name": "Amit Kumar",
-    "Phone to Name.source": "PAYTM",
-    "Phone to Name.vpa": "8178242637@paytm",
-    "Phone Name Attributes.businessNameDetected": false,
-    "Phone Name Attributes.digitalage": 2706,
-    "Phone Name Attributes.firstNameMatch": true,
-    "Phone Name Attributes.lastNameMatch": true,
-    "Phone Name Attributes.nameMatchScore": 100,
-    "Phone Name Attributes.ndrScore": 1,
-    "Phone Name Attributes.phoneFootprintStrengthOverall": "Medium",
-    "Phone Name Attributes.phoneNameDigitalAge": -1,
-    "Phone Name Attributes.unrScore": 0,
-    "Phone Network.currentNetworkName": "Vodafone",
-    "Phone Network.currentNetworkRegion": "Delhi",
-    "Phone Network.imsi": 4041100000,
-    "Phone Network.isPhoneReachable": true,
-    "Phone Network.numberBillingType": "postpaid",
-    "Phone Network.numberHasPortingHistory": true,
-    "Phone Network.portedFromNetworkName": "Reliance Jio",
-    "Phone Network.portedFromNetworkRegion": "Delhi",
-    "Phone Social Premium.a23games": "Error",
-    "Phone Social Premium.amazon": "Account Not Found",
-    "Phone Social Premium.byjus": "Account Not Found",
-    "Phone Social Premium.flipkart": "Account Not Found",
-    "Phone Social Premium.housing": "Account Not Found",
-    "Phone Social Premium.indiamart": "Account Not Found",
-    "Phone Social Premium.instagram": "Account Not Found",
-    "Phone Social Premium.jeevansaathi": "Account Not Found",
-    "Phone Social Premium.jiomart": "Account Found",
-    "Phone Social Premium.my11": "Error",
-    "Phone Social Premium.paytm": "Account Found",
-    "Phone Social Premium.rummycircle": "Error",
-    "Phone Social Premium.shaadi": "Account Not Found",
-    "Phone Social Premium.swiggy": "Account Not Found",
-    "Phone Social Premium.whatsapp": "Account Found",
-    "Phone Social Premium.yatra": "Error",
-    "Risk Model.alternateRiskScore": 421,
-    "Risk Model.digitalFootprint": "High",
-    "Risk Model.identityConfidence": "High",
-    "Risk Model.negativeInsights": [
-      "Address seems to be incomplete.",
-      "Person has negligible social media presence.",
-      "Email does not exist.",
-      "Email's domain does not exist."
-    ],
-    "Risk Model.phoneSocialMediaCount": 4,
-    "Risk Model.positiveInsights": "[\"Person's name matched against multiple sources.\",\"Person's has significant internet presence.\"]",
-    "Risk Model.socialFootprintScore": 579,
-    "Risk Model.telecomRisk": "Medium",
-    "Zone": "East",
-    "City": "New Delhi",
-    "State": "New Delhi"
-  }
-]
+{
+  "data": [
+    {
+      "name": "Ritesh Kumar",
+      "nps": 250,
+      "service": 150,
+      "runKm": 300,
+      "payment": 220,
+      "karma": 920
+    },
+    {
+      "name": "Neha Sharma",
+      "nps": 250,
+      "service": 100,
+      "runKm": 180,
+      "payment": 220,
+      "karma": 750
+    },
+    {
+      "name": "Ajay Patel",
+      "nps": 200,
+      "service": 150,
+      "runKm": 180,
+      "payment": 80,
+      "karma": 610
+    },
+    {
+      "name": "Priya Singh",
+      "nps": 200,
+      "service": 100,
+      "runKm": 300,
+      "payment": 80,
+      "karma": 680
+    },
+    {
+      "name": "Vikas Mehta",
+      "nps": 250,
+      "service": 150,
+      "runKm": 180,
+      "payment": 220,
+      "karma": 800
+    },
+    {
+      "name": "Sonali Gupta",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 300,
+      "karma": 940
+    },
+    {
+      "name": "Amit Sharma",
+      "nps": 200,
+      "service": 100,
+      "runKm": 240,
+      "payment": 220,
+      "karma": 760
+    },
+    {
+      "name": "Deepika Jain",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 140,
+      "karma": 780
+    },
+    {
+      "name": "Rohit Kumar",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 300,
+      "karma": 940
+    },
+    {
+      "name": "Anuj Gupta",
+      "nps": 250,
+      "service": 150,
+      "runKm": 180,
+      "payment": 300,
+      "karma": 880
+    },
+    {
+      "name": "Pooja Verma",
+      "nps": 250,
+      "service": 50,
+      "runKm": 180,
+      "payment": 220,
+      "karma": 700
+    },
+    {
+      "name": "Suresh Yadav",
+      "nps": 200,
+      "service": 150,
+      "runKm": 300,
+      "payment": 300,
+      "karma": 950
+    },
+    {
+      "name": "Swati Bhardwaj",
+      "nps": 250,
+      "service": 50,
+      "runKm": 180,
+      "payment": 140,
+      "karma": 620
+    },
+    {
+      "name": "Rajesh Agarwal",
+      "nps": 200,
+      "service": 150,
+      "runKm": 240,
+      "payment": 220,
+      "karma": 810
+    },
+    {
+      "name": "Meena Das",
+      "nps": 200,
+      "service": 150,
+      "runKm": 120,
+      "payment": 40,
+      "karma": 510
+    },
+    {
+      "name": "Nisha Reddy",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 80,
+      "karma": 720
+    },
+    {
+      "name": "Vivek Pandey",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 220,
+      "karma": 860
+    },
+    {
+      "name": "Rahul Desai",
+      "nps": 250,
+      "service": 150,
+      "runKm": 300,
+      "payment": 300,
+      "karma": 1000
+    },
+    {
+      "name": "Kavita Joshi",
+      "nps": 200,
+      "service": 100,
+      "runKm": 180,
+      "payment": 300,
+      "karma": 780
+    },
+    {
+      "name": "Manoj Kumar",
+      "nps": 200,
+      "service": 150,
+      "runKm": 300,
+      "payment": 300,
+      "karma": 950
+    },
+    {
+      "name": "Sneha Shah",
+      "nps": 250,
+      "service": 100,
+      "runKm": null,
+      "payment": 40,
+      "karma": null
+    },
+    {
+      "name": "Pankaj Sinha",
+      "nps": 200,
+      "service": 100,
+      "runKm": 120,
+      "payment": 140,
+      "karma": 560
+    },
+    {
+      "name": "Anita Kapoor",
+      "nps": 250,
+      "service": 100,
+      "runKm": 300,
+      "payment": 220,
+      "karma": 870
+    },
+    {
+      "name": "Mohit Choudhary",
+      "nps": 200,
+      "service": 150,
+      "runKm": 180,
+      "payment": 300,
+      "karma": 830
+    },
+    {
+      "name": "Shivani Gupta",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 300,
+      "karma": 940
+    },
+    {
+      "name": "Sanjay Patil",
+      "nps": 250,
+      "service": 150,
+      "runKm": 300,
+      "payment": 300,
+      "karma": 1000
+    },
+    {
+      "name": "Anjali Nair",
+      "nps": 250,
+      "service": 150,
+      "runKm": 300,
+      "payment": 220,
+      "karma": 920
+    },
+    {
+      "name": "Aakash Jain",
+      "nps": 250,
+      "service": 150,
+      "runKm": 180,
+      "payment": 220,
+      "karma": 800
+    },
+    {
+      "name": "Tanvi Rao",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 140,
+      "karma": 780
+    },
+    {
+      "name": "Yash Sharma",
+      "nps": 200,
+      "service": 150,
+      "runKm": 300,
+      "payment": 80,
+      "karma": 730
+    },
+    {
+      "name": "Harish Iyer",
+      "nps": 200,
+      "service": 150,
+      "runKm": 180,
+      "payment": 220,
+      "karma": 750
+    },
+    {
+      "name": "Kiran Chauhan",
+      "nps": 250,
+      "service": 150,
+      "runKm": 180,
+      "payment": 300,
+      "karma": 880
+    },
+    {
+      "name": "Deepak Singh",
+      "nps": 200,
+      "service": 150,
+      "runKm": 120,
+      "payment": 80,
+      "karma": 550
+    },
+    {
+      "name": "Shweta Rao",
+      "nps": 150,
+      "service": 150,
+      "runKm": 300,
+      "payment": 220,
+      "karma": 820
+    },
+    {
+      "name": "Ravi Khandelwal",
+      "nps": 100,
+      "service": 100,
+      "runKm": 240,
+      "payment": 300,
+      "karma": 740
+    },
+    {
+      "name": "Kunal Bansal",
+      "nps": 200,
+      "service": 150,
+      "runKm": 240,
+      "payment": 220,
+      "karma": 810
+    },
+    {
+      "name": "Ayesha Khan",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 140,
+      "karma": 780
+    },
+    {
+      "name": "Gaurav Saxena",
+      "nps": 250,
+      "service": 150,
+      "runKm": 240,
+      "payment": 40,
+      "karma": 680
+    }
+  ]
+}

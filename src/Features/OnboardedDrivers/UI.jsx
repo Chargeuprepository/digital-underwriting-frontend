@@ -2,23 +2,15 @@ import styled from 'styled-components';
 
 export const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 7rem 1fr repeat(6, 15rem);
-
-  :last-child {
-    border-right: none;
-  }
-  :last-child {
-    /* border-bottom: none; */
-  }
+  grid-template-columns: 7rem 1fr repeat(5, 16rem);
+  background-color: ${(props) => props.bgcolor};
 `;
 export const GridValue = styled.div`
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 500;
-  color: var(--color-gray-600);
-  height: 4rem;
+  color: ${(props) => props.color};
+  min-height: 4.5rem;
   text-transform: capitalize;
-  border-right: 1px solid var(--color-gray-50);
-  border-bottom: 1px solid var(--color-gray-50);
   overflow-x: ${(props) => props.horiScroll === 'true' && 'auto'};
   white-space: nowrap;
   display: inline-block;
@@ -28,9 +20,5 @@ export const GridValue = styled.div`
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  :last-child > div {
-    /* border-bottom: none; */
   }
 `;

@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 import OnboardedHeader from './Components/OnboardedHeader';
-import StyledOnboardedBody from './Components/OnboardedBody';
-import { Background } from 'victory';
+import OnboardedBody from './Components/OnboardedBody';
+import Pagination from './Components/Pagination';
 
 const StyledOnboardedDriversLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 5rem auto;
-  gap: 2.6rem;
+  grid-template-rows: 5rem 1fr 3rem;
+  gap: 2rem;
 `;
 
 export default function OnboardedDriversLayout() {
   return (
     <StyledOnboardedDriversLayout>
-      <OnboardedHeader></OnboardedHeader>
-      <StyledOnboardedBody></StyledOnboardedBody>
+      <OnboardedHeader />
+      <OnboardedBody />
+      <Pagination />
     </StyledOnboardedDriversLayout>
   );
 }

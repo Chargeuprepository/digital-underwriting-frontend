@@ -10,16 +10,19 @@ const headerData = [
   'avg DPD',
   'service',
   'run KMs',
-  'earnings',
   'NPS',
 ];
 
 export default function GridHeader() {
   return (
     <StyledGridHeader>
-      <StyledGrid>
+      <StyledGrid bgcolor={'var(--color-brand-original-blue-400)'}>
         {headerData.map((val, i) => {
-          return <GridValue key={i}>{val}</GridValue>;
+          return (
+            <GridValue color="var(--color-gray-50)" key={i}>
+              {val}
+            </GridValue>
+          );
         })}
       </StyledGrid>{' '}
     </StyledGridHeader>
