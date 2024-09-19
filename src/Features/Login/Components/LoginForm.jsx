@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 const FormContainer = styled.div`
   max-width: 40rem;
+  height: 54rem;
   background-color: var(--color-gray-50);
   display: flex;
   flex-direction: column;
   gap: 3rem;
   border-radius: 1.2rem;
+  align-self: center;
 `;
 const FormImage = styled.div`
   width: 100%;

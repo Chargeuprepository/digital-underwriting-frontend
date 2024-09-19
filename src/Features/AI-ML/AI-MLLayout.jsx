@@ -1,23 +1,14 @@
-import styled from 'styled-components';
 import PaymentBehaviour from './Components/PaymentBehaviour';
 import KarmaScore from './Components/KarmaScore';
 import CustomerDefault from './Components/CustomerDefault';
-
-const StyledAIMLLayout = styled.div`
-  /* background-color: #8eb5d7; */
-  height: auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 0 3rem;
-  gap: 3rem;
-`;
+import GridMaker from '../../UI/GridMaker';
 
 export default function AIMLLayout() {
   return (
-    <StyledAIMLLayout>
+    <GridMaker height="auto" column={'1fr'} padding="0 3rem" gap="3rem">
       <PaymentBehaviour />
       <KarmaScore />
       <CustomerDefault />
-    </StyledAIMLLayout>
+    </GridMaker>
   );
 }

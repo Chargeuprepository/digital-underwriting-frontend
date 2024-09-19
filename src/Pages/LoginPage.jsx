@@ -1,8 +1,5 @@
-import Login from "../Features/Login/Login";
-
+import LoginLayout from '../Features/Login/LoginLayout';
 
 export default function LoginPage() {
-    return (
-        <Login/>
-    )
+  return <LoginLayout />;
 }

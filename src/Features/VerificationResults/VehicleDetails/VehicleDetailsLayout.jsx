@@ -1,8 +1,5 @@
 import VerificationHeader from '../UI/VerificationHeader';
-import {
-  AllVerificationGridDesign,
-  AllVerificationLayout,
-} from '../UI/GridTab';
+import { AllVerificationLayout } from '../UI/GridTab';
 import Hero from './Components/Hero';
 import Owner from './Components/Owner';
 import Vehicle from './Components/Vehicle';
@@ -10,6 +7,7 @@ import Registration from './Components/Registration';
 import Insurance from './Components/Insurance';
 import Additional from './Components/Additional';
 import AllVerificationAllCategoryTabs from '../UI/AllVerificationAllCategoryTabs';
+import GridMaker from '../../../UI/GridMaker';
 
 const heroData = {
   makerDescription: 'tata motors',
@@ -69,7 +67,13 @@ export default function VehicleDetailsLayout() {
           mobile: '',
         }}
       />
-      <AllVerificationGridDesign column={'1fr'} row={'12rem repeat(5, auto)'}>
+      <GridMaker
+        column={'1fr'}
+        row={'12rem repeat(5, auto)'}
+        margin="9rem 0 0 0"
+        padding="2rem"
+        gap="2rem"
+      >
         <Hero heroData={heroData} />
         <Owner ownerData={ownerData} />
         <Vehicle
@@ -79,7 +83,7 @@ export default function VehicleDetailsLayout() {
         <Registration registrationData={registrationData} />
         <Insurance insuranceData={insuranceData} />
         <Additional additionalData={additionalData} />
-      </AllVerificationGridDesign>
+      </GridMaker>
     </AllVerificationLayout>
   );
 }

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const ImageContainer = styled.div`
   max-width: 700px;
   justify-self: right;
-  margin-right: 40px;
 `;
 const Img = styled.img`
   width: 100%;

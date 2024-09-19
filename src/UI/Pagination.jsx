@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PAGE_SIZE } from '../../Utils/constants';
+import { PAGE_SIZE } from '../Utils/constants';
 import { useSearchParams } from 'react-router-dom';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 

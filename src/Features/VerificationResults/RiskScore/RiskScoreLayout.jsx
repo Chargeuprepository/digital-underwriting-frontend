@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import VerificationHeader from '../UI/VerificationHeader';
 import RiskScore from './Components/RiskScore';
 import PositiveNegative from './Components/PositiveNegative';
@@ -8,10 +7,8 @@ import VPAAttributes from './Components/VPA';
 import TelecomAttributes from './Components/Telecom';
 import { useEffect, useRef, useState } from 'react';
 import { categorizePlatforms } from '../UI/fun';
-import {
-  AllVerificationGridDesign,
-  AllVerificationLayout,
-} from '../UI/GridTab';
+import { AllVerificationLayout } from '../UI/GridTab';
+import GridMaker from '../../../UI/GridMaker';
 
 const posNegData = {
   positiveInsights: [
@@ -126,9 +123,12 @@ export default function RiskScoreLayout() {
           secondIcon: 'mobile',
         }}
       />
-      <AllVerificationGridDesign
+      <GridMaker
         column={'0.9fr 1fr 1fr'}
         row={'19rem, repeat(4, auto)'}
+        margin="9rem 0 0 0"
+        padding="2rem"
+        gap="2rem"
       >
         <RiskScore score={score} />
         <PositiveNegative positiveNegative={positiveNegative} />
@@ -139,7 +139,7 @@ export default function RiskScoreLayout() {
         <TelecomAttributes telecomRef={telecomRef} telecomData={telecomData} />
         <VPAAttributes digitalRef={digitalRef} digitalData={digitalData} />
         <SocialAttributes socialRef={socialRef} socialData={socialData} />
-      </AllVerificationGridDesign>
+      </GridMaker>
     </AllVerificationLayout>
   );
 }

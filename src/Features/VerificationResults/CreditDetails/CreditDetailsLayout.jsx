@@ -1,7 +1,5 @@
-import {
-  AllVerificationGridDesign,
-  AllVerificationLayout,
-} from '../UI/GridTab';
+import GridMaker from '../../../UI/GridMaker';
+import { AllVerificationLayout } from '../UI/GridTab';
 import VerificationHeader from '../UI/VerificationHeader';
 import AccountSummary from './Components/AccountSummary';
 import ApplicationDetails from './Components/ApplicationDetails';
@@ -81,14 +79,20 @@ export default function CreditDetailsLayout() {
           secondIcon: 'mobile',
         }}
       />
-      <AllVerificationGridDesign column={'1fr'} row={'20rem repeat(5, auto)'}>
+      <GridMaker
+        column={'1fr'}
+        row={'20rem repeat(5, auto)'}
+        margin="9rem 0 0 0"
+        padding="2rem"
+        gap="2rem"
+      >
         <HeroCredit heroData={heroData} />
         <AccountSummary accountSummary={accountSummary} />
         <PersonalDetails personalDetails={personalDetails} />
         <ApplicationDetails applicationDetails={applicationDetails} />
         <CapsSummary capsSummary={capsSummary} />
         <OtherDetails otherDetails={otherDetails} />
-      </AllVerificationGridDesign>
+      </GridMaker>
     </AllVerificationLayout>
   );
 }

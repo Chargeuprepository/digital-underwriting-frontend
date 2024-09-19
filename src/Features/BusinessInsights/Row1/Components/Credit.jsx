@@ -1,4 +1,4 @@
-import Filter from '../../../../UI/Layout/Filter';
+import Filter from '../../../../UI/Filter';
 
 export default function Credit() {
   return (

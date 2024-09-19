@@ -92,14 +92,6 @@ export function OverviewRiskInsightsTabs({ backgroundcolor, data, refVal }) {
 }
 
 export const AllVerificationLayout = styled.div``;
-export const AllVerificationGridDesign = styled.div`
-  display: grid;
-  grid-template-columns: ${(props) => props.column};
-  grid-template-rows: ${(props) => props.row};
-  gap: 2rem;
-  padding: 2rem;
-  margin-top: 9rem;
-`;
 export const AllVerificationComponentGridDesign = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.column};
