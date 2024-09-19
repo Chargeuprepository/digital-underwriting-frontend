@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { IoIosSearch } from 'react-icons/io';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { FaSortAmountDownAlt } from 'react-icons/fa';
+import { FaSortAmountUp } from 'react-icons/fa';
+import { BiSortDown } from 'react-icons/bi';
+import { BiSortUp } from 'react-icons/bi';
 
 const StyledOnboardedHeader = styled.div`
   display: flex;
@@ -91,15 +95,18 @@ const Toogle = styled.div`
     background-color: var(--color-brand-green-300);
     color: var(--color-gray-10);
   }
-`;
 
-const toggleButtonType = ['top', 'bottom'];
+  svg {
+    height: 2.2rem;
+    width: 2.2rem;
+  }
+`;
 
 export default function OnboardedHeader() {
   const [isFocused, setIsFocused] = useState(false);
-  const [activeButton, setActiveButton] = useState(function () {
-    const savedActiveButton = localStorage.getItem('activeButton');
-    return savedActiveButton !== null ? parseInt(savedActiveButton, 10) : 0;
+  const [karmaOrderState, setKarmaOrderState] = useState(function () {
+    const savedKarmaOrder = localStorage.getItem('karmaOrder');
+    return savedKarmaOrder !== null ? savedKarmaOrder : 'desc';
   });
 
   const handleFocus = () => {
@@ -110,10 +117,14 @@ export default function OnboardedHeader() {
     setIsFocused(false);
   };
 
-  const handleButtonClick = (index) => {
-    setActiveButton(index);
-    localStorage.setItem('activeButton', index);
+  const handleButtonClick = (order) => {
+    setKarmaOrderState(order);
+    localStorage.setItem('karmaOrder', order);
   };
+
+  useEffect(() => {
+    return localStorage.setItem('karmaOrder', 'desc');
+  }, []);
 
   return (
     <StyledOnboardedHeader>
@@ -129,17 +140,16 @@ export default function OnboardedHeader() {
         </SearchButton>
       </StyledSearchBar>
       <ToogleContainer>
-        {toggleButtonType.map((val, i) => {
-          return (
-            <Toogle
-              active={activeButton === i ? 'active' : 'inActive'}
-              onClick={() => handleButtonClick(i)}
-              key={i}
-            >
-              {val}
-            </Toogle>
-          );
-        })}
+        {karmaOrderState === 'asc' && (
+          <Toogle onClick={() => handleButtonClick('desc')}>
+            <FaSortAmountUp />
+          </Toogle>
+        )}
+        {karmaOrderState === 'desc' && (
+          <Toogle onClick={() => handleButtonClick('asc')}>
+            <FaSortAmountDownAlt />
+          </Toogle>
+        )}
       </ToogleContainer>
     </StyledOnboardedHeader>
   );

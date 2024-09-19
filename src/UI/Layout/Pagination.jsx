@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PAGE_SIZE } from '../../../Utils/constants';
+import { PAGE_SIZE } from '../../Utils/constants';
 import { useSearchParams } from 'react-router-dom';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
@@ -37,7 +37,7 @@ const PaginationButton = styled.button`
   justify-content: center;
   gap: 0.4rem;
   padding: 0.6rem 1.2rem;
-  transition: all 0.3s;
+  transition: all 0.2s;
 
   &:has(span:last-child) {
     padding-left: 0.4rem;
@@ -54,9 +54,18 @@ const PaginationButton = styled.button`
 
   &:hover:not(:disabled) {
     background-color: var(--color-brand-600);
-    color: var(--color-brand-50);
+    color: var(--color-gray-200);
+  }
+  &:active:not(:disabled) {
+    transform: scale(0.95);
   }
 `;
+
+function formatWithLeadingZero(value) {
+  if (Number.isInteger(value) && value >= 1 && value <= 9) {
+    return value < 10 ? `0${value}` : `${value}`;
+  } else return value;
+}
 
 export default function Pagination({ count }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -83,11 +92,15 @@ export default function Pagination({ count }) {
   return (
     <StyledPagination>
       <ResultString>
-        Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{' '}
+        Showing{' '}
+        <span>{formatWithLeadingZero((currentPage - 1) * PAGE_SIZE + 1)}</span>{' '}
+        to{' '}
         <span>
-          {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
+          {formatWithLeadingZero(
+            currentPage === pageCount ? count : currentPage * PAGE_SIZE
+          )}
         </span>{' '}
-        of <span>{count}</span> results
+        of <span>{formatWithLeadingZero(count)}</span> results
       </ResultString>
       <Buttons>
         <PaginationButton onClick={previousPage} disabled={currentPage === 1}>

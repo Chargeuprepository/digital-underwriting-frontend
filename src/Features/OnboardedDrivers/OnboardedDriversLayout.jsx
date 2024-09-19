@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import OnboardedHeader from './Components/OnboardedHeader';
 import OnboardedBody from './Components/OnboardedBody';
-import Pagination from './Components/Pagination';
+import Pagination from '../../UI/Layout/Pagination';
 
 const StyledOnboardedDriversLayout = styled.div`
   display: grid;
@@ -15,7 +15,7 @@ export default function OnboardedDriversLayout() {
     <StyledOnboardedDriversLayout>
       <OnboardedHeader />
       <OnboardedBody />
-      <Pagination />
+      <Pagination count={38} />
     </StyledOnboardedDriversLayout>
   );
 }
