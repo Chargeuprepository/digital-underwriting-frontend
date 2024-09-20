@@ -1,18 +1,18 @@
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import {
-  Form,
-  FormRow,
-  Label,
-  Input,
   Error,
   Option,
   Select,
-  Astrick,
   LabelInputErrorContainer,
   InputErrorContainer,
 } from './Form-UI';
 import { useLocation } from 'react-router-dom';
+import Astrick from '../../../../UI/Astrick';
+import FormLabel from '../../../../UI/FormLabel';
+import Form from '../../../../UI/Form';
+import FormRow from '../../../../UI/FormRow';
+import Input from '../../../../UI/Input';
 
 const StyledMLForm = styled.div`
   padding: 3rem 4rem;
@@ -22,7 +22,6 @@ const StyledMLForm = styled.div`
   gap: 3rem;
   margin: 3rem 0rem 3rem 16rem;
   border-radius: 1rem;
-  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
   background: var(--color-gray-50);
   margin-bottom: auto;
   margin-top: auto;
@@ -74,18 +73,19 @@ export default function MLForm() {
   return (
     <StyledMLForm>
       <Heading>{heading}</Heading>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form gap="1.8rem" borderradius="1rem" onSubmit={handleSubmit(onSubmit)}>
         <LabelInputErrorContainer>
           {data.map((val) => {
             return (
-              <FormRow key={val.label}>
-                <Label htmlFor={val.label}>
+              <FormRow flexdirection="column" gap="0.4rem" key={val.label}>
+                <FormLabel htmlFor={val.label}>
                   {val.label}
                   <Astrick>*</Astrick>
-                </Label>
+                </FormLabel>
                 <InputErrorContainer>
                   {val.formValueType === 'input' && (
                     <Input
+                      background="linear-gradient(to right, var(--color-gray-25), var(--color-gray-50))"
                       type={val.type}
                       id={val.label}
                       autoComplete="off"

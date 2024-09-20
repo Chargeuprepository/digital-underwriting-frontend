@@ -1,18 +1,13 @@
 import { createPortal } from 'react-dom';
 import {
-  Astrick,
   Button,
   Error,
-  FormContainer,
-  FormRowGridOne,
-  FormRowGridTwo,
   GridInputError,
   GridTypeOne,
   GridTypeTwo,
   Heading,
   Icon,
   Input,
-  Label,
   Option,
   Overlay,
   Placeholder,
@@ -23,6 +18,10 @@ import useAddress from '../../../Hooks/useAddress';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import UseDate from '../../../Hooks/useDate';
 import { Controller, useForm } from 'react-hook-form';
+import Astrick from '../../../UI/Astrick';
+import FormLabel from '../../../UI/FormLabel';
+import Form from '../../../UI/Form';
+import FormRow from '../../../UI/FormRow';
 
 export default function VerificationForm({ formParams, setState }) {
   const {
@@ -54,16 +53,23 @@ export default function VerificationForm({ formParams, setState }) {
           <IoCloseCircleOutline />
         </Icon>
         <Heading>{formParams.name}</Heading>
-        <FormContainer onSubmit={handleSubmit(onSubmit)}>
+        <Form color="aliceblue" onSubmit={handleSubmit(onSubmit)}>
           {formParams.parameters.length >= 4 ? (
             <GridTypeOne>
               {formParams.parameters.map((param) => {
                 return (
-                  <FormRowGridOne key={param.label}>
-                    <Label htmlFor={param.label}>
+                  <FormRow
+                    flexdirection="column"
+                    gap="0.4rem"
+                    key={param.label}
+                  >
+                    <FormLabel
+                      color="var(--color-gray-100)"
+                      htmlFor={param.label}
+                    >
                       {param.label}
                       {param.required && <Astrick>*</Astrick>}
-                    </Label>
+                    </FormLabel>
                     <GridInputError>
                       {param.type === 'input' && (
                         <Input
@@ -238,7 +244,7 @@ export default function VerificationForm({ formParams, setState }) {
                         <Placeholder />
                       )}
                     </GridInputError>
-                  </FormRowGridOne>
+                  </FormRow>
                 );
               })}
             </GridTypeOne>
@@ -246,14 +252,20 @@ export default function VerificationForm({ formParams, setState }) {
             <GridTypeTwo>
               {formParams.parameters.map((param) => {
                 return (
-                  <FormRowGridTwo type={'row'} key={param.label}>
-                    <Label
+                  <FormRow
+                    gap="3rem"
+                    margin="0 0 2rem 0"
+                    type={'row'}
+                    key={param.label}
+                  >
+                    <FormLabel
                       style={{ paddingTop: '0.4rem' }}
                       htmlFor={param.label}
+                      color="var(--color-gray-100)"
                     >
                       {param.label}
                       {param.required && <Astrick>*</Astrick>}
-                    </Label>
+                    </FormLabel>
                     <GridInputError>
                       {
                         <Input
@@ -301,13 +313,13 @@ export default function VerificationForm({ formParams, setState }) {
                         <Placeholder />
                       )}
                     </GridInputError>
-                  </FormRowGridTwo>
+                  </FormRow>
                 );
               })}
             </GridTypeTwo>
           )}
           <Button type="submit">verify</Button>
-        </FormContainer>
+        </Form>
         {/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */}
       </StyledModal>
     </Overlay>,

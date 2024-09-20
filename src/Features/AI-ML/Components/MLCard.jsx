@@ -25,11 +25,6 @@ const StyledMLCard = styled.div`
         ? 'to right, #283048, #859398'
         : 'to left, #360033, #0b8793'}
   );
-  /* background: linear-gradient(
-    ${(props) => (props.place % 2 === 0 ? 'to right' : 'to left')},
-    #360033,
-    #0b8793
-  ); */
   transition: all 0.3s;
   &:hover {
     scale: 1.01;
@@ -55,19 +50,10 @@ const StyledCard = styled.div`
   flex-direction: column;
   gap: 1.6rem;
   position: relative;
-  /* background: ${(props) => (props.place % 2 === 0 ? '#2329cd' : '1/ 2')}; */
-  /* background: #6b6104; */
   box-shadow: 0 10px 20px rgba(89, 0, 255, 0.5);
   grid-column: ${(props) => (props.place % 2 === 0 ? '2 / -1' : '1/ 2')};
   grid-row: 1;
   animation: ${slideIn} 0.5s ease-in-out;
-`;
-const Header = styled.div`
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--color-gray-1);
-  text-transform: capitalize;
-  padding: 1.6rem 0 0 2.2rem;
 `;
 const Description = styled.div`
   font-size: 1.4rem;
@@ -78,6 +64,13 @@ const Description = styled.div`
 `;
 const Points = styled.div`
   margin-bottom: 0.4rem;
+`;
+const ModalHeading = styled.div`
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-gray-1);
+  text-transform: capitalize;
+  padding: 1.6rem 0 0 2.2rem;
 `;
 
 export default function MLCard({ data, place, inputs }) {
@@ -93,7 +86,7 @@ export default function MLCard({ data, place, inputs }) {
         <StyledCardIcon src={`/img/${data.name}.png`} />
       </StyledCardIconContainer>
       <StyledCard place={place}>
-        <Header>{data.modelName}</Header>
+        <ModalHeading>{data.modelName}</ModalHeading>
         <Description place={place}>
           {data.description
             .split('.')

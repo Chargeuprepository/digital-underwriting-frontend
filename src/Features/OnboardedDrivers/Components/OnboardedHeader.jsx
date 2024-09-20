@@ -3,8 +3,6 @@ import { IoIosSearch } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import { FaSortAmountDownAlt } from 'react-icons/fa';
 import { FaSortAmountUp } from 'react-icons/fa';
-import { BiSortDown } from 'react-icons/bi';
-import { BiSortUp } from 'react-icons/bi';
 
 const StyledOnboardedHeader = styled.div`
   display: flex;
@@ -32,14 +30,16 @@ const SearchInput = styled.input`
   border-radius: 0.6rem;
   border: none;
   padding-left: 10px;
-  font-size: 16px;
+  font-size: 1.4rem;
+  font-weight: 500;
   font-family: 'Poppins', sans-serif;
-  color: var(--color-gray-600);
+  color: var(--color-gray-500);
   background-color: transparent;
   text-transform: uppercase;
 
   &::placeholder {
-    color: var(--color-gray-200);
+    color: var(--color-gray-100);
+    font-size: 1.4rem;
   }
 `;
 const SearchButton = styled.div`

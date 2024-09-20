@@ -39,13 +39,6 @@ export const VerificationName = styled.span`
   align-items: center;
   min-width: 15rem;
 `;
-export const Astrick = styled.span`
-  position: absolute;
-  margin-left: 0.2rem;
-  font-size: 1.5rem;
-  color: #ff5959;
-  /* color: #ffff00; */
-`;
 
 export const VerificationNameSpan = styled.span`
   color: #ffff00;
@@ -101,11 +94,6 @@ export const Button = styled.button`
     transform: scale(0.98);
   }
 `;
-export const FormContainer = styled.form`
-  color: aliceblue;
-  display: flex;
-  flex-direction: column;
-`;
 export const GridTypeOne = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -115,19 +103,6 @@ export const GridTypeOne = styled.div`
 export const GridTypeTwo = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-`;
-export const FormRowGridOne = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-`;
-export const FormRowGridTwo = styled.div`
-  display: flex;
-  gap: 3rem;
-  margin-bottom: 2rem;
-`;
-export const Label = styled.label`
-  text-transform: capitalize;
 `;
 export const Input = styled.input`
   width: 26rem;

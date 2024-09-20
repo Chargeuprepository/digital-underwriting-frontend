@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import Astrick from '../../../UI/Astrick';
+import FormLabel from '../../../UI/FormLabel';
+import Form from '../../../UI/Form';
 
 const FormContainer = styled.div`
   max-width: 40rem;
@@ -23,24 +26,12 @@ const Logo = styled.div`
 const Image = styled.img`
   width: 60%;
 `;
-const Form = styled.form`
-  height: 40rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  margin-left: 4rem;
-  position: relative;
-`;
 const Value = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 `;
-const Label = styled.label`
-  font-size: 1.5rem;
-  color: var(--color-gray-900);
-  font-weight: 500;
-`;
+
 const Input = styled.input`
   max-width: 30rem;
   height: 4.5rem;
@@ -61,12 +52,6 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-`;
-const Astrick = styled.span`
-  position: absolute;
-  margin-left: 0.2rem;
-  font-size: 1.2rem;
-  color: var(--color-astrick-red);
 `;
 
 const ForgotPass = styled.button`
@@ -122,27 +107,33 @@ export default function LoginForm() {
         </Logo>
       </FormImage>
 
-      <Form>
+      <Form height="40rem" gap="1.6rem" margin="0 0 0 4rem" position="relative">
         <Value>
-          <Label htmlFor="email">
-            Email <Astrick>*</Astrick>
-          </Label>
-          <Input id="email" type="email" placeholder="xyz@example.com"></Input>
+          <FormLabel htmlFor="email">
+            Email<Astrick>*</Astrick>
+          </FormLabel>
+          <Input
+            id="email"
+            type="email"
+            placeholder="xyz@example.com"
+            required
+          ></Input>
         </Value>
         <Value>
-          <Label htmlFor="password">
-            Password <Astrick>*</Astrick>
-          </Label>
+          <FormLabel htmlFor="password">
+            Password<Astrick>*</Astrick>
+          </FormLabel>
           <Input
             id="password"
             type="password"
             placeholder="Enter the password"
+            required
           ></Input>
         </Value>
         <Value>
-          <Label htmlFor="message">
+          <FormLabel htmlFor="message">
             Role<span style={{ fontSize: '1.3rem' }}>(optional)</span>
-          </Label>
+          </FormLabel>
           <Input
             id="message"
             type="text"

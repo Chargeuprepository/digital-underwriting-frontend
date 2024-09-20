@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
-  /* padding: 2rem; */
-  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
-  border-radius: 1rem;
-  /* background: white; */
-`;
 export const FormRow = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +7,6 @@ export const FormRow = styled.div`
 `;
 export const Label = styled.label`
   text-transform: capitalize;
-  min-width: 10rem;
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-gray-800);
@@ -80,10 +70,4 @@ export const Error = styled.div`
   font-weight: 500;
   color: #d00000;
   margin-left: auto;
-`;
-export const Astrick = styled.span`
-  position: absolute;
-  margin-left: 0.2rem;
-  font-size: 1.2rem;
-  color: var(--color-astrick-red);
 `;

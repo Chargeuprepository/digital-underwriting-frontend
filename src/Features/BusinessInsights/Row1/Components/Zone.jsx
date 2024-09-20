@@ -75,7 +75,7 @@ const Label = styled.div`
   font-weight: 500;
   color: var(--color-gray-700);
 `;
-const Input = styled.input`
+const ZoneInput = styled.input`
   width: 1.5rem;
 `;
 const Button = styled.button`
@@ -155,7 +155,7 @@ export default function Zone() {
             {list.map((li, i) => {
               return (
                 <CheckBox key={i}>
-                  <Input
+                  <ZoneInput
                     type="checkbox"
                     checked={zoneList?.includes(li)}
                     onChange={() => handleList(li)}
