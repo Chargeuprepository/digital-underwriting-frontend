@@ -3,11 +3,9 @@ import {
   HiCheckBadge,
   HiMiniUsers,
   HiMiniChartBar,
-  HiMiniUserPlus,
-  HiMiniUserMinus,
 } from 'react-icons/hi2';
+import { FaCircleUser } from 'react-icons/fa6';
 import { GiArtificialIntelligence } from 'react-icons/gi';
-import { FaUserEdit } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -94,21 +92,9 @@ export default function MainNav() {
           </SideNavElement>
         </li>
         <li>
-          <SideNavElement to={'/createUser'}>
-            <HiMiniUserPlus />
-            <span>Create User</span>
-          </SideNavElement>
-        </li>
-        <li>
-          <SideNavElement to={'/editUser'}>
-            <FaUserEdit />
-            <span>Edit User</span>
-          </SideNavElement>
-        </li>
-        <li>
-          <SideNavElement to={'/deleteUser'}>
-            <HiMiniUserMinus />
-            <span>Delete User</span>
+          <SideNavElement to={'/userManagement'}>
+            <FaCircleUser />
+            <span>User Management</span>
           </SideNavElement>
         </li>
       </SideNav>

@@ -8,7 +8,7 @@ export default function OnboardedDriversLayout() {
     <GridMaker column="1fr" row="5rem 1fr 3rem" gap="2rem">
       <OnboardedHeader />
       <OnboardedBody />
-      <Pagination count={38} />
+      <Pagination count={25} />
     </GridMaker>
   );
 }

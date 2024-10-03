@@ -3,18 +3,17 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Spinner from './UI/Spinner';
+import MyProfile from './Pages/MyProfile';
 // import { Toaster } from 'react-hot-toast';
 
 const AppLayout = React.lazy(() => import('./UI/AppLayout'));
 const Login = React.lazy(() => import('./Pages/LoginPage'));
-const DeleteUser = React.lazy(() => import('./Pages/DeleteUser'));
-const CreateUser = React.lazy(() => import('./Pages/CreateUser'));
+const UserManagement = React.lazy(() => import('./Pages/UserManagement'));
 const Dashboard = React.lazy(() => import('./Pages/Dashboard'));
 const Verification = React.lazy(() => import('./Pages/Verification'));
 const OnboardedDrivers = React.lazy(() => import('./Pages/OnboardedDrivers'));
 const BusinessInsights = React.lazy(() => import('./Pages/BusinessInsights'));
 const PageNotFound = React.lazy(() => import('./Pages/PageNotFound'));
-const EditUser = React.lazy(() => import('./Pages/EditUser'));
 const AIMLModels = React.lazy(() => import('./Pages/AIMLModels'));
 const MLFormPage = React.lazy(() => import('./Pages/MLFormPage'));
 const Testing = React.lazy(() => import('../Testing'));
@@ -62,10 +61,9 @@ function App() {
             <Route path="/ML-form/:formName" element={<MLFormPage />} />
 
             <Route path="login" element={<Login />} />
-            <Route path="createUser" element={<CreateUser />} />
-            <Route path="editUser" element={<EditUser />} />
-            <Route path="deleteUser" element={<DeleteUser />} />
+            <Route path="userManagement" element={<UserManagement />} />
             <Route path="testing" element={<Testing />} />
+            <Route path="myProfile" element={<MyProfile />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Suspense>

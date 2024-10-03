@@ -258,6 +258,11 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+img {
+  image-rendering: -webkit-optimize-contrast; /* For better crispness */
+  image-rendering: crisp-edges;
+}
+
 `;
 
 export default GlobalStyle;

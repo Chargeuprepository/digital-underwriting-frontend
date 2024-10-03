@@ -4,7 +4,7 @@ import { GridValue, StyledGrid } from '../UI';
 const StyledGridHeader = styled.div``;
 
 const headerData = [
-  'sNo',
+  'id',
   'name',
   'karma',
   'avg DPD',
@@ -16,7 +16,10 @@ const headerData = [
 export default function GridHeader() {
   return (
     <StyledGridHeader>
-      <StyledGrid bgcolor={'var(--color-brand-original-blue-400)'}>
+      <StyledGrid
+        bgcolor={'var(--color-brand-original-blue-400)'}
+        pointer={'false'}
+      >
         {headerData.map((val, i) => {
           return (
             <GridValue color="var(--color-gray-50)" key={i}>

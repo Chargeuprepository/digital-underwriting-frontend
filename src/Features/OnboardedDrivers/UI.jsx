@@ -2,8 +2,15 @@ import styled from 'styled-components';
 
 export const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 7rem 1fr repeat(5, 16rem);
+  grid-template-columns: 9rem 1fr repeat(5, 16rem);
   background-color: ${(props) => props.bgcolor};
+  transition: all 0.3s;
+  /* will-change: transform; */
+
+  &:hover {
+    cursor: ${(props) => props.pointer === 'true' && 'pointer'};
+    transform: ${(props) => props.pointer === 'true' && 'scale(1.015)'};
+  }
 `;
 export const GridValue = styled.div`
   font-size: 1.55rem;

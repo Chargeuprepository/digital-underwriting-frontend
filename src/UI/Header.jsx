@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { FaUser } from 'react-icons/fa6';
+import { NavLink } from 'react-router-dom';
 
 const StyledHeader = styled.div`
   grid-column: 2 / -1;
@@ -22,19 +24,30 @@ const Name = styled.p`
   color: var(--color-gray-800);
 `;
 
-const Profile = styled.span`
-  width: 4.5rem;
-  height: 4.5rem;
+const Profile = styled(NavLink)`
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   border: 1px solid var(--color-gray-50);
+  background-color: var(--color-gray-10);
+  cursor: pointer;
+  transition: all 0.3s;
+  svg {
+    height: 100%;
+    width: 45%;
+    color: var(--color-gray-600);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 `;
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-`;
+// const Img = styled.img`
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 50%;
+// `;
 const Logout = styled.button`
   border: none;
   background: linear-gradient(
@@ -48,8 +61,10 @@ const Logout = styled.button`
   color: var(--color-gray-50);
 
   &:hover {
-    transform: translate(0, 3%);
     transition: all 0.3s;
+  }
+  &:active {
+    transform: scale(0.97);
   }
 `;
 
@@ -58,8 +73,9 @@ export default function Header() {
     <StyledHeader>
       <HeaderContainer>
         <Name>Gaurav</Name>
-        <Profile>
-          <Img src="/img/male.png" />
+        <Profile to={'/myProfile'}>
+          {/* <Img src="/img/male.png" /> */}
+          <FaUser />
         </Profile>
         <Logout>Logout</Logout>
       </HeaderContainer>
