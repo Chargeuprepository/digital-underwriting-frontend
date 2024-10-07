@@ -9,7 +9,6 @@ import {
   Icon,
   Input,
   Option,
-  Overlay,
   Placeholder,
   Select,
   StyledModal,
@@ -22,6 +21,7 @@ import Astrick from '../../../UI/Astrick';
 import FormLabel from '../../../UI/FormLabel';
 import Form from '../../../UI/Form';
 import FormRow from '../../../UI/FormRow';
+import Overlay from '../../../UI/Overlay';
 
 export default function VerificationForm({ formParams, setState }) {
   const {

@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Spinner from './UI/Spinner';
 import MyProfile from './Pages/MyProfile';
+import Signup from './Pages/SignupPage';
 // import { Toaster } from 'react-hot-toast';
 
 const AppLayout = React.lazy(() => import('./UI/AppLayout'));
@@ -61,6 +62,7 @@ function App() {
             <Route path="/ML-form/:formName" element={<MLFormPage />} />
 
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
             <Route path="userManagement" element={<UserManagement />} />
             <Route path="testing" element={<Testing />} />
             <Route path="myProfile" element={<MyProfile />} />

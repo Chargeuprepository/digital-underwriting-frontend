@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import GridMaker from '../../../UI/GridMaker';
+import EditUser from './EditUser';
+import DeleteUser from './DeleteUser';
 
 const headValue = ['id', 'name', 'email', 'phone', 'role', '', ''];
 
@@ -38,7 +40,7 @@ const GridBodyValue = styled.div`
   font-weight: 400;
   color: var(--color-gray-600);
 `;
-const EditDeleteButton = styled.button`
+export const EditDeleteButton = styled.button`
   text-transform: capitalize;
   border: none;
   height: 2.6rem;
@@ -96,12 +98,8 @@ export default function UserManageBody({ users }) {
               >
                 {user.role}
               </GridBodyValue>
-              <EditDeleteButton backgroundcolor={'#a29609'}>
-                edit
-              </EditDeleteButton>
-              <EditDeleteButton backgroundcolor={'#ab0404'}>
-                delete
-              </EditDeleteButton>
+              <EditUser />
+              <DeleteUser />
             </GridMaker>
           );
         })}

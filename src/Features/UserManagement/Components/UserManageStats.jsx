@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { RiUserAddLine } from 'react-icons/ri';
+import { NavLink } from 'react-router-dom';
 
 const StyledUserManageStats = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ const StyledUserManageStats = styled.div`
   height: 14rem;
   margin-top: 10rem;
 `;
-const AddUser = styled.div`
+const AddUser = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,7 +71,7 @@ const Value = styled.div`
 export default function UserManageStats({ managers, employees }) {
   return (
     <StyledUserManageStats>
-      <AddUser>
+      <AddUser to={'/signup'}>
         <RiUserAddLine />
       </AddUser>
       <StatsContainer>
