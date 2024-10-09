@@ -13,6 +13,7 @@ import FormLabel from '../../../../UI/FormLabel';
 import Form from '../../../../UI/Form';
 import FormRow from '../../../../UI/FormRow';
 import Input from '../../../../UI/Input';
+import createCamelCase from '../../../../Utils/createCamelCase';
 
 const StyledMLForm = styled.div`
   padding: 3rem 4rem;
@@ -93,12 +94,13 @@ export default function MLForm() {
                       placeholder={val.placeholder}
                       // disabled={isLoading}
                       {...register(
-                        `${val.label
-                          .split(' ')
-                          .map(
-                            (value) => value[0].toUpperCase() + value.slice(1)
-                          )
-                          .join('')}`,
+                        `${createCamelCase(val.label)}`,
+                        // `${val.label
+                        //   .split(' ')
+                        //   .map(
+                        //     (value) => value[0].toUpperCase() + value.slice(1)
+                        //   )
+                        //   .join('')}`
                         {
                           required: val.message,
                           // maxLength: {
@@ -112,12 +114,14 @@ export default function MLForm() {
                   {val.formValueType === 'select' && (
                     <Select
                       {...register(
-                        `${val.label
-                          .split(' ')
-                          .map(
-                            (value) => value[0].toUpperCase() + value.slice(1)
-                          )
-                          .join('')}`
+                        `${createCamelCase(val.label)}`
+
+                        // `${val.label
+                        //   .split(' ')
+                        //   .map(
+                        //     (value) => value[0].toUpperCase() + value.slice(1)
+                        //   )
+                        //   .join('')}`
                       )}
                     >
                       <Option disabled key={'0'} value="">
@@ -135,18 +139,20 @@ export default function MLForm() {
 
                   <Error>
                     {errors?.[
-                      val.label
-                        .split(' ')
-                        .map((value) => value[0].toUpperCase() + value.slice(1))
-                        .join('')
+                      createCamelCase(val.label)
+                      // val.label
+                      //   .split(' ')
+                      //   .map((value) => value[0].toUpperCase() + value.slice(1))
+                      //   .join('')
                     ]?.message ? (
                       errors?.[
-                        val.label
-                          .split(' ')
-                          .map(
-                            (value) => value[0].toUpperCase() + value.slice(1)
-                          )
-                          .join('')
+                        createCamelCase(val.label)
+                        // val.label
+                        //   .split(' ')
+                        //   .map(
+                        //     (value) => value[0].toUpperCase() + value.slice(1)
+                        //   )
+                        //   .join('')
                       ]?.message
                     ) : (
                       <PlaceHolder></PlaceHolder>

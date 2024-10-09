@@ -29,7 +29,7 @@ const CrossContainer = styled.div`
   }
 `;
 
-export default function EditUser() {
+export default function EditUser({ defaultValues }) {
   const [openEditForm, setOpenEditForm] = useState(false);
 
   return (
@@ -47,11 +47,13 @@ export default function EditUser() {
               <CrossContainer onClick={() => setOpenEditForm(false)}>
                 <RxCross1 />
               </CrossContainer>
+
               <UserCreateDeleteForm
                 formButtonName={'edit user'}
                 buttonColor={'#a29609'}
                 buttonHoverColor={'#867b07'}
                 inputbackground={'#fffcdb'}
+                defaultValues={defaultValues}
               />
             </EditUserContainer>
           </Overlay>,

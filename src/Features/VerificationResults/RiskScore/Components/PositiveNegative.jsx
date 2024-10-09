@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import GridTab from '../../UI/GridTab';
 import { RiArrowDropRightFill } from 'react-icons/ri';
-import { camelCaseConversion } from '../../UI/fun';
+import breakCamelCase from '../../../../Utils/breakCamelCase';
 
 const StyledPositiveNegative = styled.div`
   display: grid;
@@ -62,7 +62,7 @@ export default function PositiveNegative({ positiveNegative }) {
       <StyledPositiveNegative>
         <PosNegColumn>
           <PosNegHeading color="red">
-            {camelCaseConversion('positiveInsights')}
+            {breakCamelCase('positiveInsights')}
           </PosNegHeading>
           <PosNeg>
             {negativeInsights.map((val, i) => {
@@ -79,7 +79,7 @@ export default function PositiveNegative({ positiveNegative }) {
         </PosNegColumn>
         <PosNegColumn>
           <PosNegHeading color="green">
-            {camelCaseConversion('negativeInsights')}
+            {breakCamelCase('negativeInsights')}
           </PosNegHeading>
           <PosNeg>
             {positiveInsights.map((val, i) => {

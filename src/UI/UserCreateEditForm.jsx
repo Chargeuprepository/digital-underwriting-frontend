@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import Astrick from './Astrick';
 import handleNumberLength from '../Utils/handleNumberLength';
 import styled from 'styled-components';
+import createCamelCase from '../Utils/createCamelCase';
 
 const data = [
   {
@@ -131,8 +132,11 @@ export default function UserCreateDeleteForm({
   buttonColor,
   buttonHoverColor,
   inputbackground,
+  defaultValues = {},
 }) {
-  const { register, formState, handleSubmit, reset } = useForm();
+  const { register, formState, handleSubmit, reset } = useForm({
+    defaultValues,
+  });
   const { errors } = formState;
 
   function onSubmit(result) {
@@ -160,10 +164,13 @@ export default function UserCreateDeleteForm({
                     : undefined;
                 }}
                 {...register(
-                  `${val.label
-                    .split(' ')
-                    .map((value) => value[0].toUpperCase() + value.slice(1))
-                    .join('')}`,
+                  `${
+                    createCamelCase(val.label)
+                    // val.label
+                    // .split(' ')
+                    // .map((value) => value[0].toUpperCase() + value.slice(1))
+                    // .join('')
+                  }`,
                   {
                     required: 'this is required',
                   }
@@ -172,16 +179,18 @@ export default function UserCreateDeleteForm({
               />
               <Error>
                 {errors?.[
-                  val.label
-                    .split(' ')
-                    .map((value) => value[0].toUpperCase() + value.slice(1))
-                    .join('')
+                  createCamelCase(val.label)
+                  // val.label
+                  //   .split(' ')
+                  //   .map((value) => value[0].toUpperCase() + value.slice(1))
+                  //   .join('')
                 ]?.message ? (
                   errors?.[
-                    val.label
-                      .split(' ')
-                      .map((value) => value[0].toUpperCase() + value.slice(1))
-                      .join('')
+                    createCamelCase(val.label)
+                    // val.label
+                    //   .split(' ')
+                    //   .map((value) => value[0].toUpperCase() + value.slice(1))
+                    //   .join('')
                   ]?.message
                 ) : (
                   <PlaceHolder> </PlaceHolder>
@@ -196,10 +205,13 @@ export default function UserCreateDeleteForm({
               </Label>
               <Select
                 {...register(
-                  `${val.label
-                    .split(' ')
-                    .map((value) => value[0].toUpperCase() + value.slice(1))
-                    .join('')}`,
+                  `${
+                    createCamelCase(val.label)
+                    // val.label
+                    // .split(' ')
+                    // .map((value) => value[0].toUpperCase() + value.slice(1))
+                    // .join('')
+                  }`,
                   {
                     required: 'this is required',
                   }

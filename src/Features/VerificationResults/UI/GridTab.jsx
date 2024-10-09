@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { camelCaseConversion } from './fun';
+import breakCamelCase from '../../../Utils/breakCamelCase';
 
 const StyledGridTab = styled.div`
   grid-row: ${(props) => props.gridrow};
@@ -72,7 +72,7 @@ export const renderContent = (value) => {
   if (typeof value === 'object' && value !== null) {
     return Object.entries(value).map(([key, val]) => (
       <InsightLabelValueContainer key={key}>
-        <InsightLabel>{camelCaseConversion(key)}</InsightLabel>
+        <InsightLabel>{breakCamelCase(key)}</InsightLabel>
         <InsightValue>{val}</InsightValue>
       </InsightLabelValueContainer>
     ));

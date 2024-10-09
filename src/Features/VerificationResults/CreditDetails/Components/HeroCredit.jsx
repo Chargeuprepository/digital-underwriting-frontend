@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ScoreChart from '../../UI/ScoreChart';
 import StyledGridTab from '../../UI/GridTab';
-import { camelCaseConversion } from '../../UI/fun';
+import breakCamelCase from '../../../../Utils/breakCamelCase';
 
 const StyledHeroCredit = styled.div`
   height: 100%;
@@ -45,15 +45,15 @@ export default function HeroCredit({ heroData }) {
         </CreditHeadingScoreContainer>
         <HeroDataFlex>
           <HeroData>
-            {camelCaseConversion('outstandingBalance')}: &nbsp; &#8377;
+            {breakCamelCase('outstandingBalance')}: &nbsp; &#8377;
             {heroData.outstandingBalanceAll}
           </HeroData>
           <HeroData>
-            {camelCaseConversion('accountsActive')}: &nbsp;
+            {breakCamelCase('accountsActive')}: &nbsp;
             {heroData.accountActive}
           </HeroData>
           <HeroData>
-            {camelCaseConversion('accountsDefault')}: &nbsp;
+            {breakCamelCase('accountsDefault')}: &nbsp;
             {heroData.accountDefault}
           </HeroData>
         </HeroDataFlex>

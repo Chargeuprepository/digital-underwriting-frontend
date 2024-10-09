@@ -59,10 +59,6 @@ export function categorizePlatforms(data) {
   return categories;
 }
 
-export function camelCaseConversion(text) {
-  return text.replace(/([A-Z])/g, ' $1');
-}
-
 export const dateSubtractor = function (manufactureDateStr) {
   const [day, month, year] = manufactureDateStr.split('-');
   const manufactureDate = new Date(`${year}-${month}-${day}`);

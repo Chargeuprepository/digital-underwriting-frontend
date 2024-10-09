@@ -22,6 +22,7 @@ import FormLabel from '../../../UI/FormLabel';
 import Form from '../../../UI/Form';
 import FormRow from '../../../UI/FormRow';
 import Overlay from '../../../UI/Overlay';
+import createCamelCase from '../../../Utils/createCamelCase';
 
 export default function VerificationForm({ formParams, setState }) {
   const {
@@ -92,13 +93,16 @@ export default function VerificationForm({ formParams, setState }) {
                             }
                           }}
                           {...register(
-                            `${param.label
-                              .split(' ')
-                              .map(
-                                (value) =>
-                                  value[0].toUpperCase() + value.slice(1)
-                              )
-                              .join('')}`,
+                            `${
+                              createCamelCase(param.label)
+                              // param.label
+                              // .split(' ')
+                              // .map(
+                              //   (value) =>
+                              //     value[0].toUpperCase() + value.slice(1)
+                              // )
+                              // .join('')
+                            }`,
                             {
                               required: param.message,
                             }
@@ -110,13 +114,16 @@ export default function VerificationForm({ formParams, setState }) {
                           type="hidden"
                           value={param.value}
                           {...register(
-                            `${param.label
-                              .split(' ')
-                              .map(
-                                (value) =>
-                                  value[0].toUpperCase() + value.slice(1)
-                              )
-                              .join('')}`,
+                            `${
+                              createCamelCase(param.label)
+                              // param.label
+                              // .split(' ')
+                              // .map(
+                              //   (value) =>
+                              //     value[0].toUpperCase() + value.slice(1)
+                              // )
+                              // .join('')
+                            }`,
                             { value: param.value } // Ensure value is set
                           )}
                         />
@@ -124,13 +131,16 @@ export default function VerificationForm({ formParams, setState }) {
                       {param.type === 'select' && (
                         <Select
                           {...register(
-                            `${param.label
-                              .split(' ')
-                              .map(
-                                (value) =>
-                                  value[0].toUpperCase() + value.slice(1)
-                              )
-                              .join('')}`
+                            `${
+                              createCamelCase(param.label)
+                              // param.label
+                              // .split(' ')
+                              // .map(
+                              //   (value) =>
+                              //     value[0].toUpperCase() + value.slice(1)
+                              // )
+                              // .join('')
+                            }`
                           )}
                         >
                           <Option disabled key={'0'} value="">
@@ -148,12 +158,15 @@ export default function VerificationForm({ formParams, setState }) {
                       )}
                       {param.type === 'address1' && (
                         <Controller
-                          name={`${param.label
-                            .split(' ')
-                            .map(
-                              (value) => value[0].toUpperCase() + value.slice(1)
-                            )
-                            .join('')}`}
+                          name={`${
+                            createCamelCase(param.label)
+                            // param.label
+                            // .split(' ')
+                            // .map(
+                            //   (value) => value[0].toUpperCase() + value.slice(1)
+                            // )
+                            // .join('')
+                          }`}
                           control={control}
                           defaultValue={address1}
                           rules={{ required: param.message }}
@@ -174,12 +187,15 @@ export default function VerificationForm({ formParams, setState }) {
                       )}
                       {param.type === 'address2' && (
                         <Controller
-                          name={`${param.label
-                            .split(' ')
-                            .map(
-                              (value) => value[0].toUpperCase() + value.slice(1)
-                            )
-                            .join('')}`}
+                          name={`${
+                            createCamelCase(param.label)
+                            // param.label
+                            // .split(' ')
+                            // .map(
+                            //   (value) => value[0].toUpperCase() + value.slice(1)
+                            // )
+                            // .join('')
+                          }`}
                           control={control}
                           defaultValue={address2}
                           rules={{ required: param.message }}
@@ -200,12 +216,15 @@ export default function VerificationForm({ formParams, setState }) {
                       )}
                       {param.type === 'dob' && (
                         <Controller
-                          name={`${param.label
-                            .split(' ')
-                            .map(
-                              (value) => value[0].toUpperCase() + value.slice(1)
-                            )
-                            .join('')}`}
+                          name={`${
+                            createCamelCase(param.label)
+                            // param.label
+                            // .split(' ')
+                            // .map(
+                            //   (value) => value[0].toUpperCase() + value.slice(1)
+                            // )
+                            // .join('')
+                          }`}
                           control={control} // Ensure the control prop is passed here
                           rules={{ required: param.message }}
                           render={({ field }) => (
@@ -220,23 +239,25 @@ export default function VerificationForm({ formParams, setState }) {
                         />
                       )}
                       {errors?.[
-                        param.label
-                          .split(' ')
-                          .map(
-                            (value) => value[0].toUpperCase() + value.slice(1)
-                          )
-                          .join('')
+                        createCamelCase(param.label)
+                        // param.label
+                        //   .split(' ')
+                        //   .map(
+                        //     (value) => value[0].toUpperCase() + value.slice(1)
+                        //   )
+                        //   .join('')
                       ]?.message ? (
                         <Error>
                           {
                             errors?.[
-                              param.label
-                                .split(' ')
-                                .map(
-                                  (value) =>
-                                    value[0].toUpperCase() + value.slice(1)
-                                )
-                                .join('')
+                              createCamelCase(param.label)
+                              // param.label
+                              //   .split(' ')
+                              //   .map(
+                              //     (value) =>
+                              //       value[0].toUpperCase() + value.slice(1)
+                              //   )
+                              //   .join('')
                             ]?.message
                           }
                         </Error>
@@ -275,13 +296,16 @@ export default function VerificationForm({ formParams, setState }) {
                           autoComplete="off"
                           maxLength={param.max}
                           {...register(
-                            `${param.label
-                              .split(' ')
-                              .map(
-                                (value) =>
-                                  value[0].toUpperCase() + value.slice(1)
-                              )
-                              .join('')}`,
+                            `${
+                              createCamelCase(param.label)
+                              // param.label
+                              // .split(' ')
+                              // .map(
+                              //   (value) =>
+                              //     value[0].toUpperCase() + value.slice(1)
+                              // )
+                              // .join('')
+                            }`,
                             {
                               required: param.message,
                             }
@@ -289,23 +313,25 @@ export default function VerificationForm({ formParams, setState }) {
                         />
                       }
                       {errors?.[
-                        param.label
-                          .split(' ')
-                          .map(
-                            (value) => value[0].toUpperCase() + value.slice(1)
-                          )
-                          .join('')
+                        createCamelCase(param.label)
+                        // param.label
+                        //   .split(' ')
+                        //   .map(
+                        //     (value) => value[0].toUpperCase() + value.slice(1)
+                        //   )
+                        //   .join('')
                       ]?.message ? (
                         <Error>
                           {
                             errors?.[
-                              param.label
-                                .split(' ')
-                                .map(
-                                  (value) =>
-                                    value[0].toUpperCase() + value.slice(1)
-                                )
-                                .join('')
+                              createCamelCase(param.label)
+                              // param.label
+                              //   .split(' ')
+                              //   .map(
+                              //     (value) =>
+                              //       value[0].toUpperCase() + value.slice(1)
+                              //   )
+                              //   .join('')
                             ]?.message
                           }
                         </Error>

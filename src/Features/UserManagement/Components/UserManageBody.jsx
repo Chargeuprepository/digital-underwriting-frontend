@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import GridMaker from '../../../UI/GridMaker';
 import EditUser from './EditUser';
 import DeleteUser from './DeleteUser';
+import { useMemo } from 'react';
 
 const headValue = ['id', 'name', 'email', 'phone', 'role', '', ''];
 
@@ -98,8 +99,8 @@ export default function UserManageBody({ users }) {
               >
                 {user.role}
               </GridBodyValue>
-              <EditUser />
-              <DeleteUser />
+              <EditUser defaultValues={useMemo(() => user, [])} />
+              <DeleteUser name={user.name} />
             </GridMaker>
           );
         })}
