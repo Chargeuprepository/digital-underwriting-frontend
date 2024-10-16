@@ -15,8 +15,7 @@ export default function Vehicle({ vehicleData, registrationDate }) {
 
   return (
     <AllVerificationAllCategoryTabs
-      height={''}
-      backgroundcolor={'var(--color-verification-vehicle-dark)'}
+      backgroundcolor={'var(--color-verification-vehicle-light)'}
       padding={'3rem 4rem 6rem 4rem'}
       categoryName={'vehicle data'}
       data={vehicleState}

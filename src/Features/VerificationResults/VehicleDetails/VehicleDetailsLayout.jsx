@@ -1,28 +1,15 @@
 import VerificationHeader from '../UI/VerificationHeader';
 import { AllVerificationLayout } from '../UI/GridTab';
 import Hero from './Components/Hero';
-import Owner from './Components/Owner';
 import Vehicle from './Components/Vehicle';
-import Registration from './Components/Registration';
-import Insurance from './Components/Insurance';
-import Additional from './Components/Additional';
 import AllVerificationAllCategoryTabs from '../UI/AllVerificationAllCategoryTabs';
 import GridMaker from '../../../UI/GridMaker';
+import breakCamelCase from '../../../Utils/breakCamelCase';
 
 const heroData = {
   makerDescription: 'tata motors',
   financer: 'Bajaj Finance Limited',
   number: 'dl8scb5674',
-};
-const ownerData = {
-  ownerName: 'JANE DOE',
-  fatherName: 'JON DOE SENIOR',
-  permanentAddress:
-    '221 B, Baker Street, Opposite Wollaton Hall, BANGALORE, KARNATAKA - 560005',
-  presentAddress:
-    '221 B, Baker Street, Opposite Wollaton Hall, BANGALORE, KARNATAKA - 560005',
-  rcMobileNo: null,
-  ownerSerialNumber: 1,
 };
 const vehicleData = {
   chassisNumber: 'XY0RKO00rko000001',
@@ -31,31 +18,49 @@ const vehicleData = {
   makerModel: 'BEST CAR TOP MODEL ABS BS X',
   engineNumber: '100X20000000000',
 };
-const registrationData = {
-  registrationNumber: 'XY00YZ1004',
-  registrationDate: '31-12-2010',
-  registeredAt: 'BANGALORE INDIRANAGAR RTO, Karnataka',
-  fitnessUpto: '31-12-2030',
-  status: 'ACTIVE',
+const data = {
+  ownerData: {
+    ownerName: 'JANE DOE',
+    fatherName: 'JON DOE SENIOR',
+    permanentAddress:
+      '221 B, Baker Street, Opposite Wollaton Hall, BANGALORE, KARNATAKA - 560005',
+    presentAddress:
+      '221 B, Baker Street, Opposite Wollaton Hall, BANGALORE, KARNATAKA - 560005',
+    rcMobileNo: null,
+    ownerSerialNumber: 1,
+  },
+  registrationData: {
+    registrationNumber: 'XY00YZ1004',
+    registrationDate: '31-12-2010',
+    registeredAt: 'BANGALORE INDIRANAGAR RTO, Karnataka',
+    fitnessUpto: '31-12-2030',
+    status: 'ACTIVE',
+  },
+  insuranceData: {
+    insuranceCompany: 'Jane Doe Company Limited',
+    insurancePolicyNumber: '10000000000000000020',
+    insuranceValidity: '31-12-2024',
+  },
+  additionalData: {
+    bodyTypeDescription: '13',
+    color: 'LAVENDER',
+    fuelType: 'DIESEL',
+    cubicCapacity: '1248',
+    grossVehicleWeight: '1620',
+    numberOfCylinders: '4',
+    unladenWeight: '7400',
+    seatingCapacity: '5',
+    vehicleCategory: 'LMV',
+    vehicleClassDescription: 'Motor Car(LMV)',
+    normsDescription: 'BHARAT STAGE X',
+  },
 };
-const insuranceData = {
-  insuranceCompany: 'Jane Doe Company Limited',
-  insurancePolicyNumber: '10000000000000000020',
-  insuranceValidity: '31-12-2024',
-};
-const additionalData = {
-  bodyTypeDescription: '13',
-  color: 'LAVENDER',
-  fuelType: 'DIESEL',
-  cubicCapacity: '1248',
-  grossVehicleWeight: '1620',
-  numberOfCylinders: '4',
-  unladenWeight: '7400',
-  seatingCapacity: '5',
-  vehicleCategory: 'LMV',
-  vehicleClassDescription: 'Motor Car(LMV)',
-  normsDescription: 'BHARAT STAGE X',
-};
+const vehicleTabs = [
+  'ownerData',
+  'registrationData',
+  'insuranceData',
+  'additionalData',
+];
 
 export default function VehicleDetailsLayout() {
   return (
@@ -75,14 +80,24 @@ export default function VehicleDetailsLayout() {
         gap="2rem"
       >
         <Hero heroData={heroData} />
-        <Owner ownerData={ownerData} />
         <Vehicle
           vehicleData={vehicleData}
-          registrationDate={registrationData.registrationDate}
+          registrationDate={data.registrationData.registrationDate}
         />
-        <Registration registrationData={registrationData} />
-        <Insurance insuranceData={insuranceData} />
-        <Additional additionalData={additionalData} />
+
+        {vehicleTabs.map((tab, i) => {
+          return (
+            <AllVerificationAllCategoryTabs
+              key={i}
+              backgroundcolor={`var(--color-verification-credit-${
+                i % 2 === 0 ? 'dark' : 'light'
+              })`}
+              padding={'3rem 4rem 6rem 4rem'}
+              categoryName={breakCamelCase(tab)}
+              data={data[tab]}
+            />
+          );
+        })}
       </GridMaker>
     </AllVerificationLayout>
   );

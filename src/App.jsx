@@ -3,8 +3,6 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Spinner from './UI/Spinner';
-import MyProfile from './Pages/MyProfile';
-import Signup from './Pages/SignupPage';
 // import { Toaster } from 'react-hot-toast';
 
 const AppLayout = React.lazy(() => import('./UI/AppLayout'));
@@ -25,6 +23,9 @@ const VehicleVerification = React.lazy(() =>
 const CreditVerification = React.lazy(() =>
   import('./Pages/CreditVerification')
 );
+const MyProfile = React.lazy(() => import('./Pages/MyProfile'));
+const Signup = React.lazy(() => import('./Pages/SignupPage'));
+const Driver = React.lazy(() => import('./Pages/Driver'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,6 +61,7 @@ function App() {
               element={<CreditVerification />}
             />
             <Route path="/ML-form/:formName" element={<MLFormPage />} />
+            <Route path="/driver/:driverName" element={<Driver />} />
 
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />

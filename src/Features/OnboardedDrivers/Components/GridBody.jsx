@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { GridValue, StyledGrid } from '../UI';
 import { useEffect, useState } from 'react';
+import Spinner from '../../../UI/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const StyledGridBody = styled.div`
   height: 45rem;
@@ -12,6 +14,7 @@ const StyledGridBody = styled.div`
 
 export default function GridBody() {
   const [data, setData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function game() {
@@ -40,9 +43,13 @@ export default function GridBody() {
     }
   }
 
+  function handleClick(val) {
+    navigate(`/driver/${val.id}`, { state: { data: val } });
+  }
+
   return (
     <StyledGridBody>
-      {data &&
+      {data ? (
         data.map((val, i) => {
           const color = karmaHandler(val.karma);
 
@@ -51,6 +58,7 @@ export default function GridBody() {
               key={i}
               bgcolor={i % 2 === 0 ? '#f6f6f6' : '#e5e9f2'}
               pointer={'true'}
+              onClick={() => handleClick(val)}
             >
               <GridValue
                 style={{
@@ -93,7 +101,10 @@ export default function GridBody() {
               <GridValue>{val.nps}</GridValue>
             </StyledGrid>
           );
-        })}
+        })
+      ) : (
+        <Spinner />
+      )}
     </StyledGridBody>
   );
 }

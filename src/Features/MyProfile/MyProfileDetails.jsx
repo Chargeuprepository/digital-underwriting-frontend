@@ -22,7 +22,7 @@ const ProfileHeading = styled.div`
     var(--color-brand-blue-500)
   );
   text-align: center;
-  margin-top: 10rem;
+  margin-top: 13rem;
   font-size: 2.4rem;
   font-weight: 600;
   letter-spacing: 0.15rem;
