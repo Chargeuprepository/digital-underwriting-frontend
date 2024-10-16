@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { FaEarthAmericas } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useOutsideClick from '../../../../Hooks/useOutsideClick';
-import { createPortal } from 'react-dom';
 
 const ZoneParentContainer = styled.div`
   position: relative;

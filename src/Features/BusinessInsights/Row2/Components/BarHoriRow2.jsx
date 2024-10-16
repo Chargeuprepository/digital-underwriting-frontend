@@ -1,5 +1,5 @@
-import BarChart from '../../Charts/BarChart';
-import { StyledChartContainer } from '../../Charts/StyledChartContainers';
+import BarChart from '../../../../UI/Charts/BarChart';
+import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
 
 export default function BarHoriRow2({}) {
   return (
@@ -20,12 +20,3 @@ export default function BarHoriRow2({}) {
     </StyledChartContainer>
   );
 }
-
-// const blueColors = [
-//   '#0000FF', // Base Blue
-//   '#1E90FF', // Dodger Blue
-//   '#87CEFA', // Light Sky Blue
-//   '#4682B4', // Steel Blue
-//   '#4169E1', // Royal Blue
-//   '#00008B', // Dark Blue
-// ];

@@ -1,4 +1,4 @@
-import RowLayoutBusiInsights from '../Charts/RowLayoutBusi-Insights';
+import RowLayoutBusiInsights from '../BIUI/RowLayoutBusi-Insights';
 import SocialMedia from './Components/SocialMedia';
 import BarVerti1Row4 from './Components/BarVerti-1Row4';
 import DonutRow4 from './Components/DonutRow4';

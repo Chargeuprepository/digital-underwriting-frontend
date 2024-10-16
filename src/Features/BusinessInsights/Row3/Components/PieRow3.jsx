@@ -1,5 +1,5 @@
-import Pie from '../../Charts/Pie';
-import { StyledChartContainer } from '../../Charts/StyledChartContainers';
+import Pie from '../../../../UI/Charts/Pie';
+import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
 
 export default function PieRow3() {
   return (
@@ -13,12 +13,3 @@ export default function PieRow3() {
     </StyledChartContainer>
   );
 }
-
-// const purpleColors = [
-//   '#800080', // Base Purple
-//   '#D8BFD8', // Thistle
-//   '#E6E6FA', // Lavender
-//   '#9370DB', // Medium Purple
-//   '#8A2BE2', // Blue Violet
-//   '#ab50ec', // Indigo
-// ];

@@ -1,5 +1,5 @@
-import Donut from '../../Charts/Donut';
-import { StyledChartContainer } from '../../Charts/StyledChartContainers';
+import Donut from '../../../../UI/Charts/Donut';
+import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
 
 export default function DonutRow4() {
   return (
@@ -14,11 +14,3 @@ export default function DonutRow4() {
     </StyledChartContainer>
   );
 }
-
-// Pallete 2
-// indiamart: #2e3192
-// paytm: #00baf2
-// whatsapp: #25D366
-// instagram: #d62976
-// flipkart: #1F74BA
-// amazon: #f6bc66

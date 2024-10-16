@@ -9,7 +9,6 @@ export const StyledGrid = styled.div`
 
   &:hover {
     cursor: ${(props) => props.pointer === 'true' && 'pointer'};
-    transform: ${(props) => props.pointer === 'true' && 'scale(1.015)'};
   }
 `;
 export const GridValue = styled.div`

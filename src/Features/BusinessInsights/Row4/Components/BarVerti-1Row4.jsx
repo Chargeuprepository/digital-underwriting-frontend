@@ -1,5 +1,5 @@
-import BarChart from '../../Charts/BarChart';
-import { StyledChartContainer } from '../../Charts/StyledChartContainers';
+import BarChart from '../../../../UI/Charts/BarChart';
+import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
 
 export default function BarVerti1Row4() {
   return (
@@ -20,9 +20,3 @@ export default function BarVerti1Row4() {
     </StyledChartContainer>
   );
 }
-
-// title: 'Bar Chart',
-//   direction: 'vertical',
-//   format: '%',
-//   height: '100%',
-//   width: '80%',

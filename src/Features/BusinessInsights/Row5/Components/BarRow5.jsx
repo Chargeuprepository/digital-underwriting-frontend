@@ -1,5 +1,5 @@
-import BarChart from '../../Charts/BarChart';
-import { StyledChartContainer } from '../../Charts/StyledChartContainers';
+import BarChart from '../../../../UI/Charts/BarChart';
+import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
 
 export default function BarRow5() {
   return (
@@ -22,12 +22,3 @@ export default function BarRow5() {
     </StyledChartContainer>
   );
 }
-
-// const orangeColors = [
-//   '#FFA500', // Base Orange
-//   '#FFB347', // Light Orange
-//   '#FFCC99', // Peach
-//   '#FF8C00', // Dark Orange
-//   '#FF7F50', // Coral
-//   '#FF4500', // Deep Orange
-// ];

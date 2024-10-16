@@ -1,5 +1,5 @@
-import BarChart from '../../Charts/BarChart';
-import { StyledChartContainer } from '../../Charts/StyledChartContainers';
+import BarChart from '../../../../UI/Charts/BarChart';
+import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
 
 export default function Bar2Row3() {
   return (
@@ -21,12 +21,3 @@ export default function Bar2Row3() {
     </StyledChartContainer>
   );
 }
-
-// const purpleColors = [
-//   '#800080', // Base Purple
-//   '#D8BFD8', // Thistle
-//   '#E6E6FA', // Lavender
-//   '#9370DB', // Medium Purple
-//   '#8A2BE2', // Blue Violet
-//   '#4B0082', // Indigo
-// ];

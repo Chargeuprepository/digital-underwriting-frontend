@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import DriverHeader from './Components/DriverHeader';
+import DriverSummary from './Components/DriverSummary';
+import DriverGraphs from './Components/DriverGraphs';
+import DriverOtherDetails from './Components/DriverOtherDetails';
+import { useLocation } from 'react-router-dom';
 
 const userData = {
   personalInformation: {
@@ -59,10 +64,26 @@ const userData = {
   },
 };
 
-console.log(userData);
-
-const StyledDriverLayout = styled.div``;
+const StyledDriverLayout = styled.div`
+  display: grid;
+`;
 
 export default function DriverLayout() {
-  return <StyledDriverLayout>DriverLayout</StyledDriverLayout>;
+  const location = useLocation();
+  const { id, name, nps, service, runKm, dpd, karma } = location.state?.data;
+
+  return (
+    <StyledDriverLayout>
+      <DriverHeader name={name} id={id} />
+      <DriverSummary
+        karma={karma}
+        nps={nps}
+        service={service}
+        runKm={runKm}
+        dpd={dpd}
+      />
+      <DriverGraphs />
+      <DriverOtherDetails />
+    </StyledDriverLayout>
+  );
 }

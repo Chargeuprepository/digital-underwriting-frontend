@@ -31,9 +31,9 @@ const DistanceTenureMonthsContainer = styled.div`
   }
 `;
 
-export default function DistanceTenureMonths() {
-  const [colors, setColors] = useState(['#8B7765', '#CD853F', '#F4A460']);
+const colors = ['#8B7765', '#CD853F', '#F4A460'];
 
+export default function DistanceTenureMonths() {
   const options = {
     chart: {
       type: 'bar',

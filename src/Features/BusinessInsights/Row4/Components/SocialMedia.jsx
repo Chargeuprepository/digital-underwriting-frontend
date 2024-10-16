@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { StyledChartContainer } from '../../Charts/StyledChartContainers';
-import Heading from '../../Charts/Heading';
+import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
+import Heading from '../../../../UI/Charts/Heading';
 
 const ParentContainer = styled.div`
   display: grid;

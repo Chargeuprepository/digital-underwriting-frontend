@@ -1,5 +1,5 @@
 import Bar1Row3 from './Components/Bar1Row3';
-import RowLayoutBusiInsights from '../Charts/RowLayoutBusi-Insights';
+import RowLayoutBusiInsights from '../BIUI/RowLayoutBusi-Insights';
 import PieRow3 from './Components/PieRow3';
 import Bar2Row3 from './Components/Bar2Row3';
 
