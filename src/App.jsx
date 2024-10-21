@@ -3,6 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Spinner from './UI/Spinner';
+import NightingaleChart from './UI/Charts/Nightingale';
+import RadialChart from './Features/Driver/Components/Graphs/DriverRadialChart';
 // import { Toaster } from 'react-hot-toast';
 
 const AppLayout = React.lazy(() => import('./UI/AppLayout'));
@@ -68,6 +70,7 @@ function App() {
             <Route path="userManagement" element={<UserManagement />} />
             <Route path="testing" element={<Testing />} />
             <Route path="myProfile" element={<MyProfile />} />
+            <Route path="radial" element={<RadialChart />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Suspense>

@@ -81,7 +81,7 @@ export default function NightingaleChart({
   }, []);
 
   return (
-    <Container>
+    <Container style={{ marginTop: '2rem', height: '100vh' }}>
       <div ref={chartRef} style={{ width, height }} />
     </Container>
   );

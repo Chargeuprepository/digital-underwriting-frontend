@@ -66,6 +66,11 @@ const userData = {
 
 const StyledDriverLayout = styled.div`
   display: grid;
+  background: linear-gradient(
+    to right,
+    var(--color-brand-original-blue-400),
+    var(--color-brand-blue-300)
+  );
 `;
 
 export default function DriverLayout() {
@@ -81,6 +86,8 @@ export default function DriverLayout() {
         service={service}
         runKm={runKm}
         dpd={dpd}
+        lossDays={'15'}
+        aon={'457'}
       />
       <DriverGraphs />
       <DriverOtherDetails />

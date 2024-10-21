@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
-
 :root {
   /* Login image color */
   --color-login-image: #DADEE1;
