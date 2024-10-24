@@ -17,6 +17,7 @@ const StyledDriverSummary = styled.div`
   justify-content: space-between;
   padding: 0 4rem;
   text-transform: capitalize;
+  margin-top: 8rem;
 `;
 const SummaryRestContainer = styled.div`
   display: flex;

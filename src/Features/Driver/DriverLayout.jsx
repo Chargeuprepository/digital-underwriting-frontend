@@ -79,7 +79,7 @@ export default function DriverLayout() {
 
   return (
     <StyledDriverLayout>
-      <DriverHeader name={name} id={id} />
+      <DriverHeader name={name} id={id} joiningDate={'12-May-2024'} />
       <DriverSummary
         karma={karma}
         nps={nps}
@@ -90,7 +90,7 @@ export default function DriverLayout() {
         aon={'457'}
       />
       <DriverGraphs />
-      <DriverOtherDetails />
+      <DriverOtherDetails userData={userData} />
     </StyledDriverLayout>
   );
 }

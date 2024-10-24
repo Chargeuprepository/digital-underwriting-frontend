@@ -2,45 +2,60 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { StyledGraphContainer } from '../DriverGraphs';
 
-export default function DynamicBarChart({
-  title,
+export default function DriverAreaChart({
+  series,
   xCategories,
-  yTitle,
-  initialData,
-  latestData,
-  initialColor,
-  latestColor,
-  dataUnit,
+  title,
+  yAxisTitle,
+  chartColor,
+  chartHeight,
+  unit,
 }) {
+  // Calculate average of the Y-axis values
+  const averageValue =
+    series[0].data.reduce((acc, val) => acc + val, 0) / series[0].data.length;
+
   const options = {
     chart: {
-      type: 'bar',
-      height: 350,
+      type: 'area',
+      height: chartHeight,
       toolbar: {
-        show: false,
+        tools: {
+          download: false,
+          selection: false,
+          pan: false,
+          zoomin: true, // Enable zoom in button
+          zoomout: true, // Enable zoom out button
+          reset: false, // Enable reset zoom button
+          zoom: false,
+        },
       },
+      zoom: {
+        enabled: true,
+        autoScaleYaxis: false, // Automatically scale Y-axis when zooming
+      },
+      // toolbar: {
+      //   show: true,
+      // },
       offsetY: 6,
     },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: '50%',
-        endingShape: 'rounded',
-        borderRadius: 3,
-      },
+    stroke: {
+      curve: 'smooth', // Smooth area
+      width: 2,
+      colors: [chartColor], // Use the passed color for the area
     },
     dataLabels: {
       enabled: false,
     },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ['transparent'],
+    fill: {
+      type: 'solid',
+      opacity: 0.4, // Adjust the opacity for the area fill
     },
     xaxis: {
-      categories: xCategories,
+      tickAmount: 7,
+      categories: xCategories, // Set dynamic categories here
       title: {
-        text: 'Months: Initial / Latest',
+        text: 'Months',
         style: {
           fontSize: '14px',
           fontWeight: 600,
@@ -65,15 +80,17 @@ export default function DynamicBarChart({
         color: 'var(--color-gray-300)',
       },
     },
+
     yaxis: {
       title: {
-        text: yTitle,
+        text: yAxisTitle,
         style: {
           fontSize: '13px',
           fontWeight: 500,
           fontFamily: 'Poppins',
           color: 'var(--color-gray-100)',
         },
+        offsetX: -6,
       },
       labels: {
         style: {
@@ -92,9 +109,6 @@ export default function DynamicBarChart({
         color: '#777',
       },
     },
-    fill: {
-      opacity: 1,
-    },
     tooltip: {
       theme: 'dark',
       style: {
@@ -104,23 +118,8 @@ export default function DynamicBarChart({
       },
       y: {
         formatter: function (val) {
-          return dataUnit === '₹' ? `${dataUnit + val}` : `${val + dataUnit}`;
+          return `${val}`; // Show data unit
         },
-      },
-    },
-    legend: {
-      show: true,
-      position: 'top',
-      horizontalAlign: 'center',
-      labels: {
-        colors: 'var(--color-gray-200)',
-      },
-      fontWeight: 500,
-      fontFamily: 'Poppins, sans-serif',
-      fontSize: '11px',
-      itemMargin: {
-        horizontal: 14,
-        vertical: 2,
       },
     },
     grid: {
@@ -136,6 +135,22 @@ export default function DynamicBarChart({
           show: true,
         },
       },
+    },
+    annotations: {
+      yaxis: [
+        {
+          y: averageValue, // Use calculated average value
+          borderColor: '#FF4560',
+          label: {
+            borderColor: '#FF4560',
+            style: {
+              color: '#fff',
+              background: '#FF4560',
+            },
+            text: `Average: ${averageValue.toFixed(2) + unit}`,
+          },
+        },
+      ],
     },
     title: {
       text: title,
@@ -155,31 +170,19 @@ export default function DynamicBarChart({
           chart: {
             height: 300,
           },
-          legend: {
-            position: 'bottom',
-          },
         },
       },
     ],
   };
 
-  // Dynamic data series
-  const series = [
-    {
-      name: 'Initial 3 Months',
-      data: initialData,
-      color: initialColor,
-    },
-    {
-      name: 'Latest 3 Months',
-      data: latestData,
-      color: latestColor,
-    },
-  ];
-
   return (
-    <StyledGraphContainer style={{ padding: '1rem 2.4rem 0 1rem' }}>
-      <Chart options={options} series={series} type="bar" height={330} />
+    <StyledGraphContainer style={{ padding: '1rem 2.4rem 0 1.5rem' }}>
+      <Chart
+        options={options}
+        series={series}
+        type="area"
+        height={chartHeight}
+      />
     </StyledGraphContainer>
   );
 }

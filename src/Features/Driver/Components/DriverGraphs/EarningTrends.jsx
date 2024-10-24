@@ -8,8 +8,8 @@ export default function EarningTrends() {
       yTitle="Income"
       initialData={[300, 400, 300]}
       latestData={[800, 900, 1100]}
-      initialColor="#5cff37"
-      latestColor="#ffe137"
+      initialColor="#ff8645"
+      latestColor="#913dff"
       dataUnit="₹"
     />
   );

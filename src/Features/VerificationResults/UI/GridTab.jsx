@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import breakCamelCase from '../../../Utils/breakCamelCase';
+import BarRenderContent from '../../../UI/BarRenderContent';
 
 const StyledGridTab = styled.div`
   grid-row: ${(props) => props.gridrow};
@@ -37,48 +38,6 @@ export const StyledDigiTelSocioFlex = styled.div`
   border-radius: 0.6rem;
 `;
 
-export const InsightLabelValueContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  border: 1px solid var(--color-gray-100);
-  padding: 1.2rem 2.2rem;
-  border-radius: 0.6rem;
-  flex: 0 0 auto;
-`;
-export const InsightLabel = styled.div`
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--color-gray-800);
-`;
-export const InsightValue = styled.div`
-  text-transform: capitalize;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.32rem;
-  font-weight: 600;
-  color: var(--color-gray-700);
-`;
-
-export const renderContent = (value) => {
-  if (typeof value === 'object' && value !== null) {
-    return Object.entries(value).map(([key, val]) => (
-      <InsightLabelValueContainer key={key}>
-        <InsightLabel>{breakCamelCase(key)}</InsightLabel>
-        <InsightValue>{val}</InsightValue>
-      </InsightLabelValueContainer>
-    ));
-  }
-};
-
 export function OverviewRiskInsightsTabs({ backgroundcolor, data, refVal }) {
   return (
     <StyledDigiTelSocioFlex
@@ -86,7 +45,7 @@ export function OverviewRiskInsightsTabs({ backgroundcolor, data, refVal }) {
       backgroundcolor={backgroundcolor}
       direction={data.identity_risk ? 'column' : 'row'}
     >
-      {renderContent(data)}
+      {BarRenderContent(data)}
     </StyledDigiTelSocioFlex>
   );
 }

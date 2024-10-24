@@ -1,4 +1,5 @@
-import GridTab, { renderContent } from '../../UI/GridTab';
+import BarRenderContent from '../../../../UI/BarRenderContent';
+import GridTab from '../../UI/GridTab';
 import {
   DigiTelSocioTabContainer,
   StyledTelDigiSocioAttributes,
@@ -11,7 +12,7 @@ export default function VPAAttributes({ digitalRef, digitalData }) {
       <DigiTelSocioTabContainer backgroundcolor={['#7dcc50', '#76b852']}>
         <TabsHeadingDigiTelSocio>digital attributes</TabsHeadingDigiTelSocio>
         <StyledTelDigiSocioAttributes>
-          {renderContent(digitalData)}
+          {BarRenderContent(digitalData)}
         </StyledTelDigiSocioAttributes>
       </DigiTelSocioTabContainer>
     </GridTab>

@@ -4,7 +4,7 @@ import RunKMsTrends from './DriverGraphs/RunKMsTrends';
 import EarningTrends from './DriverGraphs/EarningTrends';
 
 export const StyledGraphContainer = styled.div`
-  box-shadow: 0 10px 20px rgba(26, 26, 41, 0.245);
+  box-shadow: 0 10px 20px rgba(3, 3, 152, 0.245);
   border-radius: 0.6rem;
 `;
 
@@ -14,15 +14,15 @@ const StyledDriverGraphs = styled.div`
   height: calc(100vh - 34rem);
   padding: 0 4rem 2.6rem 4rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1.2fr;
+  grid-template-columns: 1fr 1.15fr 1.15fr;
   gap: 2rem;
 `;
 
 export default function DriverGraphs() {
   return (
     <StyledDriverGraphs>
-      <RunKMsTrends />
       <EarningTrends />
+      <RunKMsTrends />
       <PaymentTrends />
     </StyledDriverGraphs>
   );

@@ -1,6 +1,7 @@
+import BarRenderContent from '../../../UI/BarRenderContent';
 import StyledVehicleInfoGridMaker from '../VehicleDetails/VehicleUI/StyledVehicleInfoGridMaker';
 import { VehicleHeading } from '../VehicleDetails/VehicleUI/VehicleHeading';
-import StyledGridTab, { renderContent } from './GridTab';
+import StyledGridTab from './GridTab';
 
 export default function AllVerificationAllCategoryTabs({
   height,
@@ -17,7 +18,7 @@ export default function AllVerificationAllCategoryTabs({
     >
       <VehicleHeading>{categoryName}</VehicleHeading>
       <StyledVehicleInfoGridMaker>
-        {renderContent(data)}
+        {BarRenderContent(data)}
       </StyledVehicleInfoGridMaker>
     </StyledGridTab>
   );

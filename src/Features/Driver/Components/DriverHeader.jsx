@@ -9,6 +9,9 @@ const StyledDriverHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
 `;
 const ImgContainer = styled(Link)`
   display: flex;
@@ -22,17 +25,17 @@ const NameId = styled.div`
   margin-right: 6rem;
 `;
 const Name = styled.div`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-gray-50);
 `;
 const Id = styled.div`
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: var(--color-gray-100);
 `;
 
-export default function DriverHeader({ name, id }) {
+export default function DriverHeader({ name, id, joiningDate }) {
   return (
     <StyledDriverHeader>
       <ImgContainer to={'/'}>
@@ -40,6 +43,7 @@ export default function DriverHeader({ name, id }) {
       </ImgContainer>
       <NameId>
         <Name>{name}</Name>
+        <Id>{joiningDate}</Id>
         <Id>{id}</Id>
       </NameId>
     </StyledDriverHeader>

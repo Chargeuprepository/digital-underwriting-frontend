@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { InsightValue } from '../../UI/GridTab';
+import { InsightValue } from '../../../../UI/BarRenderContent';
 
 export const StyledTelDigiSocioAttributes = styled.div`
   display: grid;

@@ -1,4 +1,5 @@
-import GridTab, { renderContent } from '../../UI/GridTab';
+import BarRenderContent from '../../../../UI/BarRenderContent';
+import GridTab from '../../UI/GridTab';
 import {
   DigiTelSocioTabContainer,
   StyledTelDigiSocioAttributes,
@@ -11,7 +12,7 @@ export default function TelecomAttributes({ telecomRef, telecomData }) {
       <DigiTelSocioTabContainer backgroundcolor={['#6190e8', '#6190e8']}>
         <TabsHeadingDigiTelSocio>telecom attributes</TabsHeadingDigiTelSocio>
         <StyledTelDigiSocioAttributes>
-          {renderContent(telecomData)}
+          {BarRenderContent(telecomData)}
         </StyledTelDigiSocioAttributes>
       </DigiTelSocioTabContainer>
     </GridTab>

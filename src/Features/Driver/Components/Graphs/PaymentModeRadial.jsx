@@ -1,7 +1,7 @@
 import DriverRadialChart from './DriverRadialChart';
 
 export default function PaymentModeRadial() {
-  const series = [100, 100]; // Online 60%, Offline 40%
+  const series = [60, 40]; // Online 60%, Offline 40%
   const labels = ['Online', 'Offline'];
 
   return (
