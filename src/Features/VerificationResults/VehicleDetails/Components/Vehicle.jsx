@@ -10,7 +10,6 @@ export default function Vehicle({ vehicleData, registrationDate }) {
       vehicleAge: dateSubtracted,
       ...vehicleState,
     }));
-    console.log(vehicleState);
   }, []);
 
   return (
