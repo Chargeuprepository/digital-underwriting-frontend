@@ -23,58 +23,17 @@ import Form from '../../../UI/Form';
 import FormRow from '../../../UI/FormRow';
 import Overlay from '../../../UI/Overlay';
 import createCamelCase from '../../../Utils/createCamelCase';
-import { gql, useLazyQuery } from '@apollo/client';
+import { useVerificationQueryManager } from '../GraphQL/queryManager';
+import { useState } from 'react';
 
-const GET_DATA = gql`
-  query GetVehicle($registrationNumber: String!) {
-    vehicle(registrationNumber: $registrationNumber) {
-      statusCode
-      owner {
-        name
-        serialNumber
-        fatherName
-        permanentAddress
-        presentAddress
-        mobileNumber
-      }
-      vehicleInformation {
-        chassisNumber
-        makerDescription
-        manufacturedMonthYear
-        makerModel
-        engineNumber
-        financierDetails
-      }
-      registration {
-        registrationNumber
-        registrationDate
-        registeredAtRTO
-        fitnessUpto
-      }
-      insurance {
-        insuranceCompany
-        insurancePolicyNumber
-        insuranceValidity
-      }
-      additionalInformation {
-        bodyTypeDescription
-        color
-        fuelType
-        cubicCapacity
-        grossVehicleWeight
-        numberOfCylinders
-        unladenWeight
-        seatingCapacity
-        vehicleCategory
-        vehicleClassDescription
-        normsDescription
-      }
-    }
-  }
-`;
-
-export default function VerificationForm({ formParams, setState }) {
-  const [fetchData, { loading, error, data }] = useLazyQuery(GET_DATA);
+export default function VerificationForm({
+  formParams,
+  setState,
+  specificFetchKey,
+}) {
+  const [fetchKey, setFetchKey] = useState(specificFetchKey);
+  const { fetchVehicleData, loading, error, data } =
+    useVerificationQueryManager(fetchKey);
   const {
     address1,
     address2,
@@ -87,15 +46,15 @@ export default function VerificationForm({ formParams, setState }) {
   const { register, formState, handleSubmit, reset, control } = useForm();
   const { errors } = formState;
 
-  // console.log(loading);
-  // console.log(data);
-  // console.log(error);
+  console.log(loading);
+  console.log(data);
+  console.log(fetchKey);
 
   function onSubmit(result) {
     reset();
     setAddress1('');
     setAddress2('');
-    fetchData({ variables: { registrationNumber: result.RCNumber } });
+    fetchVehicleData({ variables: { registrationNumber: result.RCNumber } });
   }
 
   return createPortal(

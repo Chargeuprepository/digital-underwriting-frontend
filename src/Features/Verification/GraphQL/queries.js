@@ -1,9 +1,14 @@
 import { gql } from '@apollo/client';
 
-const GET_DATA = gql`
+export const GET_VEHICLE_DATA = gql`
   query GetVehicle($registrationNumber: String!) {
     vehicle(registrationNumber: $registrationNumber) {
       statusCode
+      headerData {
+        maker
+        financer
+        registrationNumber
+      }
       owner {
         name
         serialNumber
@@ -18,13 +23,13 @@ const GET_DATA = gql`
         manufacturedMonthYear
         makerModel
         engineNumber
-        financierDetails
       }
       registration {
         registrationNumber
         registrationDate
         registeredAtRTO
         fitnessUpto
+        rcStatus
       }
       insurance {
         insuranceCompany
@@ -47,4 +52,6 @@ const GET_DATA = gql`
     }
   }
 `;
-export default function vehicleAPI(vehicleInput) {}
+
+// export const GET_CREDIT_DATA = gql``;
+// export const GET_RISK_DATA = gql``;

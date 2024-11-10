@@ -11,6 +11,7 @@ const data = [
     name: 'risk score',
     imageSubmission: false,
     bgimage: 'RiskVerify.png',
+    specificFetchKey: 'getRiskData',
     parameters: [
       {
         label: 'name',
@@ -66,6 +67,7 @@ const data = [
     name: 'vehicle details',
     imageSubmission: false,
     bgimage: 'VehicleVerify.png',
+    specificFetchKey: 'getVehicleData',
     parameters: [
       {
         label: 'RC number',
@@ -81,6 +83,7 @@ const data = [
     name: 'credit score',
     imageSubmission: false,
     bgimage: 'CreditVerify.png',
+    specificFetchKey: 'getCreditData',
     parameters: [
       {
         label: 'first name',
@@ -207,6 +210,7 @@ const data = [
     name: 'pan verification',
     imageSubmission: true,
     bgimage: 'PANVerify.png',
+    specificFetchKey: 'getPanData',
     parameters: [
       {
         label: 'PAN number',
@@ -223,6 +227,7 @@ const data = [
     name: 'aadhar verification',
     imageSubmission: true,
     bgimage: 'AadharVerify.png',
+    specificFetchKey: 'getAadharData',
     parameters: [
       {
         label: 'aadhar number',
@@ -268,7 +273,11 @@ export default function VerificationTabs() {
         );
       })}
       {state && (
-        <VerificationForm formParams={formParams} setState={setState} />
+        <VerificationForm
+          formParams={formParams}
+          setState={setState}
+          specificFetchKey={formParams.specificFetchKey}
+        />
       )}
     </>
   );
