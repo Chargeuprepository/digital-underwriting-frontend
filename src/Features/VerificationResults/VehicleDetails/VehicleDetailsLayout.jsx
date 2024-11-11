@@ -5,6 +5,7 @@ import Vehicle from './Components/Vehicle';
 import AllVerificationAllCategoryTabs from '../UI/AllVerificationAllCategoryTabs';
 import GridMaker from '../../../UI/GridMaker';
 import breakCamelCase from '../../../Utils/breakCamelCase';
+import { useLocation } from 'react-router-dom';
 
 const heroData = {
   makerDescription: 'tata motors',
@@ -56,49 +57,60 @@ const data = {
   },
 };
 const vehicleTabs = [
-  'ownerData',
-  'registrationData',
-  'insuranceData',
-  'additionalData',
+  'owner',
+  'registration',
+  'insurance',
+  'additionalInformation',
 ];
 
 export default function VehicleDetailsLayout() {
-  return (
-    <AllVerificationLayout>
-      <VerificationHeader
-        verification="vehicle verification"
-        data={{
-          name: 'ritesh aggarwal',
-          mobile: '',
-        }}
-      />
-      <GridMaker
-        column={'1fr'}
-        row={'12rem repeat(5, auto)'}
-        margin="9rem 0 0 0"
-        padding="2rem"
-        gap="2rem"
-      >
-        <Hero heroData={heroData} />
-        <Vehicle
-          vehicleData={vehicleData}
-          registrationDate={data.registrationData.registrationDate}
-        />
+  const location = useLocation();
+  const { data: game } = location.state || {};
 
-        {vehicleTabs.map((tab, i) => {
-          return (
-            <AllVerificationAllCategoryTabs
-              key={i}
-              backgroundcolor={`var(--color-verification-credit-${
-                i % 2 === 0 ? 'dark' : 'light'
-              })`}
-              padding={'3rem 4rem 6rem 4rem'}
-              categoryName={breakCamelCase(tab)}
-              data={data[tab]}
-            />
-          );
-        })}
-      </GridMaker>
-    </AllVerificationLayout>
+  const { additionalInformation, insurance, owner, registration } =
+    game.vehicle;
+  const details = { additionalInformation, insurance, owner, registration };
+  console.log(game.vehicle);
+
+  return (
+    game.vehicle && (
+      <AllVerificationLayout>
+        <VerificationHeader
+          verification="vehicle verification"
+          data={{
+            name: game.vehicle.owner.name,
+          }}
+        />
+        <GridMaker
+          column={'1fr'}
+          row={'12rem repeat(5, auto)'}
+          margin="9rem 0 0 0"
+          padding="2rem"
+          gap="2rem"
+        >
+          <Hero heroData={game.vehicle.headerData} />
+          <Vehicle
+            vehicleData={game.vehicle.vehicleInformation}
+            registrationDate={
+              game.vehicle.vehicleInformation.manufacturedMonthYear
+            }
+          />
+
+          {vehicleTabs.map((tab, i) => {
+            return (
+              <AllVerificationAllCategoryTabs
+                key={i}
+                backgroundcolor={`var(--color-verification-credit-${
+                  i % 2 === 0 ? 'dark' : 'light'
+                })`}
+                padding={'3rem 4rem 6rem 4rem'}
+                categoryName={breakCamelCase(tab)}
+                data={details[tab]}
+              />
+            );
+          })}
+        </GridMaker>
+      </AllVerificationLayout>
+    )
   );
 }

@@ -15,7 +15,7 @@ export const GET_VEHICLE_DATA = gql`
         fatherName
         permanentAddress
         presentAddress
-        mobileNumber
+        rcMobileNo
       }
       vehicleInformation {
         chassisNumber

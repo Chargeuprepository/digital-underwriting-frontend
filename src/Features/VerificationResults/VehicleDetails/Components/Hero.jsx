@@ -12,11 +12,12 @@ const MakerFinanceContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   text-transform: uppercase;
+  width: 110rem;
 `;
 const Maker = styled.div`
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-gray-700);
+  color: var(--color-gray-600);
 `;
 const Finance = styled.div`
   font-size: 1.6rem;
@@ -38,7 +39,7 @@ const NumberPlate = styled.div`
 `;
 
 export default function Hero({ heroData }) {
-  const { makerDescription, financer, number } = heroData;
+  const { maker, financer, registrationNumber } = heroData;
   return (
     <StyledGridTab height={''} backgroundcolor={''} boxshadow={'false'}>
       <AllVerificationComponentGridDesign
@@ -47,10 +48,10 @@ export default function Hero({ heroData }) {
         padding={'1rem 3.2rem'}
       >
         <MakerFinanceContainer>
-          <Maker>maker&ndash;&nbsp;{makerDescription}</Maker>
+          <Maker>maker&ndash;&nbsp;{maker}</Maker>
           <Finance>financer&ndash;&nbsp;{financer}</Finance>
         </MakerFinanceContainer>
-        <NumberPlate>{number}</NumberPlate>
+        <NumberPlate>{registrationNumber}</NumberPlate>
       </AllVerificationComponentGridDesign>
     </StyledGridTab>
   );
