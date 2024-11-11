@@ -15,14 +15,14 @@ const MakerFinanceContainer = styled.div`
   width: 110rem;
 `;
 const Maker = styled.div`
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-gray-600);
-`;
-const Finance = styled.div`
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--color-gray-400);
+`;
+const Finance = styled.div`
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gray-600);
 `;
 const NumberPlate = styled.div`
   font-size: 3.8rem;
@@ -48,8 +48,8 @@ export default function Hero({ heroData }) {
         padding={'1rem 3.2rem'}
       >
         <MakerFinanceContainer>
-          <Maker>maker&ndash;&nbsp;{maker}</Maker>
           <Finance>financer&ndash;&nbsp;{financer}</Finance>
+          <Maker>maker&ndash;&nbsp;{maker}</Maker>
         </MakerFinanceContainer>
         <NumberPlate>{registrationNumber}</NumberPlate>
       </AllVerificationComponentGridDesign>

@@ -61,7 +61,7 @@ export function categorizePlatforms(data) {
 
 export const dateSubtractor = function (manufactureDateStr) {
   if (!manufactureDateStr) return;
-  const [month, year] = manufactureDateStr.split('/');
+  const [month, year] = manufactureDateStr.split(/[-,\/]/);
   const manufactureDate = new Date(`${year}-${month}`);
 
   const currentDate = new Date();

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { dateSubtractor } from '../../UI/fun';
 
 export default function Vehicle({ vehicleData, registrationDate }) {
+  console.log(registrationDate);
   const [vehicleState, setVehicleState] = useState(vehicleData);
   useEffect(function () {
     const dateSubtracted = dateSubtractor(registrationDate);

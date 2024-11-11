@@ -70,7 +70,7 @@ export default function VehicleDetailsLayout() {
   const { additionalInformation, insurance, owner, registration } =
     game.vehicle;
   const details = { additionalInformation, insurance, owner, registration };
-  console.log(game.vehicle);
+  console.log(game);
 
   return (
     game.vehicle && (

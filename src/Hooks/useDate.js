@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DatePicker } from 'antd';
 import styled from 'styled-components';
 
@@ -30,19 +30,11 @@ const StyledDatePicker = styled(DatePicker)`
 `;
 
 export default function UseDate() {
-  const [selectedDate, setSelectedDate] = useState(null);
+  // const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  // const handleDateChange = (date) => {
+  //   setSelectedDate(date);
+  // };
 
-  return { selectedDate, handleDateChange, StyledDatePicker };
-
-  // return (
-  //   <StyledDatePicker
-  //     value={selectedDate}
-  //     onChange={handleDateChange}
-  //     format="DD/MM/YYYY"
-  //   />
-  // );
+  return { StyledDatePicker };
 }

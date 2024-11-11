@@ -16,6 +16,7 @@
     "antd": "^5.20.2",
     "apollo-client": "^2.6.10",
     "chart.js": "^4.4.3",
+    "dayjs": "^1.11.13",
     "echarts": "^5.5.1",
     "graphql": "^15.9.0",
     "overlayscrollbars": "^2.10.0",

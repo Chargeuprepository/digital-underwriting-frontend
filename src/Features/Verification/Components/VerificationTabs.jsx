@@ -15,6 +15,7 @@ const data = [
     parameters: [
       {
         label: 'name',
+        formValue: 'name',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -23,6 +24,7 @@ const data = [
       },
       {
         label: 'mobile number',
+        formValue: 'mobile number',
         type: 'input',
         valueType: 'number',
         required: true,
@@ -32,6 +34,7 @@ const data = [
       },
       {
         label: 'email',
+        formValue: 'email',
         type: 'input',
         valueType: 'text',
         required: false,
@@ -39,6 +42,7 @@ const data = [
       },
       {
         label: 'country code',
+        formValue: 'country code',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -47,6 +51,7 @@ const data = [
       },
       {
         label: 'derived signals',
+        formValue: 'derived signals',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -55,6 +60,7 @@ const data = [
       },
       {
         label: 'enhanced coverage',
+        formValue: 'enhanced coverage',
         type: 'input',
         valueType: 'text',
         disabled: true,
@@ -71,6 +77,7 @@ const data = [
     parameters: [
       {
         label: 'RC number',
+        formValue: 'rc number',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -87,6 +94,7 @@ const data = [
     parameters: [
       {
         label: 'first name',
+        formValue: 'first name',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -95,6 +103,7 @@ const data = [
       },
       {
         label: 'last name',
+        formValue: 'last name',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -102,7 +111,8 @@ const data = [
         placeholder: 'Ex: sharma',
       },
       {
-        label: 'PAN number',
+        label: 'PAN',
+        formValue: 'pan',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -112,13 +122,15 @@ const data = [
       },
       {
         label: 'gender',
+        formValue: 'gender code',
         type: 'select',
         required: true,
         options: ['male', 'female'],
         values: ['1', '2'],
       },
       {
-        label: 'mobile number',
+        label: 'mobile',
+        formValue: 'mobile',
         type: 'input',
         valueType: 'number',
         required: true,
@@ -128,6 +140,7 @@ const data = [
       },
       {
         label: 'address 1',
+        formValue: 'address line 1',
         type: 'address1',
         valueType: 'text',
         required: true,
@@ -136,6 +149,7 @@ const data = [
       },
       {
         label: 'address 2',
+        formValue: 'address line 2',
         type: 'address2',
         valueType: 'text',
         required: true,
@@ -144,6 +158,7 @@ const data = [
       },
       {
         label: 'DOB',
+        formValue: 'date Of birth',
         type: 'dob',
         valueType: 'text',
         required: true,
@@ -152,6 +167,7 @@ const data = [
       },
       {
         label: 'city',
+        formValue: 'city',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -160,6 +176,7 @@ const data = [
       },
       {
         label: 'state',
+        formValue: 'state',
         type: 'select',
         required: true,
         options: [
@@ -197,6 +214,7 @@ const data = [
       },
       {
         label: 'pin code',
+        formValue: 'pin code',
         type: 'input',
         valueType: 'number',
         required: true,
@@ -213,7 +231,8 @@ const data = [
     specificFetchKey: 'getPanData',
     parameters: [
       {
-        label: 'PAN number',
+        label: 'PAN',
+        formValue: 'pan',
         type: 'input',
         valueType: 'text',
         required: true,
@@ -231,6 +250,7 @@ const data = [
     parameters: [
       {
         label: 'aadhar number',
+        formValue: 'aadhar number',
         type: 'aadhar',
         valueType: 'number',
         max: 12,

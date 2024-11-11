@@ -27,6 +27,7 @@ import { useVerificationQueryManager } from '../GraphQL/queryManager';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../UI/Loader';
+import dayjs from 'dayjs';
 
 export default function VerificationForm({
   formParams,
@@ -35,7 +36,7 @@ export default function VerificationForm({
 }) {
   const navigate = useNavigate();
   const [fetchKey, setFetchKey] = useState(specificFetchKey);
-  const { fetchVehicleData, loading, error, data } =
+  const { fetchVehicleCreditRiskData, loading, error, data } =
     useVerificationQueryManager(fetchKey);
   const {
     address1,
@@ -50,10 +51,24 @@ export default function VerificationForm({
   const { errors } = formState;
 
   function onSubmit(result) {
-    reset();
-    setAddress1('');
-    setAddress2('');
-    fetchVehicleData({ variables: { registrationNumber: result.RCNumber } });
+    if (result.dateOfBirth) {
+      const formattedDate = dayjs(result.dateOfBirth).format('DD/MM/YYYY');
+      result = { ...result, dateOfBirth: formattedDate }; // Update the dateOfBirth in a new object
+    }
+
+    const uppercaseData = Object.fromEntries(
+      Object.entries(result).map(([key, value]) =>
+        typeof value === 'string' ? [key, value.toUpperCase()] : [key, value]
+      )
+    );
+
+    console.log(uppercaseData);
+    // reset();
+    // setAddress1('');
+    // setAddress2('');
+    fetchVehicleCreditRiskData({
+      variables: { input: uppercaseData },
+    });
   }
 
   useEffect(
@@ -61,7 +76,7 @@ export default function VerificationForm({
       if (data !== undefined) {
         setState(false);
         setTimeout(() => {
-          navigate('/vehicleVerification', { state: { data } });
+          // navigate('/vehicleVerification', { state: { data } });
         }, 0);
       }
     },
@@ -119,7 +134,7 @@ export default function VerificationForm({
                             }}
                             {...register(
                               `${
-                                createCamelCase(param.label)
+                                createCamelCase(param.formValue)
                                 // param.label
                                 // .split(' ')
                                 // .map(
@@ -140,7 +155,7 @@ export default function VerificationForm({
                             value={param.value}
                             {...register(
                               `${
-                                createCamelCase(param.label)
+                                createCamelCase(param.formValue)
                                 // param.label
                                 // .split(' ')
                                 // .map(
@@ -157,7 +172,7 @@ export default function VerificationForm({
                           <Select
                             {...register(
                               `${
-                                createCamelCase(param.label)
+                                createCamelCase(param.formValue)
                                 // param.label
                                 // .split(' ')
                                 // .map(
@@ -184,7 +199,7 @@ export default function VerificationForm({
                         {param.type === 'address1' && (
                           <Controller
                             name={`${
-                              createCamelCase(param.label)
+                              createCamelCase(param.formValue)
                               // param.label
                               // .split(' ')
                               // .map(
@@ -213,7 +228,7 @@ export default function VerificationForm({
                         {param.type === 'address2' && (
                           <Controller
                             name={`${
-                              createCamelCase(param.label)
+                              createCamelCase(param.formValue)
                               // param.label
                               // .split(' ')
                               // .map(
@@ -242,7 +257,7 @@ export default function VerificationForm({
                         {param.type === 'dob' && (
                           <Controller
                             name={`${
-                              createCamelCase(param.label)
+                              createCamelCase(param.formValue)
                               // param.label
                               // .split(' ')
                               // .map(
@@ -264,7 +279,7 @@ export default function VerificationForm({
                           />
                         )}
                         {errors?.[
-                          createCamelCase(param.label)
+                          createCamelCase(param.formValue)
                           // param.label
                           //   .split(' ')
                           //   .map(
@@ -275,7 +290,7 @@ export default function VerificationForm({
                           <Error>
                             {
                               errors?.[
-                                createCamelCase(param.label)
+                                createCamelCase(param.formValue)
                                 // param.label
                                 //   .split(' ')
                                 //   .map(
@@ -322,7 +337,7 @@ export default function VerificationForm({
                             maxLength={param.max}
                             {...register(
                               `${
-                                createCamelCase(param.label)
+                                createCamelCase(param.formValue)
                                 // param.label
                                 // .split(' ')
                                 // .map(
@@ -338,7 +353,7 @@ export default function VerificationForm({
                           />
                         }
                         {errors?.[
-                          createCamelCase(param.label)
+                          createCamelCase(param.formValue)
                           // param.label
                           //   .split(' ')
                           //   .map(
@@ -349,7 +364,7 @@ export default function VerificationForm({
                           <Error>
                             {
                               errors?.[
-                                createCamelCase(param.label)
+                                createCamelCase(param.formValue)
                                 // param.label
                                 //   .split(' ')
                                 //   .map(
