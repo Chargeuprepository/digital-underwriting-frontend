@@ -2,61 +2,42 @@ export function categorizePlatforms(data) {
   const categories = {
     Ecommerce: [],
     SocialMedia: [],
-    OTTEntertainment: [],
-    WorkUtility: [],
-    Travel: [],
-    DigitalPayment: [],
-    FoodBeverage: [],
-    DatingMatrimony: [],
+    Betting: [],
+    Others: [],
   };
 
   const categoryMap = {
+    a23games: 'Betting',
+    my11: 'Betting',
+    rummycircle: 'Betting',
     amazon: 'Ecommerce',
     flipkart: 'Ecommerce',
     ajio: 'Ecommerce',
     indiamart: 'Ecommerce',
     jiomart: 'Ecommerce',
-    samsung: 'Ecommerce',
     instagram: 'SocialMedia',
-    flickr: 'SocialMedia',
-    facebook: 'SocialMedia',
-    pinterest: 'SocialMedia',
-    quora: 'SocialMedia',
-    twitter: 'SocialMedia',
     whatsapp: 'SocialMedia',
     isWABusiness: 'SocialMedia',
-    gaana: 'OTTEntertainment',
-    spotify: 'OTTEntertainment',
-    toi: 'OTTEntertainment',
-    github: 'WorkUtility',
-    housing: 'WorkUtility',
-    microsoft: 'WorkUtility',
-    skype: 'WorkUtility',
-    wordpress: 'WorkUtility',
-    zoho: 'WorkUtility',
-    booking: 'Travel',
-    yatra: 'Travel',
-    paytm: 'DigitalPayment',
-    phonepe: 'DigitalPayment',
-    swiggy: 'FoodBeverage',
-    jeevansaathi: 'DatingMatrimony',
-    shaadi: 'DatingMatrimony',
+    paytm: 'Others',
+    byjus: 'Others',
+    housing: 'Others',
+    yatra: 'Others',
+    swiggy: 'Others',
+    jeevansaathi: 'Others',
+    shaadi: 'Others',
   };
 
   for (const [platform, value] of Object.entries(data)) {
     const category = categoryMap[platform];
-    if (
-      category &&
-      value !== 'Error' &&
-      value !== 'undefined' &&
-      value !== undefined &&
-      value !== null
-    ) {
+    if (category && value === 'Account Found') {
       categories[category].push(platform);
     }
   }
 
-  return categories;
+  const filteredCategories = Object.fromEntries(
+    Object.entries(categories).filter(([key, value]) => value.length > 0)
+  );
+  return filteredCategories;
 }
 
 export const dateSubtractor = function (manufactureDateStr) {

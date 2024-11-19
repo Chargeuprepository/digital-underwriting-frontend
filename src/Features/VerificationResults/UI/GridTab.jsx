@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import breakCamelCase from '../../../Utils/breakCamelCase';
 import BarRenderContent from '../../../UI/BarRenderContent';
+import scrollToSection from '../../../Hooks/useScrollIntoView';
 
 const StyledGridTab = styled.div`
   grid-row: ${(props) => props.gridrow};

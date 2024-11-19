@@ -4,8 +4,6 @@ import breakCamelCase from '../Utils/breakCamelCase';
 const InsightLabelValueContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 1rem;
   border: 1px solid var(--color-gray-100);
   border: ${(props) =>
@@ -13,6 +11,7 @@ const InsightLabelValueContainer = styled.div`
   padding: 1.2rem 2.2rem;
   border-radius: 0.6rem;
   flex: 0 0 auto;
+  min-height: 7.4rem;
 `;
 const InsightLabel = styled.div`
   text-transform: uppercase;

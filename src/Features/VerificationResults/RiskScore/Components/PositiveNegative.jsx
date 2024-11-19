@@ -55,17 +55,17 @@ const ValueIconContainer = styled.div`
 `;
 
 export default function PositiveNegative({ positiveNegative }) {
-  const { positiveInsights, negativeInsights } = positiveNegative;
+  const { positives, negatives } = positiveNegative;
 
   return (
     <GridTab gridcolumn={'2 / -1'} backgroundcolor="#ffffff">
       <StyledPositiveNegative>
         <PosNegColumn>
           <PosNegHeading color="red">
-            {breakCamelCase('positiveInsights')}
+            {breakCamelCase('negativeInsights')}
           </PosNegHeading>
           <PosNeg>
-            {negativeInsights.map((val, i) => {
+            {negatives.map((val, i) => {
               return (
                 <ValueIconContainer key={i}>
                   <div>
@@ -79,10 +79,10 @@ export default function PositiveNegative({ positiveNegative }) {
         </PosNegColumn>
         <PosNegColumn>
           <PosNegHeading color="green">
-            {breakCamelCase('negativeInsights')}
+            {breakCamelCase('positiveInsights')}
           </PosNegHeading>
           <PosNeg>
-            {positiveInsights.map((val, i) => {
+            {positives.map((val, i) => {
               return (
                 <ValueIconContainer key={i}>
                   <div>

@@ -51,7 +51,6 @@ export const GET_VEHICLE_DATA = gql`
     }
   }
 `;
-
 export const GET_CREDIT_DATA = gql`
   query Credit($input: ApplicantInput!) {
     credit(input: $input) {
@@ -68,6 +67,17 @@ export const GET_CREDIT_DATA = gql`
           outstandingBalance
           accountsActive
           accountsDefault
+        }
+        accountSummary {
+          creditScore
+          cadSuitFiledCurrentBalance
+          creditAccountActive
+          creditAccountClosed
+          creditAccountDefault
+          creditAccountTotal
+          outstandingBalanceAll
+          outstandingBalanceSecured
+          outstandingBalanceUnsecured
         }
         personalDetails {
           dateOfBirth
@@ -114,4 +124,88 @@ export const GET_CREDIT_DATA = gql`
     }
   }
 `;
-// export const GET_RISK_DATA = gql``;
+export const GET_RISK_DATA = gql`
+  query Risk($input: RiskInput!) {
+    risk(input: $input) {
+      statusCode
+      error
+      status
+      timestamp
+      transactionId
+      merchantId
+      workflowId
+      workflowName
+      riskScore
+      header {
+        name
+        mobile
+      }
+      insights {
+        positives
+        negatives
+      }
+      allFourRisk {
+        identity {
+          identityConfidence
+        }
+        telecom {
+          telecomRisk
+          isPhoneReachable
+          currentNetworkName
+          phoneFootprintStrengthOverall
+        }
+        digital {
+          digitalFootprint
+          name
+          nameMatchScore
+          phoneDigitalAge
+        }
+        social {
+          socialFootprintScore
+          phoneSocialMediaCount
+          socialMediaScore
+          eCommerceScore
+          workUtilityScore
+        }
+      }
+      telecomAttributes {
+        currentNetworkName
+        currentNetworkRegion
+        isPhoneReachable
+        numberHasPortingHistory
+        numberBillingType
+        mobileFraud
+        phoneFootprintStrengthOverall
+      }
+      digitalAttributes {
+        name
+        source
+        vpa
+        upiPhoneNameMatch
+        upiPhoneNameMatchScore
+        nameMatchScore
+        phoneDigitalAge
+      }
+      socialAttributes {
+        a23games
+        ajio
+        amazon
+        byjus
+        flipkart
+        housing
+        indiamart
+        instagram
+        isWABusiness
+        jeevansaathi
+        jiomart
+        my11
+        paytm
+        rummycircle
+        shaadi
+        swiggy
+        whatsapp
+        yatra
+      }
+    }
+  }
+`;

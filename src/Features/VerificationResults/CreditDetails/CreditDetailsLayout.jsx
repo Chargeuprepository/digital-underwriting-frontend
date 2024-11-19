@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import GridMaker from '../../../UI/GridMaker';
 import breakCamelCase from '../../../Utils/breakCamelCase';
 import AllVerificationAllCategoryTabs from '../UI/AllVerificationAllCategoryTabs';
@@ -64,24 +65,38 @@ const creditTabs = [
   'accountSummary',
   'personalDetails',
   'applicationDetails',
-  'CAPSSummary',
+  'capsSummary',
   'otherDetails',
 ];
 
 export default function CreditDetailsLayout() {
-  const heroData = {
-    creditScore: data.accountSummary.bureauScore,
-    outstandingBalanceAll: data.accountSummary.outstandingBalanceAll,
-    accountActive: data.accountSummary.creditAccountActive,
-    accountDefault: data.accountSummary.creditAccountDefault,
+  const location = useLocation();
+  const { data: creditAPIData } = location.state || {};
+
+  const headerData = creditAPIData.credit.INProfileResponse.header;
+  const heroData = creditAPIData.credit.INProfileResponse.hero;
+  const {
+    accountSummary,
+    personalDetails,
+    applicationDetails,
+    capsSummary,
+    otherDetails,
+  } = creditAPIData.credit.INProfileResponse;
+  const otherData = {
+    accountSummary,
+    personalDetails,
+    applicationDetails,
+    capsSummary,
+    otherDetails,
   };
+
   return (
     <AllVerificationLayout>
       <VerificationHeader
         verification="credit verification"
         data={{
-          name: 'ritesh aggarwal',
-          mobile: '9876543021',
+          name: headerData.name,
+          mobile: headerData.mobile,
           secondIcon: 'mobile',
         }}
       />
@@ -102,7 +117,7 @@ export default function CreditDetailsLayout() {
               })`}
               padding={'3rem 4rem 6rem 4rem'}
               categoryName={breakCamelCase(tab)}
-              data={data[tab]}
+              data={otherData[tab]}
             />
           );
         })}

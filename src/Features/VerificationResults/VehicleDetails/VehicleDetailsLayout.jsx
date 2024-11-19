@@ -65,20 +65,20 @@ const vehicleTabs = [
 
 export default function VehicleDetailsLayout() {
   const location = useLocation();
-  const { data: game } = location.state || {};
+  const { data: vehicleAPIData } = location.state || {};
 
   const { additionalInformation, insurance, owner, registration } =
-    game.vehicle;
+    vehicleAPIData.vehicle;
   const details = { additionalInformation, insurance, owner, registration };
-  console.log(game);
+  console.log(vehicleAPIData);
 
   return (
-    game.vehicle && (
+    vehicleAPIData.vehicle && (
       <AllVerificationLayout>
         <VerificationHeader
           verification="vehicle verification"
           data={{
-            name: game.vehicle.owner.name,
+            name: vehicleAPIData.vehicle.owner.name,
           }}
         />
         <GridMaker
@@ -88,11 +88,11 @@ export default function VehicleDetailsLayout() {
           padding="2rem"
           gap="2rem"
         >
-          <Hero heroData={game.vehicle.headerData} />
+          <Hero heroData={vehicleAPIData.vehicle.headerData} />
           <Vehicle
-            vehicleData={game.vehicle.vehicleInformation}
+            vehicleData={vehicleAPIData.vehicle.vehicleInformation}
             registrationDate={
-              game.vehicle.vehicleInformation.manufacturedMonthYear
+              vehicleAPIData.vehicle.vehicleInformation.manufacturedMonthYear
             }
           />
 

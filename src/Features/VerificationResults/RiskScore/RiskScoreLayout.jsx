@@ -9,63 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { categorizePlatforms } from '../UI/fun';
 import { AllVerificationLayout } from '../UI/GridTab';
 import GridMaker from '../../../UI/GridMaker';
-
-const posNegData = {
-  positiveInsights: [
-    'Person name does not match against bank records.',
-    "Person's name matches against bank records.",
-    "Person's name matched against majority of records in Bureau's network.",
-  ],
-  negativeInsights: [
-    'Person name does not match against bank records.',
-    'Person has negligible social media presence.',
-    "Person's phone has a digital age of less than 6 months.",
-  ],
-};
-
-const riskInsightsData = {
-  digital: {
-    digitalFootprint: 'high',
-    name: 'ritesh aggarwal',
-    nameMatchScore: 1,
-    phoneDigitalAge: -1,
-  },
-  telecom: {
-    telecomRisk: 'low',
-    isPhoneReachable: 'true',
-    currentNetworkName: 'delhi',
-    phoneFootprintStrengthOverall: 'low',
-  },
-  identity: { identityConfidence: 'medium' },
-  social: {
-    socialFootprintScore: '320',
-    phoneSocialMediaCount: 6,
-    socialMediaScore: 5.5,
-    eCommerceScore: 1.9,
-    workUtilityScore: 2,
-  },
-};
-
-const telecomData = {
-  alternateNumber: '',
-  currentNetworkName: 'Reliance Jio',
-  currentNetworkRegion: 'Delhi',
-  isPhoneReachable: 'TRUE',
-  numberHasPortingHistory: 'TRUE',
-  numberBillingType: 'prepaid',
-  mobileFraud: 'FALSE',
-  phoneFootprintStrengthOverall: 'Low',
-};
-
-const digitalData = {
-  name: 'Suhel',
-  source: 'PAYTM',
-  vpa: '8392975268@paytm',
-  upiPhoneNameMatch: '-1',
-  upiPhoneNameMatchScore: '-1',
-  nameMatchScore: '-1',
-  phoneDigitalAge: '-1',
-};
+import { useLocation } from 'react-router-dom';
 
 const socialAPIData = {
   amazon: 'Account Found',
@@ -73,24 +17,13 @@ const socialAPIData = {
   ajio: 'Account Found',
   indiamart: 'Account Found',
   jiomart: 'Account Found',
-  samsung: 'Account Found',
   instagram: 'Account Found',
-  flickr: 'Account Found',
   facebook: 'Account Found',
-  pinterest: 'Account Found',
-  quora: 'Account Found',
-  twitter: 'Account Found',
   whatsapp: 'Account Found',
   isWABusiness: 'Account Found',
   gaana: 'Account Found',
   spotify: 'Account Found',
-  toi: 'Account Found',
-  github: 'Account Found',
   housing: 'Account Found',
-  microsoft: 'Account Found',
-  skype: 'Account Found',
-  wordpress: 'Account Found',
-  zoho: 'Account Found',
   booking: 'Account Found',
   yatra: 'Account Found',
   paytm: 'Account Found',
@@ -101,15 +34,15 @@ const socialAPIData = {
 };
 
 export default function RiskScoreLayout() {
-  const [score, setScore] = useState(674);
-  const [positiveNegative, setPositiveNegative] = useState(posNegData);
+  const location = useLocation();
+  const { data: riskAPIData } = location.state || {};
   const [socialData, setSocialData] = useState({});
   const socialRef = useRef(null);
   const digitalRef = useRef(null);
   const telecomRef = useRef(null);
 
   useEffect(function () {
-    const data = categorizePlatforms(socialAPIData);
+    const data = categorizePlatforms(riskAPIData?.risk?.socialAttributes);
     setSocialData(data);
   }, []);
 
@@ -118,8 +51,8 @@ export default function RiskScoreLayout() {
       <VerificationHeader
         verification="risk verification"
         data={{
-          name: 'ritesh aggarwal',
-          mobile: '919876540321',
+          name: riskAPIData?.risk?.header?.name,
+          mobile: riskAPIData?.risk?.header?.mobile,
           secondIcon: 'mobile',
         }}
       />
@@ -130,14 +63,20 @@ export default function RiskScoreLayout() {
         padding="2rem"
         gap="2rem"
       >
-        <RiskScore score={score} />
-        <PositiveNegative positiveNegative={positiveNegative} />
+        <RiskScore score={riskAPIData?.risk?.riskScore} />
+        <PositiveNegative positiveNegative={riskAPIData?.risk?.insights} />
         <RiskInsights
-          riskInsightsData={riskInsightsData}
+          riskInsightsData={riskAPIData?.risk?.allFourRisk}
           allRef={[socialRef, digitalRef, telecomRef]}
         />
-        <TelecomAttributes telecomRef={telecomRef} telecomData={telecomData} />
-        <VPAAttributes digitalRef={digitalRef} digitalData={digitalData} />
+        <TelecomAttributes
+          telecomRef={telecomRef}
+          telecomData={riskAPIData?.risk?.telecomAttributes}
+        />
+        <VPAAttributes
+          digitalRef={digitalRef}
+          digitalData={riskAPIData?.risk?.digitalAttributes}
+        />
         <SocialAttributes socialRef={socialRef} socialData={socialData} />
       </GridMaker>
     </AllVerificationLayout>

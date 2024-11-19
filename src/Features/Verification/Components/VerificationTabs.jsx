@@ -12,6 +12,7 @@ const data = [
     imageSubmission: false,
     bgimage: 'RiskVerify.png',
     specificFetchKey: 'getRiskData',
+    routeName: 'riskVerification',
     parameters: [
       {
         label: 'name',
@@ -23,8 +24,8 @@ const data = [
         placeholder: 'Ex: Amit shankar',
       },
       {
-        label: 'mobile number',
-        formValue: 'mobile number',
+        label: 'phone number',
+        formValue: 'phone number',
         type: 'input',
         valueType: 'number',
         required: true,
@@ -74,6 +75,7 @@ const data = [
     imageSubmission: false,
     bgimage: 'VehicleVerify.png',
     specificFetchKey: 'getVehicleData',
+    routeName: 'vehicleVerification',
     parameters: [
       {
         label: 'RC number',
@@ -90,6 +92,7 @@ const data = [
     name: 'credit score',
     imageSubmission: false,
     bgimage: 'CreditVerify.png',
+    routeName: 'creditVerification',
     specificFetchKey: 'getCreditData',
     parameters: [
       {
@@ -228,6 +231,7 @@ const data = [
     name: 'pan verification',
     imageSubmission: true,
     bgimage: 'PANVerify.png',
+    routeName: 'panVerification',
     specificFetchKey: 'getPanData',
     parameters: [
       {
@@ -245,6 +249,7 @@ const data = [
   {
     name: 'aadhar verification',
     imageSubmission: true,
+    routeName: 'aadharVerification',
     bgimage: 'AadharVerify.png',
     specificFetchKey: 'getAadharData',
     parameters: [
@@ -297,6 +302,7 @@ export default function VerificationTabs() {
           formParams={formParams}
           setState={setState}
           specificFetchKey={formParams.specificFetchKey}
+          routeName={formParams.routeName}
         />
       )}
     </>

@@ -33,6 +33,7 @@ export default function VerificationForm({
   formParams,
   setState,
   specificFetchKey,
+  routeName,
 }) {
   const navigate = useNavigate();
   const [fetchKey, setFetchKey] = useState(specificFetchKey);
@@ -64,8 +65,8 @@ export default function VerificationForm({
 
     console.log(uppercaseData);
     // reset();
-    // setAddress1('');
-    // setAddress2('');
+    setAddress1('');
+    setAddress2('');
     fetchVehicleCreditRiskData({
       variables: { input: uppercaseData },
     });
@@ -76,7 +77,7 @@ export default function VerificationForm({
       if (data !== undefined) {
         setState(false);
         setTimeout(() => {
-          // navigate('/vehicleVerification', { state: { data } });
+          navigate(`/${routeName}`, { state: { data } });
         }, 0);
       }
     },

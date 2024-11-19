@@ -63,7 +63,7 @@ export const renderSocialContent = (value) => {
           {val.map((soc) => {
             return (
               <SocialIconHeading key={soc}>
-                <SocialIcon src={`/img/${soc}.svg`} />
+                <SocialIcon src={`/img/socialMediaIcons/${soc}.svg`} />
                 <InsightValue>{soc}</InsightValue>
               </SocialIconHeading>
             );

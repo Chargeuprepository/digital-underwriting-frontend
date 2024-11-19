@@ -46,15 +46,15 @@ export default function HeroCredit({ heroData }) {
         <HeroDataFlex>
           <HeroData>
             {breakCamelCase('outstandingBalance')}: &nbsp; &#8377;
-            {heroData.outstandingBalanceAll}
+            {heroData.outstandingBalance}
           </HeroData>
           <HeroData>
             {breakCamelCase('accountsActive')}: &nbsp;
-            {heroData.accountActive}
+            {heroData.accountsActive}
           </HeroData>
           <HeroData>
             {breakCamelCase('accountsDefault')}: &nbsp;
-            {heroData.accountDefault}
+            {heroData.accountsDefault}
           </HeroData>
         </HeroDataFlex>
       </StyledHeroCredit>
