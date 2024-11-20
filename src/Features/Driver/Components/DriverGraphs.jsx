@@ -18,7 +18,7 @@ const StyledDriverGraphs = styled.div`
   gap: 2rem;
 `;
 
-export default function DriverGraphs() {
+export default function DriverGraphs({ scores }) {
   return (
     <StyledDriverGraphs>
       <EarningTrends />

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 9rem 1fr repeat(5, 16rem);
+  grid-template-columns: 8rem 1fr repeat(5, 14rem);
   background-color: ${(props) => props.bgcolor};
   transition: all 0.3s;
   /* will-change: transform; */

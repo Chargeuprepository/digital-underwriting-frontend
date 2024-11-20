@@ -5,8 +5,9 @@ import Heading from '../../../../UI/Charts/Heading';
 const ParentContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
+  gap: 1rem;
   margin-top: 2rem;
+  height: 15rem;
 `;
 const MediaContainer = styled.div`
   display: flex;
@@ -15,6 +16,8 @@ const MediaContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   padding: 1rem 2rem;
+  /* height: 6rem;
+  width: 10rem; */
   border-radius: 0.6rem;
   background-color: var(--color-brand-blue-50);
   transition: all 0.3s;
@@ -28,8 +31,8 @@ const Value = styled.div`
   color: var(--color-gray-700);
 `;
 const Icon = styled.img`
-  height: 4rem;
-  width: 4rem;
+  height: 3.8rem;
+  width: 3.8rem;
 `;
 
 const obj = [
@@ -50,7 +53,7 @@ export default function SocialMedia() {
       <ParentContainer>
         {sorted.map((val) => (
           <MediaContainer key={val.label}>
-            <Icon src={`/img/${val.label}.svg`} />
+            <Icon src={`/img/socialMediaIcons/${val.label}.svg`} />
             <Value>{val.value}</Value>
           </MediaContainer>
         ))}

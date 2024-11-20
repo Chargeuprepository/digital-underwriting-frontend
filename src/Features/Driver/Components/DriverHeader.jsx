@@ -23,6 +23,9 @@ const Img = styled.img`
 `;
 const NameId = styled.div`
   margin-right: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 `;
 const Name = styled.div`
   font-size: 1.5rem;

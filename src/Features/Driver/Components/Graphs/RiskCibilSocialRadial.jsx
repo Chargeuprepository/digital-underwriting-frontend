@@ -1,12 +1,13 @@
 import DriverRadialChart from './DriverRadialChart';
 
-export default function RiskCibilSocialRadial() {
-  const series = [800, 600, 400]; // Raw values from 900
+export default function RiskCibilSocialRadial({ scores }) {
+  // const series = [800, 600, 400]; // Raw values from 900
+  const valuesArray = Object.values(scores);
   const labels = ['Cibil', 'Risk', 'Social'];
 
   return (
     <DriverRadialChart
-      series={series}
+      series={valuesArray}
       labels={labels}
       totalLabel="Cibil/Risk/Social"
       totalValue="900"

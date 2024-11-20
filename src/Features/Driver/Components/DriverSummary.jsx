@@ -76,10 +76,11 @@ export default function DriverSummary({
   nps,
   service,
   runKm,
-  dpd,
+  avgDpd,
   karma,
   lossDays,
   aon,
+  scores,
 }) {
   const parameters = [
     {
@@ -91,7 +92,7 @@ export default function DriverSummary({
     {
       name: 'DPD',
       icon: SlCalender,
-      value: dpd,
+      value: avgDpd,
       iconBack: '#e62743',
     },
     {
@@ -144,7 +145,7 @@ export default function DriverSummary({
         })}
       </SummaryRestContainer>
       <RadialContainer>
-        <RiskCibilSocialRadial />
+        <RiskCibilSocialRadial scores={scores} />
         <PaymentModeRadial />
       </RadialContainer>
     </StyledDriverSummary>

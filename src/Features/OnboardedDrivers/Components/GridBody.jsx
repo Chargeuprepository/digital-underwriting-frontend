@@ -18,10 +18,9 @@ export default function GridBody() {
 
   useEffect(() => {
     async function game() {
-      const res = await fetch(
-        'http://localhost:3000/data?_sort=karma&_order=asc'
-      );
+      const res = await fetch('http://localhost:8000/testDriver');
       const ans = await res.json();
+      console.log(ans);
       setData(ans);
     }
     game();
@@ -69,7 +68,9 @@ export default function GridBody() {
               >
                 {val.id}
               </GridValue>
-              <GridValue horiScroll={'true'}>{val.name}</GridValue>
+              <GridValue horiScroll={'true'}>
+                {val.firstName} {val.lastName}
+              </GridValue>
               <GridValue
                 style={{
                   display: 'flex',
@@ -95,7 +96,7 @@ export default function GridBody() {
                   {val.karma}
                 </div>
               </GridValue>
-              <GridValue>{val.dpd}</GridValue>
+              <GridValue>{val.avgDpd}</GridValue>
               <GridValue>{val.service}</GridValue>
               <GridValue>{val.runKm}</GridValue>
               <GridValue>{val.nps}</GridValue>

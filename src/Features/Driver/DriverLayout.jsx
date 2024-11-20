@@ -4,6 +4,7 @@ import DriverSummary from './Components/DriverSummary';
 import DriverGraphs from './Components/DriverGraphs';
 import DriverOtherDetails from './Components/DriverOtherDetails';
 import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const userData = {
   personalInformation: {
@@ -75,22 +76,49 @@ const StyledDriverLayout = styled.div`
 
 export default function DriverLayout() {
   const location = useLocation();
-  const { id, name, nps, service, runKm, dpd, karma } = location.state?.data;
+  const { id, firstName, lastName, nps, service, runKm, avgDpd, karma } =
+    location.state?.data;
+  const [driverData, setDriverData] = useState(null);
+  const [scores, setScores] = useState({});
+
+  useEffect(function () {
+    return async function () {
+      const input = { id };
+
+      const res = await fetch('http://localhost:8000/driver', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input),
+      });
+      const data = await res.json();
+      setDriverData(data);
+      const { riskScore, creditScore, socialScore } = data;
+      setScores({ creditScore, riskScore, socialScore });
+      console.log(data);
+    };
+  }, []);
 
   return (
     <StyledDriverLayout>
-      <DriverHeader name={name} id={id} joiningDate={'12-May-2024'} />
+      <DriverHeader
+        name={`${firstName}${' '}${lastName}`}
+        id={id}
+        joiningDate={'12-May-2024'}
+      />
       <DriverSummary
         karma={karma}
         nps={nps}
         service={service}
         runKm={runKm}
-        dpd={dpd}
+        avgDpd={avgDpd}
         lossDays={'15'}
         aon={'457'}
+        scores={scores}
       />
       <DriverGraphs />
-      <DriverOtherDetails userData={userData} />
+      <DriverOtherDetails userData={driverData} />
     </StyledDriverLayout>
   );
 }

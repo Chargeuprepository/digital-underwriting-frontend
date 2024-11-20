@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import BarRenderContent from '../../../UI/BarRenderContent';
 import breakCamelCase from '../../../Utils/breakCamelCase';
+import { dateSubtractor } from '../../VerificationResults/UI/fun';
 
 const typeData = [
   'personalInformation',
@@ -43,12 +44,78 @@ export default function DriverOtherDetails({ userData }) {
   const valueColor = 'var(--color-gray-300)';
   const border = '1px solid var(--color-gray-600)';
 
+  if (userData === null) return;
+
+  function calculateVehicleAge(dateString) {
+    const [day, month, year] = dateString.split('-');
+    const parsedDate = new Date(`${year}-${month}-${day}`);
+
+    const ageInMonths =
+      (new Date().getFullYear() - parsedDate.getFullYear()) * 12 +
+      (new Date().getMonth() - parsedDate.getMonth());
+
+    return ageInMonths;
+  }
+
+  const categorizedData = {
+    personalInformation: {
+      firstName: userData.OwnerFirstName,
+      lastName: userData.LastName,
+      dob: new Date(userData.Owners_DOB).toISOString().split('T')[0],
+      age:
+        new Date().getFullYear() - new Date(userData.Owners_DOB).getFullYear(),
+      gender: userData.Owner_Gender,
+      maritalStatus: userData.MaritalStatus,
+      numberOfChildren: userData.NoofChildren,
+      address: userData.Owner_Permanent_Address,
+      city: userData.Es_City,
+      state: userData.State,
+      houseOwnershipType: userData.Residence,
+    },
+    contactInformation: {
+      mobileNo: userData.Contact_Number_of_Owner,
+      adhaarNo: userData.Owner_Aadhaar_Number, // Adjusted for readability
+      panNo: userData.Owner_PAN_Number,
+      upiId: userData['Phone to Name.vpa'], // From Phone to Name.vpa
+    },
+    vehicleInformation: {
+      vehicleType: userData.VehicleType,
+      VehicleRegistrationNumber: userData.VehicleRegistrationNumber,
+      VehicleModel: userData.VehicleModel,
+      registrationDate: userData.PurchaseDate,
+      vehicleAgeInMonths: calculateVehicleAge(userData.PurchaseDate),
+      vehicleOwnership: userData.VehicleStatus,
+      vehicleInsured: userData.InsurancerName,
+    },
+    businessInformation: {
+      businessSegment: userData.BusinessSegment,
+    },
+    financialInformation: {
+      bank: userData.BankName,
+      accountNo: userData.Bank_Account_Number, // Adjusted for readability
+      cibilScore: userData.creditScore, // Not provided
+      riskScore: userData.riskScore,
+      downPayment: userData.DownPayment,
+      tenure: userData.Tenure,
+    },
+    socialAndDigitalInformation: {
+      socialScore: userData.socialScore,
+      digitalAge: userData.Digitalage, // Assuming this is in months or a derived score
+      telecomRisk: userData.TelecomRisk,
+      digitalFootprint: userData.DigitalFootprint,
+      identityConfidence: userData['Identity Confidence'],
+    },
+  };
+
+  console.log(categorizedData);
+  console.log(userData);
+
   return (
     <StyledDriverOtherDetails>
-      {typeData.map((data) => {
-        const userInfo = userData[data];
+      {typeData.map((data, i) => {
+        const userInfo = categorizedData[data];
         return (
-          <DetailContainer>
+          <DetailContainer key={i}>
             <DetailHeading>{breakCamelCase(data)}</DetailHeading>
             <DetailsCategory>
               {BarRenderContent(userInfo, labelColor, valueColor, border)}
