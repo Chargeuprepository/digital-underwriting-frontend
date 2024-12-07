@@ -53,9 +53,16 @@ const ValueIconContainer = styled.div`
     color: var(--color-gray-100);
   }
 `;
+const replaceBureauWithMultiple = (array) => {
+  return array.map((sentence) =>
+    sentence.replace(/\bbureau('?s)?\b/gi, 'multiple')
+  );
+};
 
 export default function PositiveNegative({ positiveNegative }) {
   const { positives, negatives } = positiveNegative;
+  const positiveReplaced = replaceBureauWithMultiple(positives);
+  const negativeReplaced = replaceBureauWithMultiple(negatives);
 
   return (
     <GridTab gridcolumn={'2 / -1'} backgroundcolor="#ffffff">
@@ -65,7 +72,7 @@ export default function PositiveNegative({ positiveNegative }) {
             {breakCamelCase('negativeInsights')}
           </PosNegHeading>
           <PosNeg>
-            {negatives.map((val, i) => {
+            {negativeReplaced.map((val, i) => {
               return (
                 <ValueIconContainer key={i}>
                   <div>
@@ -82,7 +89,7 @@ export default function PositiveNegative({ positiveNegative }) {
             {breakCamelCase('positiveInsights')}
           </PosNegHeading>
           <PosNeg>
-            {positives.map((val, i) => {
+            {positiveReplaced.map((val, i) => {
               return (
                 <ValueIconContainer key={i}>
                   <div>

@@ -6,6 +6,8 @@ const StyledGridHeader = styled.div``;
 const headerData = [
   'id',
   'name',
+  'credit',
+  'risk',
   'karma',
   'avg DPD',
   'service',

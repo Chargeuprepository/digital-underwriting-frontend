@@ -88,7 +88,7 @@ export default function Pagination({ count }) {
     setSearchParams(searchParams);
   }
 
-  if (count <= PAGE_SIZE) return null;
+  if (count <= PAGE_SIZE || count === 0) return null;
   return (
     <StyledPagination>
       <ResultString>

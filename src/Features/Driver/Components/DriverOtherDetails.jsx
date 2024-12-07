@@ -5,11 +5,12 @@ import { dateSubtractor } from '../../VerificationResults/UI/fun';
 
 const typeData = [
   'personalInformation',
-  'contactInformation',
   'vehicleInformation',
+  'contactInformation',
+  'riskAndCreditInformation',
   'businessInformation',
   'financialInformation',
-  'socialAndDigitalInformation',
+  'socialMediaInformation',
 ];
 
 const StyledDriverOtherDetails = styled.div`
@@ -46,65 +47,90 @@ export default function DriverOtherDetails({ userData }) {
 
   if (userData === null) return;
 
-  function calculateVehicleAge(dateString) {
-    const [day, month, year] = dateString.split('-');
-    const parsedDate = new Date(`${year}-${month}-${day}`);
+  function calculateVehicleAge(dateInput) {
+    const inputDate =
+      typeof dateInput === 'string' && /^\d{2}-\d{2}-\d{4}$/.test(dateInput)
+        ? new Date(dateInput.split('-').reverse().join('-'))
+        : new Date(dateInput);
 
-    const ageInMonths =
-      (new Date().getFullYear() - parsedDate.getFullYear()) * 12 +
-      (new Date().getMonth() - parsedDate.getMonth());
+    if (isNaN(inputDate)) return null; // Invalid date
 
-    return ageInMonths;
+    const today = new Date();
+    const yearDiff = today.getFullYear() - inputDate.getFullYear();
+    const monthDiff = today.getMonth() - inputDate.getMonth();
+    const totalMonths = yearDiff * 12 + monthDiff;
+
+    return today.getDate() >= inputDate.getDate()
+      ? totalMonths
+      : totalMonths - 1;
   }
 
+  // const categorizedData = {
+  //   personalInformation: {
+  //     firstName: userData.OwnerFirstName,
+  //     lastName: userData.LastName,
+  //     dob: new Date(userData.Owners_DOB).toISOString().split('T')[0],
+  //     age:
+  //       new Date().getFullYear() - new Date(userData.Owners_DOB).getFullYear(),
+  //     gender: userData.Owner_Gender,
+  //     maritalStatus: userData.MaritalStatus,
+  //     numberOfChildren: userData.NoofChildren,
+  //     address: userData.Owner_Permanent_Address,
+  //     city: userData.Es_City,
+  //     state: userData.State,
+  //     houseOwnershipType: userData.Residence,
+  //   },
+  //   contactInformation: {
+  //     mobileNo: userData.Contact_Number_of_Owner,
+  //     adhaarNo: userData.Owner_Aadhaar_Number, // Adjusted for readability
+  //     panNo: userData.Owner_PAN_Number,
+  //     upiId: userData.vpa, // From Phone to Name.vpa
+  //   },
+  //   vehicleInformation: {
+  //     vehicleType: userData.VehicleType,
+  //     VehicleRegistrationNumber: userData.VehicleRegistrationNumber,
+  //     VehicleModel: userData.VehicleModel,
+  //     registrationDate: userData.PurchaseDate,
+  //     vehicleAgeInMonths: calculateVehicleAge(userData.PurchaseDate),
+  //     vehicleOwnership: userData.VehicleStatus,
+  //     vehicleInsured: userData.InsurancerName,
+  //   },
+  //   businessInformation: {
+  //     businessSegment: userData.BusinessSegment,
+  //   },
+  //   financialInformation: {
+  //     bank: userData.BankName,
+  //     accountNo: userData.Bank_Account_Number, // Adjusted for readability
+  //     cibilScore: userData.creditScore, // Not provided
+  //     riskScore: userData.riskScore,
+  //     downPayment: userData.DownPayment,
+  //     tenure: userData.Tenure,
+  //   },
+  //   socialAndDigitalInformation: {
+  //     socialScore: userData.socialScore,
+  //     digitalAge: userData.digitalage, // Assuming this is in months or a derived score
+  //     telecomRisk: userData.telecomRisk,
+  //     digitalFootprint: userData.digitalFootprint,
+  //     identityConfidence: userData.identityConfidence,
+  //   },
+  // };
+  const {
+    personalInformation,
+    vehicleInformation,
+    contactInformation,
+    riskAndCreditInformation,
+    businessInformation,
+    financialInformation,
+    socialMediaInformation,
+  } = userData;
   const categorizedData = {
-    personalInformation: {
-      firstName: userData.OwnerFirstName,
-      lastName: userData.LastName,
-      dob: new Date(userData.Owners_DOB).toISOString().split('T')[0],
-      age:
-        new Date().getFullYear() - new Date(userData.Owners_DOB).getFullYear(),
-      gender: userData.Owner_Gender,
-      maritalStatus: userData.MaritalStatus,
-      numberOfChildren: userData.NoofChildren,
-      address: userData.Owner_Permanent_Address,
-      city: userData.Es_City,
-      state: userData.State,
-      houseOwnershipType: userData.Residence,
-    },
-    contactInformation: {
-      mobileNo: userData.Contact_Number_of_Owner,
-      adhaarNo: userData.Owner_Aadhaar_Number, // Adjusted for readability
-      panNo: userData.Owner_PAN_Number,
-      upiId: userData['Phone to Name.vpa'], // From Phone to Name.vpa
-    },
-    vehicleInformation: {
-      vehicleType: userData.VehicleType,
-      VehicleRegistrationNumber: userData.VehicleRegistrationNumber,
-      VehicleModel: userData.VehicleModel,
-      registrationDate: userData.PurchaseDate,
-      vehicleAgeInMonths: calculateVehicleAge(userData.PurchaseDate),
-      vehicleOwnership: userData.VehicleStatus,
-      vehicleInsured: userData.InsurancerName,
-    },
-    businessInformation: {
-      businessSegment: userData.BusinessSegment,
-    },
-    financialInformation: {
-      bank: userData.BankName,
-      accountNo: userData.Bank_Account_Number, // Adjusted for readability
-      cibilScore: userData.creditScore, // Not provided
-      riskScore: userData.riskScore,
-      downPayment: userData.DownPayment,
-      tenure: userData.Tenure,
-    },
-    socialAndDigitalInformation: {
-      socialScore: userData.socialScore,
-      digitalAge: userData.Digitalage, // Assuming this is in months or a derived score
-      telecomRisk: userData.TelecomRisk,
-      digitalFootprint: userData.DigitalFootprint,
-      identityConfidence: userData['Identity Confidence'],
-    },
+    personalInformation,
+    vehicleInformation,
+    contactInformation,
+    riskAndCreditInformation,
+    businessInformation,
+    financialInformation,
+    socialMediaInformation,
   };
 
   console.log(categorizedData);

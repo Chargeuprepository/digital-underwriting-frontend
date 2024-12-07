@@ -1,72 +1,64 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
-import Container from './Container';
 
-const data1 = [
-  { value: 40, name: 'rose 1' },
-  { value: 38, name: 'rose 2' },
-  { value: 32, name: 'rose 3' },
-  { value: 30, name: 'rose 4' },
-  { value: 28, name: 'rose 5' },
-  { value: 26, name: 'rose 6' },
-  { value: 22, name: 'rose 7' },
-  { value: 18, name: 'rose 8' },
-];
+// const daysData = [
+//   { value: 20, name: '>30' },
+//   { value: 20, name: '23-30' },
+//   { value: 20, name: '16-22' },
+//   { value: 20, name: '8-15' },
+//   { value: 20, name: '<=7' },
+// ];
 
-export default function NightingaleChart({
-  data = data1,
-  height = '100%',
-  width = '100%',
-  total = 234,
-}) {
+export default function NightingaleChart({ emiTrends }) {
   const chartRef = useRef(null);
+  console.log(emiTrends);
 
   useEffect(() => {
     if (chartRef.current) {
       const chartInstance = echarts.init(chartRef.current);
+
       const decals = [
-        { symbol: 'circle', symbolSize: 7 },
-        { symbol: 'rect', symbolSize: 2 },
-        { symbol: 'line', symbolSize: 5 },
-        { symbol: 'arrow', symbolSize: 2 },
-        { symbol: 'triangle', symbolSize: 1 },
-        { symbol: 'diamond', symbolSize: 1 },
-        { symbol: 'pin', symbolSize: 2 },
-        { symbol: 'star', symbolSize: 2 },
+        { symbol: 'circle', symbolSize: 2 },
+        { symbol: 'circle', symbolSize: 1 },
+        { symbol: 'circle', symbolSize: 5 },
+        { symbol: 'circle', symbolSize: 2 },
+        { symbol: 'circle', symbolSize: 1 },
       ];
 
       const option = {
         textStyle: {
           fontFamily: 'Poppins, sans-serif',
           fontSize: 12,
-          color: '#ffffff',
+          color: '#ff0000',
         },
         tooltip: {
           trigger: 'item',
+          formatter: '{b}: ({d}%)',
           textStyle: {
             fontFamily: 'Poppins, sans-serif',
           },
         },
         series: [
           {
-            name: 'Nightingale Chart',
+            name: 'EMI Payment Behavior',
             type: 'pie',
-            radius: [10, 110],
+            radius: [40, 80],
             center: ['50%', '50%'],
             roseType: 'area',
             itemStyle: {
-              borderRadius: 8,
+              borderRadius: 6,
             },
             label: {
               show: true,
               fontWeight: 500,
+              fontFamily: 'Poppins',
               formatter: (params) => {
-                return `${((params.value * 100) / total).toFixed()}%`;
+                return `${params.name}`;
               },
             },
-            data: data.map((val, i) => ({
+            data: emiTrends.map((val, i) => ({
               ...val,
-              itemStyle: { decal: decals[i] },
+              itemStyle: { decal: decals[i % decals.length] },
             })),
           },
         ],
@@ -78,27 +70,15 @@ export default function NightingaleChart({
         chartInstance.dispose();
       };
     }
-  }, []);
+  }, [emiTrends]);
 
   return (
-    <Container style={{ marginTop: '2rem', height: '100vh' }}>
-      <div ref={chartRef} style={{ width, height }} />
-    </Container>
+    <div
+      ref={chartRef}
+      style={{
+        width: '100%',
+        height: '83%',
+      }}
+    />
   );
-}
-
-{
-  /* <NightingaleChart
-        data={[
-          { label: 'IndiaMart', value: 40 },
-          { label: 'Paytm', value: 60 },
-          { label: 'Whatsapp', value: 80 },
-          { label: 'Instagram', value: 90 },
-          { label: 'Flipkart', value: 80 },
-          { label: 'Amazon', value: 90 },
-        ]}
-        height="100%"
-        width="100%"
-        total={142 + 73 + 11}
-      /> */
 }

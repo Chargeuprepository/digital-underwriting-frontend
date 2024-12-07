@@ -45,6 +45,7 @@ const RowValue = styled.div`
   background-color: ${(props) => props.background};
   border-radius: 0.6rem;
   padding: 0.2rem;
+  min-height: 2.5rem;
 `;
 const Value = styled.div`
   font-size: 1.4rem;
@@ -70,86 +71,45 @@ export default function CreditGrid({ data }) {
         </ColumnHeader>
       </Header>
 
-      <Table>
-        <RowValue background="var(--color-gray-25)">
-          <Value>
-            {
-              data.highCredit[
-                data.type === 'creditrisk' ? 'lowRisk' : 'highKarma'
-              ]
-            }
-            %
-          </Value>
-          <Value>
-            {
-              data.mediumCredit[
-                data.type === 'creditrisk' ? 'lowRisk' : 'highKarma'
-              ]
-            }
-            %
-          </Value>
-          <Value>
-            {
-              data.lowCredit[
-                data.type === 'creditrisk' ? 'lowRisk' : 'highKarma'
-              ]
-            }
-            %
-          </Value>
-        </RowValue>
-        <RowValue background="var(--color-gray-50)">
-          <Value>
-            {
-              data.highCredit[
-                data.type === 'creditrisk' ? 'mediumRisk' : 'mediumKarma'
-              ]
-            }
-            %
-          </Value>
-          <Value>
-            {
-              data.mediumCredit[
-                data.type === 'creditrisk' ? 'mediumRisk' : 'mediumKarma'
-              ]
-            }
-            %
-          </Value>
-          <Value>
-            {
-              data.lowCredit[
-                data.type === 'creditrisk' ? 'mediumRisk' : 'mediumKarma'
-              ]
-            }
-            %
-          </Value>
-        </RowValue>
-        <RowValue background="var(--color-gray-25)">
-          <Value>
-            {
-              data.highCredit[
-                data.type === 'creditrisk' ? 'highRisk' : 'lowKarma'
-              ]
-            }
-            %
-          </Value>
-          <Value>
-            {
-              data.mediumCredit[
-                data.type === 'creditrisk' ? 'highRisk' : 'lowKarma'
-              ]
-            }
-            %
-          </Value>
-          <Value>
-            {
-              data.lowCredit[
-                data.type === 'creditrisk' ? 'highRisk' : 'lowKarma'
-              ]
-            }
-            %
-          </Value>
-        </RowValue>
-      </Table>
+      {data.type === 'creditRisk' && (
+        <Table>
+          <RowValue background="var(--color-gray-50)">
+            <Value>{data.CreditHighRiskLow}</Value>
+            <Value>{data.CreditMediumRiskLow}</Value>
+            <Value>{data.CreditLowRiskLow}</Value>
+          </RowValue>
+          <RowValue background="var(--color-gray-50)">
+            <Value>{data.CreditHighRiskMedium}</Value>
+            <Value>{data.CreditMediumRiskMedium}</Value>
+            <Value>{data.CreditLowRiskMedium}</Value>
+          </RowValue>
+          <RowValue background="var(--color-gray-50)">
+            <Value>{data.CreditHighRiskHigh}</Value>
+            <Value>{data.CreditMediumRiskHigh}</Value>
+            <Value>{data.CreditLowRiskHigh}</Value>
+          </RowValue>
+        </Table>
+      )}
+
+      {data.type === 'creditKarma' && (
+        <Table>
+          <RowValue background="var(--color-gray-50)">
+            <Value>{data.CreditHighKarmaHigh}</Value>
+            <Value>{data.CreditMediumKarmaHigh}</Value>
+            <Value>{data.CreditLowKarmaHigh}</Value>
+          </RowValue>
+          <RowValue background="var(--color-gray-50)">
+            <Value>{data.CreditHighKarmaMedium}</Value>
+            <Value>{data.CreditMediumKarmaMedium}</Value>
+            <Value>{data.CreditLowKarmaMedium}</Value>
+          </RowValue>
+          <RowValue background="var(--color-gray-50)">
+            <Value>{data.CreditHighKarmaLow}</Value>
+            <Value>{data.CreditMediumKarmaLow}</Value>
+            <Value>{data.CreditLowKarmaLow}</Value>
+          </RowValue>
+        </Table>
+      )}
     </StyledMain>
   );
 }

@@ -1,21 +1,38 @@
 import styled from 'styled-components';
 import { IoIosSearch } from 'react-icons/io';
-import { useEffect, useState } from 'react';
-import { FaSortAmountDownAlt } from 'react-icons/fa';
-import { FaSortAmountUp } from 'react-icons/fa';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Credit from './filters/Credit';
+import Risk from './filters/Risk';
+import Karma from './filters/Karma';
+import AllDrivers from './filters/AllDrivers';
+
+const filterTool = {
+  credit: { value: ['high', 'medium', 'low'] },
+  risk: { value: ['high', 'medium', 'low'] },
+  karma: { value: ['high', 'medium', 'low'] },
+};
 
 const StyledOnboardedHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: end;
-  gap: 4rem;
-  padding-right: 4rem;
+  /* justify-content: space-between; */
+  gap: 0rem;
+  /* padding: 0 0rem 0 0; */
+  /* background-color: red; */
+`;
+const CreditRiskKarmaDriversFilter = styled.div`
+  /* background-color: #ed8282; */
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 1rem;
+  width: 100%;
 `;
 const StyledSearchBar = styled.div`
   position: relative;
-  width: 28rem;
-  height: 4rem;
-  border: 1px solid var(--color-gray-100);
+  width: 24rem;
+  height: 4.4rem;
+  border: 2px solid var(--color-gray-100);
   border-radius: 0.6rem;
   transition: all 0.3s;
   ${(props) =>
@@ -65,92 +82,52 @@ const SearchButton = styled.div`
     transform: scale(0.9);
   }
 `;
-const ToogleContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-const Toogle = styled.div`
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--color-gray-600);
-  text-transform: capitalize;
-  border: 1px solid var(--color-gray-100);
-  width: auto;
-  padding: 1rem 3rem;
-  height: 4rem;
-  border-radius: 0.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3;
-  ${(props) =>
-    props.active === 'active' &&
-    `
-  background-color: var(--color-brand-green-300);
-    color: var(--color-gray-10);`}
-
-  &:hover {
-    background-color: var(--color-brand-green-300);
-    color: var(--color-gray-10);
-  }
-
-  svg {
-    height: 2.2rem;
-    width: 2.2rem;
-  }
-`;
 
 export default function OnboardedHeader() {
+  const navigate = useNavigate();
+  const [id, setId] = useState('');
   const [isFocused, setIsFocused] = useState(false);
-  const [karmaOrderState, setKarmaOrderState] = useState(function () {
-    const savedKarmaOrder = localStorage.getItem('karmaOrder');
-    return savedKarmaOrder !== null ? savedKarmaOrder : 'desc';
-  });
 
   const handleFocus = () => {
     setIsFocused(true);
   };
-
   const handleBlur = () => {
     setIsFocused(false);
   };
-
-  const handleButtonClick = (order) => {
-    setKarmaOrderState(order);
-    localStorage.setItem('karmaOrder', order);
+  function handleSearchClick() {
+    id.trim() &&
+      navigate(`/driver/${id.toUpperCase().trim()}`, {
+        state: { data: { id: id.toUpperCase().trim() } },
+      });
+  }
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearchClick();
+    }
   };
-
-  useEffect(() => {
-    return localStorage.setItem('karmaOrder', 'desc');
-  }, []);
 
   return (
     <StyledOnboardedHeader>
+      <CreditRiskKarmaDriversFilter>
+        <AllDrivers></AllDrivers>
+        <Credit></Credit>
+        <Risk></Risk>
+        <Karma></Karma>
+      </CreditRiskKarmaDriversFilter>
       <StyledSearchBar isFocused={isFocused}>
         <SearchInput
           type="text"
           placeholder="Search Driver..."
           onFocus={handleFocus}
           onBlur={handleBlur}
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
         />
-        <SearchButton>
+        <SearchButton onClick={handleSearchClick}>
           <IoIosSearch />
         </SearchButton>
       </StyledSearchBar>
-      <ToogleContainer>
-        {karmaOrderState === 'asc' && (
-          <Toogle onClick={() => handleButtonClick('desc')}>
-            <FaSortAmountUp />
-          </Toogle>
-        )}
-        {karmaOrderState === 'desc' && (
-          <Toogle onClick={() => handleButtonClick('asc')}>
-            <FaSortAmountDownAlt />
-          </Toogle>
-        )}
-      </ToogleContainer>
     </StyledOnboardedHeader>
   );
 }

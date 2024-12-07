@@ -5,7 +5,7 @@ const StyledContainer = styled.div`
   width: 100%;
   height: 100%;
   background: ${(props) =>
-    props.type === 'creditrisk'
+    props.type === 'creditRisk'
       ? 'linear-gradient(18deg,var(--color-brand-blue-300),var(--color-brand-original-blue-400))'
       : 'linear-gradient(to left,var(--color-brand-original-green-400),var(--color-brand-green-700))'};
   /* background: linear-gradient(
@@ -71,7 +71,7 @@ export default function CreditRange({ data }) {
     <StyledContainer type={data.type}>
       <GridContainer>
         <Heading>{data.heading}</Heading>
-        {data.type === 'creditrisk' ? (
+        {data.type === 'creditRisk' ? (
           <Aside>
             <RowHeader>
               <RowName color="#5ef522">Low</RowName>
@@ -79,11 +79,11 @@ export default function CreditRange({ data }) {
             </RowHeader>
             <RowHeader>
               <RowName color="#f9f519">Medium</RowName>
-              <RowRange>Risk(450-500)</RowRange>
+              <RowRange>Risk(450-650)</RowRange>
             </RowHeader>
             <RowHeader>
               <RowName color="#fc3c3c">High</RowName>
-              <RowRange>Risk(&gt;550)</RowRange>
+              <RowRange>Risk(&gt;650)</RowRange>
             </RowHeader>
           </Aside>
         ) : (

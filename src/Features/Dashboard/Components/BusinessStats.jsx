@@ -58,7 +58,7 @@ const InsightName = styled.p`
   font-weight: 500;
 `;
 
-export default function BusinessStats() {
+export default function BusinessStats({ drivers, emiOnTime }) {
   return (
     <InsightsBar>
       <Heading>Driver&rsquo;s overview</Heading>
@@ -68,7 +68,7 @@ export default function BusinessStats() {
             <FaRegUser style={{ height: '50%', width: '50%' }} />
           </IconContainer>
           <div>
-            <InsightValue>1152</InsightValue>
+            <InsightValue>{drivers}</InsightValue>
             <InsightName>Drivers</InsightName>
           </div>
         </Insight>
@@ -78,7 +78,7 @@ export default function BusinessStats() {
             <SlCalender style={{ height: '50%', width: '50%' }} />
           </IconContainer>
           <div>
-            <InsightValue>98%</InsightValue>
+            <InsightValue>{emiOnTime}</InsightValue>
             <InsightName>EMI On Time</InsightName>
           </div>
         </Insight>
@@ -90,7 +90,7 @@ export default function BusinessStats() {
             />
           </IconContainer>
           <div>
-            <InsightValue>1.04%</InsightValue>
+            <InsightValue>1.13%</InsightValue>
             <InsightName>Asset loss</InsightName>
           </div>
         </Insight>

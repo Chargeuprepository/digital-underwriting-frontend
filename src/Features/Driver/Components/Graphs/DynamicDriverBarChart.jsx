@@ -24,7 +24,7 @@ export default function DynamicBarChart({
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '50%',
+        columnWidth: '40%',
         endingShape: 'rounded',
         borderRadius: 3,
       },
@@ -40,7 +40,7 @@ export default function DynamicBarChart({
     xaxis: {
       categories: xCategories,
       title: {
-        text: 'Months: Initial / Latest',
+        text: 'Last Three Months',
         style: {
           fontSize: '14px',
           fontWeight: 600,
@@ -165,11 +165,11 @@ export default function DynamicBarChart({
 
   // Dynamic data series
   const series = [
-    {
-      name: 'Initial 3 Months',
-      data: initialData,
-      color: initialColor,
-    },
+    // {
+    //   name: 'Initial 3 Months',
+    //   data: initialData,
+    //   color: initialColor,
+    // },
     {
       name: 'Latest 3 Months',
       data: latestData,

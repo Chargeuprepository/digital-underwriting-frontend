@@ -4,7 +4,10 @@ import DriverSummary from './Components/DriverSummary';
 import DriverGraphs from './Components/DriverGraphs';
 import DriverOtherDetails from './Components/DriverOtherDetails';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useOnboardedDriversQueryManager } from '../OnboardedDrivers/GraphQL/queryManager';
+import Spinner from '../../UI/Spinner';
 
 const userData = {
   personalInformation: {
@@ -76,49 +79,62 @@ const StyledDriverLayout = styled.div`
 
 export default function DriverLayout() {
   const location = useLocation();
-  const { id, firstName, lastName, nps, service, runKm, avgDpd, karma } =
-    location.state?.data;
-  const [driverData, setDriverData] = useState(null);
-  const [scores, setScores] = useState({});
+  const { id } = useParams();
+  // const [driverData, setDriverData] = useState(null);
+  const { fetchOnboardedDriversData, loading, error, driverData } =
+    useOnboardedDriversQueryManager('getDriverData');
 
   useEffect(function () {
-    return async function () {
-      const input = { id };
-
-      const res = await fetch('http://localhost:8000/driver', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
-      });
-      const data = await res.json();
-      setDriverData(data);
-      const { riskScore, creditScore, socialScore } = data;
-      setScores({ creditScore, riskScore, socialScore });
-      console.log(data);
-    };
+    fetchOnboardedDriversData({
+      variables: {
+        input: id,
+      },
+    });
   }, []);
+  console.log(location.state?.data);
+
+  console.log(driverData?.driver);
+
+  const actualData = driverData?.driver;
+  const scores = [
+    actualData?.financialInformation.creditScore,
+    actualData?.riskAndCreditInformation.riskScore,
+    // actualData?.riskAndCreditInformation.socialScore,
+  ];
 
   return (
-    <StyledDriverLayout>
-      <DriverHeader
-        name={`${firstName}${' '}${lastName}`}
-        id={id}
-        joiningDate={'12-May-2024'}
-      />
-      <DriverSummary
-        karma={karma}
-        nps={nps}
-        service={service}
-        runKm={runKm}
-        avgDpd={avgDpd}
-        lossDays={'15'}
-        aon={'457'}
-        scores={scores}
-      />
-      <DriverGraphs />
-      <DriverOtherDetails userData={driverData} />
-    </StyledDriverLayout>
+    <>
+      {driverData?.driver ? (
+        <StyledDriverLayout>
+          <DriverHeader
+            name={
+              actualData.personalInformation.firstName +
+              ' ' +
+              actualData.personalInformation.lastName
+            }
+            id={id}
+            joiningDate={actualData.onboardedDate}
+          />
+          <DriverSummary
+            karma={actualData.cardData.karmaScore}
+            nps={actualData.cardData.nps}
+            service={actualData.cardData.service}
+            runKm={actualData.cardData.runKm}
+            avgDpd={actualData.cardData.avgDpd}
+            lossDays={actualData.cardData.lossDays}
+            aon={actualData.cardData.aon}
+            scores={scores}
+          />
+          <DriverGraphs
+            earnings={actualData.earningInformation}
+            runKm={actualData.runKmInformation}
+            emi={actualData.emi}
+          />
+          <DriverOtherDetails userData={actualData} />
+        </StyledDriverLayout>
+      ) : (
+        <Spinner />
+      )}
+    </>
   );
 }

@@ -31,6 +31,7 @@ const Name = styled.div`
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-gray-50);
+  text-transform: capitalize;
 `;
 const Id = styled.div`
   font-size: 1.3rem;

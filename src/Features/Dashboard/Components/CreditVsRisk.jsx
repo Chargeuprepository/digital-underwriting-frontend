@@ -6,29 +6,29 @@ const StyledCreditRisk = styled.div`
 `;
 
 const data = {
-  heading: "Driver's Profiling",
-  type: 'creditrisk',
-  highCredit: {
-    lowRisk: 19,
-    mediumRisk: 3,
-    highRisk: 39,
-  },
-  mediumCredit: {
-    lowRisk: 12,
-    mediumRisk: 2,
-    highRisk: 18,
-  },
-  lowCredit: {
-    lowRisk: 1,
-    mediumRisk: 1,
-    highRisk: 3,
-  },
+  heading: 'Credit vs risk',
+  type: 'creditRisk',
+  // highCredit: {
+  //   lowRisk: 19,
+  //   mediumRisk: 3,
+  //   highRisk: 39,
+  // },
+  // mediumCredit: {
+  //   lowRisk: 12,
+  //   mediumRisk: 2,
+  //   highRisk: 18,
+  // },
+  // lowCredit: {
+  //   lowRisk: 1,
+  //   mediumRisk: 1,
+  //   highRisk: 3,
+  // },
 };
 
-export default function CreditVsRisk() {
+export default function CreditVsRisk({ creditVsRisk }) {
   return (
     <StyledCreditRisk>
-      <CreditRange data={data} />
+      <CreditRange data={{ ...creditVsRisk, ...data }} />
     </StyledCreditRisk>
   );
 }

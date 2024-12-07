@@ -63,7 +63,7 @@ function App() {
               element={<CreditVerification />}
             />
             <Route path="/ML-form/:formName" element={<MLFormPage />} />
-            <Route path="/driver/:driverName" element={<Driver />} />
+            <Route path="/driver/:id" element={<Driver />} />
 
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
@@ -71,6 +71,7 @@ function App() {
             <Route path="testing" element={<Testing />} />
             <Route path="myProfile" element={<MyProfile />} />
             <Route path="radial" element={<RadialChart />} />
+            <Route path="night" element={<NightingaleChart />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Suspense>

@@ -41,7 +41,7 @@ const obj = [
   { label: 'instagram', value: 90 },
   { label: 'flipkart', value: 80 },
   { label: 'amazon', value: 90 },
-  { label: 'indiamart', value: 40 },
+  { label: 'isWABusiness', value: 40 },
 ];
 
 const sorted = obj.sort((a, b) => b.value - a.value);
@@ -60,33 +60,4 @@ export default function SocialMedia() {
       </ParentContainer>
     </StyledChartContainer>
   );
-}
-
-// Pallete 2
-// indiamart: #2e3192
-// paytm: #00baf2
-// whatsapp: #25D366
-// instagram: #d62976
-// flipkart: #1F74BA
-// amazon: #f6bc66
-
-{
-  /* <BarChart
-  heading="Social Media Platform"
-  direction="vertical"
-  format="%"
-  height="100%"
-  width="100%"
-  total={411}
-  labelSize={'10px'}
-  colors={['#2e3192', '#00baf2', '#25D366', '#d62976', '#1F74BA', '#f6bc66']}
-  data={[
-    { label: 'IndiaMart', value: 40 },
-    { label: 'Paytm', value: 60 },
-    { label: 'Whatsapp', value: 80 },
-    { label: 'Instagram', value: 90 },
-    { label: 'Flipkart', value: 80 },
-    { label: 'Amazon', value: 90 },
-  ]}
-/>; */
 }

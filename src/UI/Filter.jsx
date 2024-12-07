@@ -3,8 +3,8 @@ import styled, { keyframes } from 'styled-components';
 
 export const TitleHeading = styled.div`
   font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--color-gray-50);
+  font-weight: 700;
+  color: var(--color-gray-700);
 `;
 
 export const FilterContainer = styled.div`
@@ -17,21 +17,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
   border-radius: 0.5rem;
+  border: 1px solid var(--color-gray-100);
   padding: 0.8rem 1.6rem;
-  background: linear-gradient(
-    45deg,
-    var(--color-brand-blue-300),
-    var(--color-brand-blue-500)
-  );
+  background: linear-gradient(45deg, var(--color-gray-0), var(--color-gray-0));
 `;
 
 export const Heading = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: var(--color-gray-50);
-  color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
 `;
@@ -63,9 +58,10 @@ export const RiskCreditContainer = styled.button`
   align-items: center;
   gap: 0.1rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--color-gray-600);
-  padding: 0.4rem 1rem;
+  border: 1px solid var(--color-gray-100);
+  padding: 0.4rem 1.2rem;
   transition: transform 0.3s ease-in-out;
+  color: ${(props) => props.color || 'var(--color-gray-600)'};
 
   &:active {
     animation: ${(props) => !props.activebutton && scaleOut} 0.1s forwards;
@@ -78,9 +74,13 @@ export const RiskCreditContainer = styled.button`
 
   ${(props) =>
     props.activebutton && {
-      background:
-        'linear-gradient(45deg, var(--color-brand-original-blue-400), var(--color-brand-blue-600))',
-      border: '1.2px solid var(--color-gray-50)',
+      // background: 'linear-gradient(45deg, #2b18a9, #511bcf)',
+      background: props.backColor,
+      border: '1px solid transparent',
+      color: 'var(--color-gray-800)',
+      // background:
+      //   'linear-gradient(45deg, var(--color-brand-original-blue-400), var(--color-brand-blue-600))',
+      // border: '1.2px solid var(--color-gray-50)',
     }};
 `;
 
@@ -104,8 +104,9 @@ export default function Filter({ paramName, options }) {
             key={option.value}
             disabled={option.value === paramValue}
             activebutton={option.value === paramValue}
+            backColor={option.backColor}
           >
-            {<Heading color={option.color}>{option.label}</Heading>}
+            {<Heading>{option.label}</Heading>}
           </RiskCreditContainer>
         ))}
       </FilterContainer>

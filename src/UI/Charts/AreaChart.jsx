@@ -11,20 +11,20 @@ const Heading = styled.div`
   padding: 2rem 0rem 0rem 1rem;
 `;
 
-const dummySeries = [
-  {
-    name: 'Active',
-    data: [51, 242, 392, 533],
-    color: '#1e90ff',
-  },
-  {
-    name: 'Churned',
-    data: [0, 5, 26, 44],
-    color: '#32cd32',
-  },
-];
+// const dummySeries = [
+//   {
+//     name: 'Active',
+//     data: [51, 242, 392, 533],
+//     color: '#1e90ff',
+//   },
+//   {
+//     name: 'Churned',
+//     data: [0, 5, 26, 44],
+//     color: '#32cd32',
+//   },
+// ];
 
-export default function AreaChart({ heading, series = dummySeries }) {
+export default function AreaChart({ heading, series, churnedDriversData }) {
   const options = {
     chart: {
       type: 'area',
@@ -54,7 +54,14 @@ export default function AreaChart({ heading, series = dummySeries }) {
     colors: ['#1E90FF', '#32CD32'],
     xaxis: {
       // type: 'datetime',
-      categories: ['2023 Q2', '2023 Q3', '2023 Q4', '2024 Q1'],
+      categories: [
+        churnedDriversData[0].month,
+        churnedDriversData[1].month,
+        churnedDriversData[2].month,
+        churnedDriversData[3].month,
+        churnedDriversData[4].month,
+        churnedDriversData[5].month,
+      ],
       labels: {
         style: {
           colors: 'var(--color-gray-400)',

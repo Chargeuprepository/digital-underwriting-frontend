@@ -9,6 +9,9 @@ const Overlay = styled.div`
   backdrop-filter: blur(4px);
   z-index: 1000;
   transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default Overlay;

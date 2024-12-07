@@ -13,7 +13,7 @@ export default function DriverAreaChart({
 }) {
   // Calculate average of the Y-axis values
   const averageValue =
-    series[0].data.reduce((acc, val) => acc + val, 0) / series[0].data.length;
+    series[0].data.reduce((acc, val) => acc + +val, 0) / series[0].data.length;
 
   const options = {
     chart: {

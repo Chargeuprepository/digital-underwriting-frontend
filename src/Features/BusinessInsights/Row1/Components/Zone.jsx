@@ -15,17 +15,25 @@ const StyledZone = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
   border-radius: 0.5rem;
   padding: 1rem;
   font-size: 1.6rem;
   font-weight: 600;
-  color: var(--color-gray-50);
-  background: linear-gradient(
+  color: var(--color-gray-600);
+  /* background: linear-gradient(
     45deg,
-    var(--color-brand-blue-300),
-    var(--color-brand-blue-500)
-  );
+    var(--color-brand-blue-0),
+    var(--color-brand-blue-0)
+  ); */
+  border: 1px solid var(--color-gray-100);
+  transition: all 0.3s;
+  &:hover {
+    border: 1px solid var(--color-gray-50);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
 
   svg {
     height: 2.4rem;

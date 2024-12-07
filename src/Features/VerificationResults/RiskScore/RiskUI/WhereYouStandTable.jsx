@@ -19,7 +19,7 @@ const RiskScoreAndPercent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: ${(props) => props.fontSize || '1.6rem'};
   font-weight: 500;
   color: ${(props) => (props.color ? props.color : 'var(--color-gray-600)')};
 `;
@@ -35,7 +35,10 @@ const data = [
   { score: '751-999', percent: '0.1%', color: '#f01010' },
 ];
 
-export default function WhereYouStandTable({ CurrentRiskScore = null }) {
+export default function WhereYouStandTable({
+  CurrentRiskScore = null,
+  fontSize,
+}) {
   return (
     <StyledWhereYouStandTable>
       {data.map((val, i) => {
@@ -48,11 +51,17 @@ export default function WhereYouStandTable({ CurrentRiskScore = null }) {
             key={i}
             backgroundcolor={res && 'var(--color-gray-200)'}
           >
-            <RiskScoreAndPercent color={res && 'var(--color-gray-800)'}>
+            <RiskScoreAndPercent
+              fontSize={fontSize}
+              color={res && 'var(--color-gray-800)'}
+            >
               {val.score}
             </RiskScoreAndPercent>
             <ColorColumn backgroundcolor={val.color} />
-            <RiskScoreAndPercent color={res && 'var(--color-gray-800)'}>
+            <RiskScoreAndPercent
+              fontSize={fontSize}
+              color={res && 'var(--color-gray-800)'}
+            >
               {val.percent}
             </RiskScoreAndPercent>
           </RowContainer>

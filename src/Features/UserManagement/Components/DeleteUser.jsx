@@ -13,7 +13,7 @@ const DeleteFormContainer = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.286);
   border-radius: 0.8rem;
   margin: auto;
-  transform: translateY(70%);
+  /* transform: translateY(70%); */
   position: relative;
   text-transform: capitalize;
 `;

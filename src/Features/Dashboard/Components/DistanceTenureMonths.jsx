@@ -32,8 +32,23 @@ const DistanceTenureMonthsContainer = styled.div`
 `;
 
 const colors = ['#8B7765', '#CD853F', '#F4A460'];
+// const series = [
+//   {
+//     name: '',
+//     data: ['0%', '0%', '0%', '0%', '0%'],
+//   },
+//   {
+//     name: '',
+//     data: ['0%', '0%', '0%', '0%', '0%'],
+//   },
+//   {
+//     name: '',
+//     data: ['0%', '0%', '0%', '0%', '0%'],
+//   },
+// ];
 
-export default function DistanceTenureMonths() {
+export default function DistanceTenureMonths({ runKmData }) {
+  // const [series, setSeries] = useState(runKmData);
   const options = {
     chart: {
       type: 'bar',
@@ -183,26 +198,16 @@ export default function DistanceTenureMonths() {
       borderColor: 'var(--color-gray-50)',
     },
   };
-
-  const series = [
-    {
-      name: 'May',
-      data: ['19%', '10%', '14%', '16%', '41%'],
-    },
-    {
-      name: 'June',
-      data: ['9%', '11%', '23%', '27%', '29%'],
-    },
-    {
-      name: 'July',
-      data: ['8%', '12%', '20%', '24%', '37%'],
-    },
-  ];
+  const series = runKmData ? JSON.parse(JSON.stringify(runKmData)) : [];
 
   return (
     <DistanceTenureMonthsContainer>
       <Heading>Monthly Driving Trends(KM/DAY)</Heading>
-      <Chart options={options} series={series} type="bar" height={'100%'} />
+      {series.length > 0 ? (
+        <Chart options={options} series={series} type="bar" height="100%" />
+      ) : (
+        <p>No data available</p>
+      )}{' '}
     </DistanceTenureMonthsContainer>
   );
 }

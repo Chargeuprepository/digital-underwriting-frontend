@@ -11,7 +11,7 @@ const ChurnedContainer = styled.div`
   align-self: center;
   transition: transform 0.6s ease;
   background: linear-gradient(
-    to right,
+    to left,
     var(--color-gray-0),
     var(--color-gray-50)
   );
@@ -20,23 +20,41 @@ const ChurnedContainer = styled.div`
   }
 `;
 
-export default function Churned() {
+export default function Churned({ lastSixMonthDrivers, churnedDriversData }) {
   const series = [
     {
       name: 'Active',
-      data: [51, 242, 392, 533],
-      color: '#1e90ff',
+      data: [
+        lastSixMonthDrivers[0].count,
+        lastSixMonthDrivers[1].count,
+        lastSixMonthDrivers[2].count,
+        lastSixMonthDrivers[3].count,
+        lastSixMonthDrivers[4].count,
+        lastSixMonthDrivers[5].count,
+      ],
+      // color: '#1e90ff',
     },
     {
       name: 'Churned',
-      data: [0, 5, 26, 44],
-      color: '#32cd32',
+      data: [
+        churnedDriversData[0].count,
+        churnedDriversData[1].count,
+        churnedDriversData[2].count,
+        churnedDriversData[3].count,
+        churnedDriversData[4].count,
+        churnedDriversData[5].count,
+      ],
+      // color: '#32cd32',
     },
   ];
 
   return (
     <ChurnedContainer>
-      <AreaChart heading={'Retention Rate'} series={series} />
+      <AreaChart
+        heading={'Retention Rate'}
+        series={series}
+        churnedDriversData={churnedDriversData}
+      />
     </ChurnedContainer>
   );
 }

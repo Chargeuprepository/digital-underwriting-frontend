@@ -7,7 +7,7 @@ import { RiPinDistanceFill } from 'react-icons/ri';
 import { MdOutlineRememberMe } from 'react-icons/md';
 import { TbBatteryOff } from 'react-icons/tb';
 import RiskCibilSocialRadial from './Graphs/RiskCibilSocialRadial';
-import PaymentModeRadial from './Graphs/PaymentModeRadial';
+import DriverInsights from './Graphs/DriverInsights';
 
 const StyledDriverSummary = styled.div`
   grid-row: 2;
@@ -40,6 +40,15 @@ const SummarySingle = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+
+  &:first-child {
+    background: linear-gradient(
+      45deg,
+      var(--color-brand-blue-500),
+      var(--color-brand-blue-700)
+    );
+    border: 1px solid var(--color-gray-10);
+  }
 `;
 const IconParent = styled.div`
   background-color: aliceblue;
@@ -68,7 +77,9 @@ const Value = styled.div`
   color: var(--color-gray-200);
 `;
 const RadialContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   align-items: center;
 `;
 
@@ -90,7 +101,7 @@ export default function DriverSummary({
       iconBack: '#e7602b',
     },
     {
-      name: 'DPD',
+      name: 'Avg. DPD',
       icon: SlCalender,
       value: avgDpd,
       iconBack: '#e62743',
@@ -146,7 +157,7 @@ export default function DriverSummary({
       </SummaryRestContainer>
       <RadialContainer>
         <RiskCibilSocialRadial scores={scores} />
-        <PaymentModeRadial />
+        <DriverInsights />
       </RadialContainer>
     </StyledDriverSummary>
   );

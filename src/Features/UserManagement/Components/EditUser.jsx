@@ -13,7 +13,7 @@ const EditUserContainer = styled.div`
   padding-top: 1rem;
   border-radius: 0.8rem;
   margin: auto;
-  transform: translateY(25%);
+  /* transform: translateY(25%); */
   position: relative;
 `;
 const CrossContainer = styled.div`

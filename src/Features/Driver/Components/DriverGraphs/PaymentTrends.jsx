@@ -1,12 +1,10 @@
 import React from 'react';
 import DriverAreaChart from '../Graphs/DriverAreaChart';
 
-export default function PaymentTrends() {
+export default function PaymentTrends(emi) {
   // Data for the first chart (Days Late / Early)
-  const yAxisData1 = [
-    -22, 9, 3, -4, 0, -1, 13, 0, -80, 1, -3, 4, 26, 2, 5, -19, 70, -5, 9, 0, 4,
-    -2, 6, 30,
-  ];
+
+  const yAxisData1 = emi.emi.split(',');
   const series1 = [{ name: 'Days Late / Early', data: yAxisData1 }];
   const xCategories1 = Array.from({ length: 24 }, (_, i) => i + 1); // X-axis labels from 1 to 24
   function calculateAverage(arr) {

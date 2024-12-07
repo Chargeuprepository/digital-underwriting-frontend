@@ -28,7 +28,7 @@ export default function DriverRadialChart({
             fontSize: '14px',
             formatter: function (value) {
               console.log(value);
-              return totalLabel === 'Cibil/Risk/Social'
+              return totalLabel === 'Cibil/Risk'
                 ? ((value / 100) * 900).toFixed(0)
                 : value;
             },
@@ -60,7 +60,7 @@ export default function DriverRadialChart({
     labels: labels || [], // Dynamic labels for radial bars
   };
 
-  if (totalLabel === 'Cibil/Risk/Social')
+  if (totalLabel === 'Cibil/Risk')
     seriesModi = series.map((val) => +((val / 900) * 100).toFixed(2));
   else seriesModi = series;
 
