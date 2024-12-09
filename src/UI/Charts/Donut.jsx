@@ -86,7 +86,8 @@ export default function Donut({
       },
       y: {
         formatter: function (val) {
-          return `${((val / total) * 100).toFixed(2)}%`;
+          return val;
+          // return `${((val / total) * 100).toFixed(2)}%`;
         },
       },
     },

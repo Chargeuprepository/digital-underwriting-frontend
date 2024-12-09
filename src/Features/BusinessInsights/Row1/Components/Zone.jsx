@@ -3,6 +3,7 @@ import { FaEarthAmericas } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useOutsideClick from '../../../../Hooks/useOutsideClick';
+import { useLocation } from 'react-router-dom';
 
 const ZoneParentContainer = styled.div`
   position: relative;
@@ -102,13 +103,16 @@ const Button = styled.button`
   }
 `;
 
-const list = ['delhi', 'noida', 'faridabad', 'meerut', 'gujarat', 'varanasi'];
+// const list = ['delhi', 'noida', 'faridabad', 'meerut', 'gujarat', 'varanasi'];
 
-export default function Zone() {
+export default function Zone({ zone }) {
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [openZones, setOpenZones] = useState(false);
   const [zoneList, setZoneList] = useState([]);
   const { refStyledModal } = useOutsideClick(setOpenZones);
+
+  console.log(zoneList);
 
   function handleClick() {
     setOpenZones((openZones) => !openZones);
@@ -146,7 +150,7 @@ export default function Zone() {
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, []);
+  }, [location.search]);
 
   return (
     <ZoneParentContainer ref={refStyledModal}>
@@ -159,7 +163,7 @@ export default function Zone() {
         // (
         <StyledCheckBoxContainer className="open">
           <CheckBoxContainer>
-            {list.map((li, i) => {
+            {zone.map((li, i) => {
               return (
                 <CheckBox key={i}>
                   <ZoneInput

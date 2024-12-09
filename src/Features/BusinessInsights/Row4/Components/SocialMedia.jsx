@@ -26,7 +26,7 @@ const MediaContainer = styled.div`
   }
 `;
 const Value = styled.div`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-gray-700);
 `;
@@ -41,23 +41,47 @@ const obj = [
   { label: 'instagram', value: 90 },
   { label: 'flipkart', value: 80 },
   { label: 'amazon', value: 90 },
-  { label: 'isWABusiness', value: 40 },
+  { label: 'waBusiness', value: 40 },
 ];
 
-const sorted = obj.sort((a, b) => b.value - a.value);
+export default function SocialMedia({ socialMediaPlatform }) {
+  const obj =
+    socialMediaPlatform &&
+    Object.entries(socialMediaPlatform).map(([label, value]) => ({
+      label,
+      value: Number(value),
+    }));
 
-export default function SocialMedia() {
+  const sorted = socialMediaPlatform && obj.sort((a, b) => b.value - a.value);
+
   return (
     <StyledChartContainer padding={'2rem 4.4rem 0.8rem 4.4rem'} width={'45rem'}>
       <Heading>Social Media Platform</Heading>
       <ParentContainer>
-        {sorted.map((val) => (
+        {sorted?.map((val) => (
           <MediaContainer key={val.label}>
-            <Icon src={`/img/socialMediaIcons/${val.label}.svg`} />
-            <Value>{val.value}</Value>
+            <Icon src={`/img/socialMediaIcons/${val?.label}.svg`} />
+            <Value>{val?.value}%</Value>
           </MediaContainer>
         ))}
       </ParentContainer>
     </StyledChartContainer>
   );
 }
+
+// export default function SocialMedia({ socialMediaPlatform }) {
+//   const sorted = socialMediaPlatform?.sort((a, b) => b.value - a.value);
+//   return (
+//     <StyledChartContainer padding={'2rem 4.4rem 0.8rem 4.4rem'} width={'45rem'}>
+//       <Heading>Social Media Platform</Heading>
+//       <ParentContainer>
+//         {sorted.map((val) => (
+//           <MediaContainer key={val.label}>
+//             <Icon src={`/img/socialMediaIcons/${val.label}.svg`} />
+//             <Value>{val.value}</Value>
+//           </MediaContainer>
+//         ))}
+//       </ParentContainer>
+//     </StyledChartContainer>
+//   );
+// }

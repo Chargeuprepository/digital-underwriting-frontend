@@ -3,12 +3,16 @@ import RowLayoutBusiInsights from '../BIUI/RowLayoutBusi-Insights';
 import PieRow3 from './Components/PieRow3';
 import Bar2Row3 from './Components/Bar2Row3';
 
-export default function Row5Layout() {
+export default function Row5Layout({
+  identityConfidence,
+  phoneNameMatchScore,
+  driversUsingUpi,
+}) {
   return (
     <RowLayoutBusiInsights row="3" backgroundcolor={'var(--color-gray-10)'}>
-      <Bar1Row3 />
-      <PieRow3 />
-      <Bar2Row3 />
+      <Bar1Row3 identityConfidence={identityConfidence} />
+      <PieRow3 phoneNameMatchScore={phoneNameMatchScore} />
+      <Bar2Row3 driversUsingUpi={driversUsingUpi} />
     </RowLayoutBusiInsights>
   );
 }

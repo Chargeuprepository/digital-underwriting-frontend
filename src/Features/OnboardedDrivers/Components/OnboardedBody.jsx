@@ -8,11 +8,11 @@ const StyledOnboardedBody = styled.div`
   overflow: hidden;
 `;
 
-export default function OnboardedBody() {
+export default function OnboardedBody({ driverData }) {
   return (
     <StyledOnboardedBody>
       <GridHeader />
-      <GridBody />
+      <GridBody driverData={driverData && driverData} />
     </StyledOnboardedBody>
   );
 }

@@ -23,7 +23,7 @@ const ChurnedContainer = styled.div`
 export default function Churned({ lastSixMonthDrivers, churnedDriversData }) {
   const series = [
     {
-      name: 'Active',
+      name: 'New Drivers',
       data: [
         lastSixMonthDrivers[0].count,
         lastSixMonthDrivers[1].count,

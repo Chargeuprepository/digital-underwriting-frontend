@@ -7,7 +7,6 @@ import Heading from './Heading';
 const data1 = {
   heading: 'Bar Chart',
   direction: 'vertical',
-  format: '%',
   height: '100%',
   width: '80%',
   total: 1000,
@@ -30,7 +29,7 @@ const StyledBar = styled.div`
 export default function BarChart({
   data = data1.data,
   direction = data1.direction,
-  format = data1.format,
+  format,
   heading = data1.heading,
   height = data1.height,
   width = data1.width,

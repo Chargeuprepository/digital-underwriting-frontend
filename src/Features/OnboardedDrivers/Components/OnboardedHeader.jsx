@@ -83,7 +83,7 @@ const SearchButton = styled.div`
   }
 `;
 
-export default function OnboardedHeader() {
+export default function OnboardedHeader({ length }) {
   const navigate = useNavigate();
   const [id, setId] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -109,7 +109,7 @@ export default function OnboardedHeader() {
   return (
     <StyledOnboardedHeader>
       <CreditRiskKarmaDriversFilter>
-        <AllDrivers></AllDrivers>
+        <AllDrivers length={length}></AllDrivers>
         <Credit></Credit>
         <Risk></Risk>
         <Karma></Karma>

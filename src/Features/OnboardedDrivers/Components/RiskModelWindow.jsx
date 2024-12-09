@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { RxCross1 } from 'react-icons/rx';
 import ScoreChart from '../../VerificationResults/UI/ScoreChart';
 import WhereYouStandTable from '../../VerificationResults/RiskScore/RiskUI/WhereYouStandTable';
+import breakCamelCase from '../../../Utils/breakCamelCase';
+import Spinner from '../../../UI/Spinner';
 
 const StyledRiskModelWindow = styled.div`
   height: 80vh;
@@ -48,15 +50,15 @@ const RiskHeading = styled.div`
   font-size: 2rem;
   font-weight: 600;
   color: var(--color-gray-25);
-  margin: 3.8rem 0 1.4rem 1.3rem;
+  margin: 3.2rem 0 1.4rem 1.3rem;
   /* background-color: aliceblue; */
 `;
 const Parameters = styled.div`
   /* background-color: aqua; */
-  padding: 3rem 3rem 4rem 3rem;
+  padding: 4rem 3rem 4rem 3rem;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 3.6rem;
 `;
 
 const StyledRiskParam = styled.div`
@@ -67,20 +69,27 @@ const StyledRiskParam = styled.div`
 `;
 const DataDisplay = styled.div`
   border: 1px solid var(--color-gray-500);
-  padding: 1rem 2rem;
+  padding: 1rem 1.6rem;
   border-radius: 0.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.2rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  height: 8rem;
 
   &:nth-child(1) {
     background: linear-gradient(
-      45deg,
-      var(--color-brand-original-blue-400),
-      var(--color-brand-blue-500)
+      to left,
+      var(--color-brand-green-700),
+      var(--color-brand-green-800)
     );
-    border: 1px solid var(--color-gray-10);
+    border: 1px solid var(--color-gray-0);
+  }
+  &:hover {
+    transform: scale(1.02);
   }
 `;
 const KeyValue = styled.div`
@@ -91,64 +100,61 @@ const KeyValue = styled.div`
 `;
 
 const data = {
-  telecom: {
-    name: 'gaurav joshi gj',
-    game: 'gaurav joshi gj',
-    tame: 'gaurav joshi gj',
-    came: 'gaurav joshi gj',
-  },
-  efflugence: {
-    name: 'gaurav joshi gj',
-    game: 'gaurav joshi gj',
-    tame: 'gaurav joshi gj',
-    came: 'gaurav joshi gj',
-  },
-  social: {
-    name: 'gaurav joshi gj',
-    game: 'gaurav joshi gj',
-    tame: 'gaurav joshi gj',
-    came: 'gaurav joshi gj',
+  digital: {
+    digitalFootprint: 'medium',
+    affluenceScore: '36',
+    digitalPaymentScore: '235',
+    vpa: 'qwerty@ybl',
   },
   identity: {
-    name: 'gaurav joshi gj',
-    game: 'gaurav joshi gj',
-    tame: 'gaurav joshi gj',
-    came: 'gaurav joshi gj',
+    identityConfidence: 'low',
+    phoneFootprint: 'medium',
+    digitalAge: '4792',
+    nameMatchScore: '70',
   },
-  digital: {
-    name: 'gaurav joshi gj',
-    game: 'gaurav joshi gj',
-    tame: 'gaurav joshi gj',
-    came: 'gaurav joshi gj',
+  social: {
+    socialFootprint: 'medium',
+    socialMediaScore: '445',
+    socialMediaCount: '6',
+    eCommerceScore: '5',
+  },
+  telecom: {
+    telecomRisk: 'medium',
+    phoneReachable: 'true',
+    billing: 'prepaid',
+    portHistory: 'true',
   },
 };
 
-export default function RiskModelWindow({ setOpenRiskModelWindow }) {
+export default function RiskModelWindow({ setOpenRiskModelWindow, data }) {
   return (
     <StyledRiskModelWindow onClick={(e) => e.stopPropagation()}>
-      <BorderContainer>
-        <CrossContainer onClick={() => setOpenRiskModelWindow(false)}>
-          <RxCross1 />
-        </CrossContainer>
-        <ScoreAndStand>
-          <RiskHeading>Charge Up Risk Score</RiskHeading>
-          <ScoreChart
-            param={500}
-            textColor={'var(--color-gray-50)'}
-          ></ScoreChart>
-          <WhereYouStandTable
-            CurrentRiskScore={500}
-            fontSize={'1.45rem'}
-          ></WhereYouStandTable>
-        </ScoreAndStand>
-        <Parameters>
-          <RiskParam data={data['telecom']} />
-          <RiskParam data={data['efflugence']} />
-          <RiskParam data={data['social']} />
-          <RiskParam data={data['identity']} />
-          <RiskParam data={data['digital']} />
-        </Parameters>
-      </BorderContainer>
+      {data ? (
+        <BorderContainer>
+          <CrossContainer onClick={() => setOpenRiskModelWindow(false)}>
+            <RxCross1 />
+          </CrossContainer>
+          <ScoreAndStand>
+            <RiskHeading>Chargeup Risk Score</RiskHeading>
+            <ScoreChart
+              param={+data?.riskScore}
+              textColor={'var(--color-gray-50)'}
+            ></ScoreChart>
+            <WhereYouStandTable
+              CurrentRiskScore={+data?.riskScore}
+              fontSize={'1.45rem'}
+            ></WhereYouStandTable>
+          </ScoreAndStand>
+          <Parameters>
+            <RiskParam data={data['digital']} />
+            <RiskParam data={data['identity']} />
+            <RiskParam data={data['social']} />
+            <RiskParam data={data['telecom']} />
+          </Parameters>
+        </BorderContainer>
+      ) : (
+        <Spinner></Spinner>
+      )}
     </StyledRiskModelWindow>
   );
 }
@@ -159,16 +165,17 @@ function RiskParam({ data }) {
       {Object.entries(data).map(([key, value]) => (
         <DataDisplay>
           <KeyValue
-            size={'1.4rem'}
+            size={'1.2rem'}
             weight={'600'}
-            color={'var(--color-gray-100)'}
+            color={'var(--color-gray-300)'}
           >
-            {key}
+            {breakCamelCase(key)}
+            {/* {key} */}
           </KeyValue>
           <KeyValue
             size={'1.3rem'}
             weight={'500'}
-            color={'var(--color-gray-300)'}
+            color={'var(--color-gray-100)'}
           >
             {value}
           </KeyValue>

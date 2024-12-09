@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { PAGE_SIZE } from '../Utils/constants';
+import { PAGE_OFFSET } from '../Utils/constants';
 import { useSearchParams } from 'react-router-dom';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { useEffect } from 'react';
 
 const StyledPagination = styled.div`
   display: flex;
@@ -69,35 +70,56 @@ function formatWithLeadingZero(value) {
 
 export default function Pagination({ count }) {
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const offset = searchParams.get('offset') || 0;
   const currentPage = !searchParams.get('page')
     ? 1
     : Number(searchParams.get('page'));
-  const pageCount = Math.ceil(count / PAGE_SIZE);
+  const pageCount = Math.ceil(count / PAGE_OFFSET);
 
+  // >>>
   function nextPage() {
     const next = currentPage === pageCount ? currentPage : currentPage + 1;
+    const nextOffset = +offset + 20;
 
     searchParams.set('page', next);
+    searchParams.set('offset', nextOffset);
     setSearchParams(searchParams);
   }
+  // <<<
   function previousPage() {
     const previous = currentPage === 1 ? currentPage : currentPage - 1;
+    const previousOffset = +offset - 20;
 
     searchParams.set('page', previous);
+    searchParams.set('offset', previousOffset);
     setSearchParams(searchParams);
   }
 
-  if (count <= PAGE_SIZE || count === 0) return null;
+  useEffect(
+    function () {
+      searchParams.set('page', 1);
+      searchParams.set('offset', 0);
+      setSearchParams(searchParams);
+    },
+    [
+      searchParams.get('credit'),
+      searchParams.get('risk'),
+      searchParams.get('karma'),
+    ]
+  );
+
+  if (count <= PAGE_OFFSET || count === 0) return null;
   return (
     <StyledPagination>
       <ResultString>
         Showing{' '}
-        <span>{formatWithLeadingZero((currentPage - 1) * PAGE_SIZE + 1)}</span>{' '}
+        <span>
+          {formatWithLeadingZero((currentPage - 1) * PAGE_OFFSET + 1)}
+        </span>{' '}
         to{' '}
         <span>
           {formatWithLeadingZero(
-            currentPage === pageCount ? count : currentPage * PAGE_SIZE
+            currentPage === pageCount ? count : currentPage * PAGE_OFFSET
           )}
         </span>{' '}
         of <span>{formatWithLeadingZero(count)}</span> results

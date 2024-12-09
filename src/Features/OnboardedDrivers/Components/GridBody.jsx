@@ -7,6 +7,7 @@ import { useOnboardedDriversQueryManager } from '../GraphQL/queryManager';
 import RiskModelWindow from './RiskModelWindow';
 import { createPortal } from 'react-dom';
 import Overlay from '../../../UI/Overlay';
+import { useLocation } from 'react-router-dom';
 
 const StyledGridBody = styled.div`
   height: 45rem;
@@ -25,28 +26,39 @@ const NoDriverFound = styled.div`
   left: 41%;
 `;
 
-export default function GridBody() {
+export default function GridBody({ driverData }) {
+  const {
+    fetchOnboardedDriversData,
+    loading,
+    error,
+    driverData: onboardedRiskData,
+  } = useOnboardedDriversQueryManager('getOnboardedRiskData');
   const [openRiskModelWindow, setOpenRiskModelWindow] = useState(false);
   const navigate = useNavigate();
-  const { fetchOnboardedDriversData, loading, error, driverData } =
-    useOnboardedDriversQueryManager('getOnboardedData');
-
-  useEffect(function () {
-    fetchOnboardedDriversData();
-  }, []);
-
-  console.log(driverData);
 
   function handleClickKarma(val) {
     navigate(`/driver/${val.id}`, { state: { data: val } });
   }
+  function handleClickRiskWindow(id) {
+    console.log(id);
+    setOpenRiskModelWindow((state) => !state);
+    fetchOnboardedDriversData({
+      variables: {
+        input: {
+          id,
+        },
+      },
+    });
+  }
+
+  console.log(onboardedRiskData);
 
   return (
     <>
       <StyledGridBody>
         {driverData ? (
-          driverData.onboarded.length > 0 ? (
-            driverData.onboarded.map((val, i) => {
+          driverData.onboarded.onboardedManipulatedData.length > 0 ? (
+            driverData.onboarded.onboardedManipulatedData.map((val, i) => {
               const creditColor = valueColorHandler('credit', val.credit);
               const riskColor = valueColorHandler('risk', val.risk);
               const karmaColor = valueColorHandler('karma', val.karma);
@@ -87,7 +99,7 @@ export default function GridBody() {
                       alignItems: 'center',
                     }}
                     pointer={'true'}
-                    onClick={() => setOpenRiskModelWindow((state) => !state)}
+                    onClick={() => handleClickRiskWindow(val.id)}
                   >
                     <ColorDiv bgColor={riskColor}>{val.risk}</ColorDiv>
                   </GridValue>
@@ -122,7 +134,10 @@ export default function GridBody() {
       {openRiskModelWindow &&
         createPortal(
           <Overlay onClick={() => setOpenRiskModelWindow(false)}>
-            <RiskModelWindow setOpenRiskModelWindow={setOpenRiskModelWindow} />
+            <RiskModelWindow
+              setOpenRiskModelWindow={setOpenRiskModelWindow}
+              data={onboardedRiskData?.onboardedRisk}
+            />
           </Overlay>,
           document.body
         )}

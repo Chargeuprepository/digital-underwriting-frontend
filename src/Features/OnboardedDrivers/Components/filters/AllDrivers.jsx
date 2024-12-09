@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledAllDrivers = styled.div`
@@ -26,6 +27,17 @@ const StyledAllDrivers = styled.div`
   }
 `;
 
-export default function AllDrivers() {
-  return <StyledAllDrivers>Drivers</StyledAllDrivers>;
+export default function AllDrivers({ length }) {
+  const navigate = useNavigate();
+
+  const removeQueryParams = () => {
+    // Get the current pathname
+    const pathname = window.location.pathname;
+
+    // Navigate to the current pathname, effectively removing query parameters
+    navigate(pathname, { replace: true });
+  };
+  return (
+    <StyledAllDrivers onClick={removeQueryParams}>{length}</StyledAllDrivers>
+  );
 }

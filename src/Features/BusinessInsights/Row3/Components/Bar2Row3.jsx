@@ -1,7 +1,7 @@
 import BarChart from '../../../../UI/Charts/BarChart';
 import { StyledChartContainer } from '../../BIUI/StyledChartContainers';
 
-export default function Bar2Row3() {
+export default function Bar2Row3({ driversUsingUpi }) {
   return (
     <StyledChartContainer padding={'2rem 3rem 2rem 1rem'} width={'45rem'}>
       <BarChart
@@ -14,8 +14,8 @@ export default function Bar2Row3() {
         labelSize={'12px'}
         colors={['#800080', '#9370DB']}
         data={[
-          { label: 'Yes', value: 555 },
-          { label: 'No', value: 381 },
+          { label: 'Yes', value: +driversUsingUpi?.yes },
+          { label: 'No', value: +driversUsingUpi?.no },
         ]}
       />
     </StyledChartContainer>

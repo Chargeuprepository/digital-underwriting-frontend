@@ -41,9 +41,9 @@ export default function Pie({
       },
       style: {
         fontFamily: 'Poppins, sans-serif',
-        fontSize: '11px',
-        colors: ['var(--color-gray-0)'],
-        fontWeight: 400,
+        fontSize: '12px',
+        colors: ['var(--color-gray-10)'],
+        fontWeight: 500,
       },
     },
     stroke: {

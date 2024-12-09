@@ -32,6 +32,7 @@ const DriverContainer = styled.button`
   border-radius: 0.5rem;
   border: none;
   padding: 1.2rem 2.6rem;
+  min-width: 14rem;
   background: linear-gradient(
     45deg,
     var(--color-brand-original-green-400),
@@ -65,7 +66,7 @@ export const DriverValue = styled.div`
   font-weight: ${(props) => props.fontWeight};
 `;
 
-export default function Row1Layout() {
+export default function Row1Layout({ length, zone }) {
   const navigate = useNavigate();
 
   const removeQueryParams = () => {
@@ -81,13 +82,13 @@ export default function Row1Layout() {
         <DriverHeading style={{ fontSize: '1.5rem', fontWeight: '500' }}>
           Drivers:
         </DriverHeading>
-        <DriverValue style={{ fontSize: '1.4rem' }}>936</DriverValue>
+        <DriverValue style={{ fontSize: '1.4rem' }}>{length}</DriverValue>
       </DriverContainer>
 
       <FilterAll>
         <Risk />
         <Credit />
-        <Zone />
+        <Zone zone={zone} />
       </FilterAll>
     </Row1LayoutContainer>
   );
