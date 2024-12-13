@@ -42,7 +42,7 @@ export default function RiskScoreLayout() {
   const telecomRef = useRef(null);
 
   useEffect(function () {
-    const data = categorizePlatforms(riskAPIData?.risk?.socialAttributes);
+    const data = categorizePlatforms(riskAPIData?.risk?.data?.socialAttributes);
     setSocialData(data);
   }, []);
 
@@ -51,8 +51,8 @@ export default function RiskScoreLayout() {
       <VerificationHeader
         verification="risk verification"
         data={{
-          name: riskAPIData?.risk?.header?.name,
-          mobile: riskAPIData?.risk?.header?.mobile,
+          name: riskAPIData?.risk?.data?.header?.name,
+          mobile: riskAPIData?.risk?.data?.header?.mobile,
           secondIcon: 'mobile',
         }}
       />
@@ -63,19 +63,24 @@ export default function RiskScoreLayout() {
         padding="2rem"
         gap="2rem"
       >
-        <RiskScore score={riskAPIData?.risk?.riskScore} />
-        <PositiveNegative positiveNegative={riskAPIData?.risk?.insights} />
+        <RiskScore
+          score={riskAPIData?.risk?.data?.riskScore}
+          whereIStand={riskAPIData?.risk?.data?.whereIStand}
+        />
+        <PositiveNegative
+          positiveNegative={riskAPIData?.risk?.data?.insights}
+        />
         <RiskInsights
-          riskInsightsData={riskAPIData?.risk?.allFourRisk}
+          riskInsightsData={riskAPIData?.risk?.data?.allFourRisk}
           allRef={[socialRef, digitalRef, telecomRef]}
         />
         <TelecomAttributes
           telecomRef={telecomRef}
-          telecomData={riskAPIData?.risk?.telecomAttributes}
+          telecomData={riskAPIData?.risk?.data?.telecomAttributes}
         />
         <VPAAttributes
           digitalRef={digitalRef}
-          digitalData={riskAPIData?.risk?.digitalAttributes}
+          digitalData={riskAPIData?.risk?.data?.digitalAttributes}
         />
         <SocialAttributes socialRef={socialRef} socialData={socialData} />
       </GridMaker>

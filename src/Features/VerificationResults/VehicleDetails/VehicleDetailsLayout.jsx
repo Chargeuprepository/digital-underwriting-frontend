@@ -7,55 +7,6 @@ import GridMaker from '../../../UI/GridMaker';
 import breakCamelCase from '../../../Utils/breakCamelCase';
 import { useLocation } from 'react-router-dom';
 
-const heroData = {
-  makerDescription: 'tata motors',
-  financer: 'Bajaj Finance Limited',
-  number: 'dl8scb5674',
-};
-const vehicleData = {
-  chassisNumber: 'XY0RKO00rko000001',
-  makerDescription: 'JANE DOE MOTORS LTD',
-  manufacturedMonthYear: '12-2014',
-  makerModel: 'BEST CAR TOP MODEL ABS BS X',
-  engineNumber: '100X20000000000',
-};
-const data = {
-  ownerData: {
-    ownerName: 'JANE DOE',
-    fatherName: 'JON DOE SENIOR',
-    permanentAddress:
-      '221 B, Baker Street, Opposite Wollaton Hall, BANGALORE, KARNATAKA - 560005',
-    presentAddress:
-      '221 B, Baker Street, Opposite Wollaton Hall, BANGALORE, KARNATAKA - 560005',
-    rcMobileNo: null,
-    ownerSerialNumber: 1,
-  },
-  registrationData: {
-    registrationNumber: 'XY00YZ1004',
-    registrationDate: '31-12-2010',
-    registeredAt: 'BANGALORE INDIRANAGAR RTO, Karnataka',
-    fitnessUpto: '31-12-2030',
-    status: 'ACTIVE',
-  },
-  insuranceData: {
-    insuranceCompany: 'Jane Doe Company Limited',
-    insurancePolicyNumber: '10000000000000000020',
-    insuranceValidity: '31-12-2024',
-  },
-  additionalData: {
-    bodyTypeDescription: '13',
-    color: 'LAVENDER',
-    fuelType: 'DIESEL',
-    cubicCapacity: '1248',
-    grossVehicleWeight: '1620',
-    numberOfCylinders: '4',
-    unladenWeight: '7400',
-    seatingCapacity: '5',
-    vehicleCategory: 'LMV',
-    vehicleClassDescription: 'Motor Car(LMV)',
-    normsDescription: 'BHARAT STAGE X',
-  },
-};
 const vehicleTabs = [
   'owner',
   'registration',
@@ -68,17 +19,17 @@ export default function VehicleDetailsLayout() {
   const { data: vehicleAPIData } = location.state || {};
 
   const { additionalInformation, insurance, owner, registration } =
-    vehicleAPIData.vehicle;
+    vehicleAPIData.vehicle.data;
   const details = { additionalInformation, insurance, owner, registration };
   console.log(vehicleAPIData);
 
   return (
-    vehicleAPIData.vehicle && (
+    vehicleAPIData.vehicle.data && (
       <AllVerificationLayout>
         <VerificationHeader
           verification="vehicle verification"
           data={{
-            name: vehicleAPIData.vehicle.owner.name,
+            name: vehicleAPIData.vehicle.data.owner.name,
           }}
         />
         <GridMaker
@@ -88,11 +39,12 @@ export default function VehicleDetailsLayout() {
           padding="2rem"
           gap="2rem"
         >
-          <Hero heroData={vehicleAPIData.vehicle.headerData} />
+          <Hero heroData={vehicleAPIData.vehicle.data.headerData} />
           <Vehicle
-            vehicleData={vehicleAPIData.vehicle.vehicleInformation}
+            vehicleData={vehicleAPIData.vehicle.data.vehicleInformation}
             registrationDate={
-              vehicleAPIData.vehicle.vehicleInformation.manufacturedMonthYear
+              vehicleAPIData.vehicle.data.vehicleInformation
+                .manufacturedMonthYear
             }
           />
 

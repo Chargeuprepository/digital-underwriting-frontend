@@ -70,12 +70,13 @@ export const GET_DRIVER = gql`
         avgDpd
         emiDpd
       }
-      riskAndCreditInformation {
+      footprintsAndRisk {
         riskScore
-        socialFootPrintScore
+        socialFootPrint
+        digitalFootPrint
+        phoneFootPrint
         telecomRisk
         socialScore
-        digitalFootPrint
         identityConfidence
       }
       businessInformation {
@@ -95,10 +96,17 @@ export const GET_DRIVER = gql`
         secondLastRunKm
         lastRunKm
       }
-      earningInformation {
-        thirdLastEarning
-        secondLastEarning
-        lastEarning
+      earningVsExpense {
+        earningInformation {
+          thirdLastEarning
+          secondLastEarning
+          lastEarning
+        }
+        expenseInformation {
+          thirdLastExpense
+          secondLastExpense
+          lastExpense
+        }
       }
       emi
     }
@@ -132,6 +140,11 @@ export const GET_ONBOARDED_RISK = gql`
         isPhoneReachable
         billing
         portHistory
+      }
+      whereIStand {
+        score
+        percent
+        color
       }
     }
   }

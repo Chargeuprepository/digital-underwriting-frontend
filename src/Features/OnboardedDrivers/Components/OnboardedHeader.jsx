@@ -95,6 +95,7 @@ export default function OnboardedHeader({ length }) {
     setIsFocused(false);
   };
   function handleSearchClick() {
+    console.log(id);
     id.trim() &&
       navigate(`/driver/${id.toUpperCase().trim()}`, {
         state: { data: { id: id.toUpperCase().trim() } },

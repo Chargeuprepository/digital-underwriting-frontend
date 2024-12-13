@@ -18,10 +18,10 @@ const StyledDriverGraphs = styled.div`
   gap: 2rem;
 `;
 
-export default function DriverGraphs({ earnings, runKm, emi }) {
+export default function DriverGraphs({ earningVsExpense, runKm, emi }) {
   return (
     <StyledDriverGraphs>
-      <EarningTrends earnings={earnings} />
+      <EarningTrends earningVsExpense={earningVsExpense} />
       <RunKMsTrends runKm={runKm} />
       <PaymentTrends emi={emi} />
     </StyledDriverGraphs>

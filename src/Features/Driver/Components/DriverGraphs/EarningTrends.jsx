@@ -17,20 +17,25 @@ const getLast3Months = () => {
   return monthNames;
 };
 
-export default function EarningTrends({ earnings }) {
+export default function EarningTrends({ earningVsExpense }) {
+  const { earningInformation, expenseInformation } = earningVsExpense;
   return (
     <DynamicDriverBarChart
-      title="Earnings Trends Over last 3 Months"
+      title="Expense VS Earning: Last 3 Months"
       xCategories={getLast3Months()}
       yTitle="Income"
-      // initialData={[300, 400, 300]}
-      latestData={[
-        earnings.thirdLastEarning,
-        earnings.secondLastEarning,
-        earnings.lastEarning,
+      expenseData={[
+        expenseInformation.thirdLastExpense,
+        expenseInformation.secondLastExpense,
+        expenseInformation.lastExpense,
       ]}
-      // initialColor="#00777e"
-      latestColor="#00777e"
+      earningData={[
+        earningInformation.thirdLastEarning,
+        earningInformation.secondLastEarning,
+        earningInformation.lastEarning,
+      ]}
+      expenseColor="#f8782e"
+      earningColor="#8015e4"
       dataUnit="₹"
     />
   );

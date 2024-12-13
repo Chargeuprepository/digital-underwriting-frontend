@@ -78,9 +78,7 @@ const StyledDriverLayout = styled.div`
 `;
 
 export default function DriverLayout() {
-  const location = useLocation();
   const { id } = useParams();
-  // const [driverData, setDriverData] = useState(null);
   const { fetchOnboardedDriversData, loading, error, driverData } =
     useOnboardedDriversQueryManager('getDriverData');
 
@@ -91,15 +89,20 @@ export default function DriverLayout() {
       },
     });
   }, []);
-  console.log(location.state?.data);
+  console.log(id);
 
   console.log(driverData?.driver);
 
   const actualData = driverData?.driver;
   const scores = [
-    actualData?.financialInformation.creditScore,
-    actualData?.riskAndCreditInformation.riskScore,
-    // actualData?.riskAndCreditInformation.socialScore,
+    actualData?.financialInformation?.creditScore,
+    actualData?.footprintsAndRisk?.riskScore,
+    actualData?.cardData?.karmaScore,
+  ];
+  const footprints = [
+    actualData?.footprintsAndRisk?.phoneFootPrint,
+    actualData?.footprintsAndRisk?.digitalFootPrint,
+    actualData?.footprintsAndRisk?.socialFootPrint,
   ];
 
   return (
@@ -124,9 +127,10 @@ export default function DriverLayout() {
             lossDays={actualData.cardData.lossDays}
             aon={actualData.cardData.aon}
             scores={scores}
+            footprints={footprints}
           />
           <DriverGraphs
-            earnings={actualData.earningInformation}
+            earningVsExpense={actualData.earningVsExpense}
             runKm={actualData.runKmInformation}
             emi={actualData.emi}
           />

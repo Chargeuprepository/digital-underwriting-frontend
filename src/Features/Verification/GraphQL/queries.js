@@ -4,49 +4,55 @@ export const GET_VEHICLE_DATA = gql`
   query GetVehicle($input: RegistrationNumber!) {
     vehicle(input: $input) {
       statusCode
-      headerData {
-        maker
-        financer
-        registrationNumber
+      error {
+        statusCode
+        message
       }
-      owner {
-        name
-        serialNumber
-        fatherName
-        permanentAddress
-        presentAddress
-        rcMobileNo
-      }
-      vehicleInformation {
-        chassisNumber
-        makerDescription
-        manufacturedMonthYear
-        makerModel
-        engineNumber
-      }
-      registration {
-        registrationNumber
-        registrationDate
-        registeredAt
-        fitnessUpto
-      }
-      insurance {
-        insuranceCompany
-        insurancePolicyNumber
-        insuranceValidity
-      }
-      additionalInformation {
-        bodyTypeDescription
-        color
-        fuelType
-        cubicCapacity
-        grossVehicleWeight
-        numberOfCylinders
-        unladenWeight
-        seatingCapacity
-        vehicleCategory
-        vehicleClassDescription
-        normsDescription
+      data {
+        headerData {
+          maker
+          financer
+          registrationNumber
+        }
+        owner {
+          name
+          serialNumber
+          fatherName
+          permanentAddress
+          presentAddress
+          rcMobileNo
+        }
+        vehicleInformation {
+          chassisNumber
+          makerDescription
+          manufacturedMonthYear
+          makerModel
+          engineNumber
+        }
+        registration {
+          registrationNumber
+          registrationDate
+          registeredAt
+          fitnessUpto
+        }
+        insurance {
+          insuranceCompany
+          insurancePolicyNumber
+          insuranceValidity
+        }
+        additionalInformation {
+          bodyTypeDescription
+          color
+          fuelType
+          cubicCapacity
+          grossVehicleWeight
+          numberOfCylinders
+          unladenWeight
+          seatingCapacity
+          vehicleCategory
+          vehicleClassDescription
+          normsDescription
+        }
       }
     }
   }
@@ -128,83 +134,94 @@ export const GET_RISK_DATA = gql`
   query Risk($input: RiskInput!) {
     risk(input: $input) {
       statusCode
-      error
-      status
-      timestamp
-      transactionId
-      merchantId
-      workflowId
-      workflowName
-      riskScore
-      header {
-        name
-        mobile
+      error {
+        statusCode
+        message
       }
-      insights {
-        positives
-        negatives
-      }
-      allFourRisk {
-        identity {
-          identityConfidence
+      data {
+        error
+        status
+        timestamp
+        transactionId
+        merchantId
+        workflowId
+        workflowName
+        riskScore
+        whereIStand {
+          score
+          percent
+          color
         }
-        telecom {
-          telecomRisk
-          isPhoneReachable
+        header {
+          name
+          mobile
+        }
+        insights {
+          positives
+          negatives
+        }
+        allFourRisk {
+          identity {
+            identityConfidence
+          }
+          telecom {
+            telecomRisk
+            isPhoneReachable
+            currentNetworkName
+            phoneFootprintStrengthOverall
+          }
+          digital {
+            digitalFootprint
+            name
+            nameMatchScore
+            phoneDigitalAge
+          }
+          social {
+            socialFootprintScore
+            phoneSocialMediaCount
+            socialMediaScore
+            eCommerceScore
+            workUtilityScore
+          }
+        }
+        telecomAttributes {
           currentNetworkName
+          currentNetworkRegion
+          isPhoneReachable
+          numberHasPortingHistory
+          numberBillingType
+          mobileFraud
           phoneFootprintStrengthOverall
         }
-        digital {
-          digitalFootprint
+        digitalAttributes {
           name
+          source
+          vpa
+          upiPhoneNameMatch
+          upiPhoneNameMatchScore
           nameMatchScore
           phoneDigitalAge
         }
-        social {
-          socialFootprintScore
-          phoneSocialMediaCount
-          socialMediaScore
-          eCommerceScore
-          workUtilityScore
+        socialAttributes {
+          a23games
+          ajio
+          amazon
+          byjus
+          flipkart
+          housing
+          indiamart
+          instagram
+          isWABusiness
+          jeevansaathi
+          jiomart
+          my11
+          paytm
+          rummycircle
+          shaadi
+          swiggy
+          whatsapp
+          yatra
         }
-      }
-      telecomAttributes {
-        currentNetworkName
-        currentNetworkRegion
-        isPhoneReachable
-        numberHasPortingHistory
-        numberBillingType
-        mobileFraud
-        phoneFootprintStrengthOverall
-      }
-      digitalAttributes {
-        name
-        source
-        vpa
-        upiPhoneNameMatch
-        upiPhoneNameMatchScore
-        nameMatchScore
-        phoneDigitalAge
-      }
-      socialAttributes {
-        a23games
-        ajio
-        amazon
-        byjus
-        flipkart
-        housing
-        indiamart
-        instagram
-        isWABusiness
-        jeevansaathi
-        jiomart
-        my11
-        paytm
-        rummycircle
-        shaadi
-        swiggy
-        whatsapp
-        yatra
       }
     }
   }

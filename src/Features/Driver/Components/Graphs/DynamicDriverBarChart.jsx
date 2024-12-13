@@ -6,10 +6,10 @@ export default function DynamicBarChart({
   title,
   xCategories,
   yTitle,
-  initialData,
-  latestData,
-  initialColor,
-  latestColor,
+  expenseData,
+  earningData,
+  expenseColor,
+  earningColor,
   dataUnit,
 }) {
   const options = {
@@ -24,7 +24,7 @@ export default function DynamicBarChart({
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '40%',
+        columnWidth: '65%',
         endingShape: 'rounded',
         borderRadius: 3,
       },
@@ -141,10 +141,10 @@ export default function DynamicBarChart({
       text: title,
       align: 'center',
       style: {
-        fontSize: '18px',
+        fontSize: '16px',
         fontWeight: 600,
         fontFamily: 'Poppins',
-        color: 'var(--color-gray-50)',
+        color: 'var(--color-gray-100)',
       },
       offsetY: 14,
     },
@@ -165,15 +165,15 @@ export default function DynamicBarChart({
 
   // Dynamic data series
   const series = [
-    // {
-    //   name: 'Initial 3 Months',
-    //   data: initialData,
-    //   color: initialColor,
-    // },
     {
-      name: 'Latest 3 Months',
-      data: latestData,
-      color: latestColor,
+      name: 'Expenses',
+      data: expenseData,
+      color: expenseColor,
+    },
+    {
+      name: 'Earnings',
+      data: earningData,
+      color: earningColor,
     },
   ];
 

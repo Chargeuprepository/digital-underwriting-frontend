@@ -33,7 +33,7 @@ const ChartContainer = styled.div`
 `;
 const WhereYouStand = styled.div``;
 
-export default function RiskScore({ score }) {
+export default function RiskScore({ score, whereIStand }) {
   const heightprop = 'calc(100vh - 13rem)';
 
   return (
@@ -44,7 +44,10 @@ export default function RiskScore({ score }) {
           <ScoreChart param={score} />
         </ChartContainer>
         <WhereYouStand>
-          <WhereYouStandTable CurrentRiskScore={score} />
+          <WhereYouStandTable
+            CurrentRiskScore={score}
+            whereIStand={whereIStand}
+          />
         </WhereYouStand>
       </RiskScoreContainer>
     </GridTab>

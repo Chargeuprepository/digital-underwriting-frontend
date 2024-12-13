@@ -142,6 +142,7 @@ export default function RiskModelWindow({ setOpenRiskModelWindow, data }) {
             ></ScoreChart>
             <WhereYouStandTable
               CurrentRiskScore={+data?.riskScore}
+              whereIStand={data?.whereIStand}
               fontSize={'1.45rem'}
             ></WhereYouStandTable>
           </ScoreAndStand>
@@ -163,7 +164,7 @@ function RiskParam({ data }) {
   return (
     <StyledRiskParam>
       {Object.entries(data).map(([key, value]) => (
-        <DataDisplay>
+        <DataDisplay key={key}>
           <KeyValue
             size={'1.2rem'}
             weight={'600'}

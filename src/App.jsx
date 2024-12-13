@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Spinner from './UI/Spinner';
 import NightingaleChart from './UI/Charts/Nightingale';
 import RadialChart from './Features/Driver/Components/Graphs/DriverRadialChart';
-// import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 const AppLayout = React.lazy(() => import('./UI/AppLayout'));
 const Login = React.lazy(() => import('./Pages/LoginPage'));
@@ -39,8 +39,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+    <>
       <BrowserRouter>
         <Suspense fallback={<Spinner />}>
           <Routes>
@@ -76,7 +75,29 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-    </QueryClientProvider>
+
+      <Toaster
+        position="top-center"
+        gutter={12} // Default is 8
+        containerStyle={{ margin: '8px' }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: '16px',
+            maxWidth: '500px',
+            padding: '16px 24px',
+            backgroundColor: 'var(--color-gray-1)',
+            color: 'var(--color-gray-700)',
+            boxShadow: '0 10px 20px rgba(0, 0, 0, 0.3)',
+          },
+        }}
+      />
+    </>
   );
 }
 

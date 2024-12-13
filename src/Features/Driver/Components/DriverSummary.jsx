@@ -7,7 +7,7 @@ import { RiPinDistanceFill } from 'react-icons/ri';
 import { MdOutlineRememberMe } from 'react-icons/md';
 import { TbBatteryOff } from 'react-icons/tb';
 import RiskCibilSocialRadial from './Graphs/RiskCibilSocialRadial';
-import DriverInsights from './Graphs/DriverInsights';
+import Footprints from './Graphs/Footprints';
 
 const StyledDriverSummary = styled.div`
   grid-row: 2;
@@ -92,6 +92,7 @@ export default function DriverSummary({
   lossDays,
   aon,
   scores,
+  footprints,
 }) {
   const parameters = [
     {
@@ -157,7 +158,7 @@ export default function DriverSummary({
       </SummaryRestContainer>
       <RadialContainer>
         <RiskCibilSocialRadial scores={scores} />
-        <DriverInsights />
+        <Footprints footprints={footprints} />
       </RadialContainer>
     </StyledDriverSummary>
   );

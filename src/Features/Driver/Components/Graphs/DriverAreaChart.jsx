@@ -156,10 +156,10 @@ export default function DriverAreaChart({
       text: title,
       align: 'center',
       style: {
-        fontSize: '18px',
+        fontSize: '16px',
         fontWeight: 600,
         fontFamily: 'Poppins',
-        color: 'var(--color-gray-50)',
+        color: 'var(--color-gray-100)',
       },
       offsetY: 14,
     },

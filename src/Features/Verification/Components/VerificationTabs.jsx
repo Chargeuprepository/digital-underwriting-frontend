@@ -13,6 +13,7 @@ const data = [
     bgimage: 'RiskVerify.png',
     specificFetchKey: 'getRiskData',
     routeName: 'riskVerification',
+    type: 'risk',
     parameters: [
       {
         label: 'name',
@@ -30,43 +31,8 @@ const data = [
         valueType: 'number',
         required: true,
         message: 'Provide the Mobile no.',
-        placeholder: 'Ex: 91098****321',
-        max: '12',
-      },
-      {
-        label: 'email',
-        formValue: 'email',
-        type: 'input',
-        valueType: 'text',
-        required: false,
-        placeholder: 'Ex: qwerty@example.com',
-      },
-      {
-        label: 'country code',
-        formValue: 'country code',
-        type: 'input',
-        valueType: 'text',
-        required: true,
-        disabled: true,
-        value: 'IND',
-      },
-      {
-        label: 'derived signals',
-        formValue: 'derived signals',
-        type: 'input',
-        valueType: 'text',
-        required: true,
-        disabled: true,
-        value: true,
-      },
-      {
-        label: 'enhanced coverage',
-        formValue: 'enhanced coverage',
-        type: 'input',
-        valueType: 'text',
-        disabled: true,
-        required: true,
-        value: true,
+        placeholder: 'Ex: 984****321',
+        max: '10',
       },
     ],
   },
@@ -76,6 +42,7 @@ const data = [
     bgimage: 'VehicleVerify.png',
     specificFetchKey: 'getVehicleData',
     routeName: 'vehicleVerification',
+    type: 'vehicle',
     parameters: [
       {
         label: 'RC number',
@@ -94,6 +61,7 @@ const data = [
     bgimage: 'CreditVerify.png',
     routeName: 'creditVerification',
     specificFetchKey: 'getCreditData',
+    type: 'credit',
     parameters: [
       {
         label: 'first name',
@@ -227,44 +195,44 @@ const data = [
       },
     ],
   },
-  {
-    name: 'pan verification',
-    imageSubmission: true,
-    bgimage: 'PANVerify.png',
-    routeName: 'panVerification',
-    specificFetchKey: 'getPanData',
-    parameters: [
-      {
-        label: 'PAN',
-        formValue: 'pan',
-        type: 'input',
-        valueType: 'text',
-        required: true,
-        max: 10,
-        message: 'Provide PAN no.',
-        placeholder: 'Ex: BOT*****9K',
-      },
-    ],
-  },
-  {
-    name: 'aadhar verification',
-    imageSubmission: true,
-    routeName: 'aadharVerification',
-    bgimage: 'AadharVerify.png',
-    specificFetchKey: 'getAadharData',
-    parameters: [
-      {
-        label: 'aadhar number',
-        formValue: 'aadhar number',
-        type: 'aadhar',
-        valueType: 'number',
-        max: 12,
-        required: true,
-        message: 'Provide aadhar no.',
-        placeholder: 'Ex: 43** **** **42',
-      },
-    ],
-  },
+  // {
+  //   name: 'pan verification',
+  //   imageSubmission: true,
+  //   bgimage: 'PANVerify.png',
+  //   routeName: 'panVerification',
+  //   specificFetchKey: 'getPanData',
+  //   parameters: [
+  //     {
+  //       label: 'PAN',
+  //       formValue: 'pan',
+  //       type: 'input',
+  //       valueType: 'text',
+  //       required: true,
+  //       max: 10,
+  //       message: 'Provide PAN no.',
+  //       placeholder: 'Ex: BOT*****9K',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'aadhar verification',
+  //   imageSubmission: true,
+  //   routeName: 'aadharVerification',
+  //   bgimage: 'AadharVerify.png',
+  //   specificFetchKey: 'getAadharData',
+  //   parameters: [
+  //     {
+  //       label: 'aadhar number',
+  //       formValue: 'aadhar number',
+  //       type: 'aadhar',
+  //       valueType: 'number',
+  //       max: 12,
+  //       required: true,
+  //       message: 'Provide aadhar no.',
+  //       placeholder: 'Ex: 43** **** **42',
+  //     },
+  //   ],
+  // },
 ];
 
 export default function VerificationTabs() {

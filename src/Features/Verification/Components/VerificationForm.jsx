@@ -28,6 +28,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../UI/Loader';
 import dayjs from 'dayjs';
+import toast from 'react-hot-toast';
 
 export default function VerificationForm({
   formParams,
@@ -76,9 +77,16 @@ export default function VerificationForm({
     function () {
       if (data !== undefined) {
         setState(false);
-        setTimeout(() => {
-          navigate(`/${routeName}`, { state: { data } });
-        }, 0);
+        if (data[formParams.type].statusCode === 200) {
+          const timeoutId = setTimeout(() => {
+            navigate(`/${routeName}`, { state: { data } });
+          }, 0);
+
+          // Cleanup function to clear the timeout
+          return () => clearTimeout(timeoutId);
+        } else {
+          toast.error(data[formParams.type].error.message);
+        }
       }
     },
     [data]
@@ -96,7 +104,7 @@ export default function VerificationForm({
           </Icon>
           <Heading>{formParams.name}</Heading>
           <Form color="aliceblue" onSubmit={handleSubmit(onSubmit)}>
-            {formParams.parameters.length >= 4 ? (
+            {formParams.parameters.length >= 2 ? (
               <GridTypeOne>
                 {formParams.parameters.map((param) => {
                   return (
