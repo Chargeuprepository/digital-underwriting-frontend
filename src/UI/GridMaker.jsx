@@ -8,6 +8,7 @@ const GridMaker = styled.div`
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin};
   height: ${(props) => props.height};
+  min-height: ${(props) => props.minHeight};
   width: ${(props) => props.width};
   color: ${(props) => props.color};
   background-color: ${(props) => props.backgroundcolor};

@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useOnboardedDriversQueryManager } from '../OnboardedDrivers/GraphQL/queryManager';
 import Spinner from '../../UI/Spinner';
+import { useMoveBack } from '../../Hooks/useMoveBack';
+import toast from 'react-hot-toast';
 
 const userData = {
   personalInformation: {
@@ -78,6 +80,7 @@ const StyledDriverLayout = styled.div`
 `;
 
 export default function DriverLayout() {
+  const back = useMoveBack();
   const { id } = useParams();
   const { fetchOnboardedDriversData, loading, error, driverData } =
     useOnboardedDriversQueryManager('getDriverData');
@@ -89,11 +92,24 @@ export default function DriverLayout() {
       },
     });
   }, []);
-  console.log(id);
 
-  console.log(driverData?.driver);
+  useEffect(
+    function () {
+      if (driverData?.driver?.error?.message) {
+        toast.error(
+          `${driverData?.driver?.error?.status || 401}: ${
+            driverData?.driver?.error?.message || 'Bad Request'
+          }`
+        );
+        back();
+      }
+    },
+    [driverData?.driver?.error?.message]
+  );
 
-  const actualData = driverData?.driver;
+  console.log(driverData);
+
+  const actualData = driverData?.driver?.data;
   const scores = [
     actualData?.financialInformation?.creditScore,
     actualData?.footprintsAndRisk?.riskScore,
@@ -107,7 +123,7 @@ export default function DriverLayout() {
 
   return (
     <>
-      {driverData?.driver ? (
+      {driverData?.driver?.data ? (
         <StyledDriverLayout>
           <DriverHeader
             name={

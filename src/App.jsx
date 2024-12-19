@@ -1,15 +1,12 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Spinner from './UI/Spinner';
-import NightingaleChart from './UI/Charts/Nightingale';
-import RadialChart from './Features/Driver/Components/Graphs/DriverRadialChart';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
+import ProtectedRoute from './ProtectedRoute';
 
 const AppLayout = React.lazy(() => import('./UI/AppLayout'));
 const Login = React.lazy(() => import('./Pages/LoginPage'));
-const UserManagement = React.lazy(() => import('./Pages/UserManagement'));
+// const UserManagement = React.lazy(() => import('./Pages/UserManagement'));
 const Dashboard = React.lazy(() => import('./Pages/Dashboard'));
 const Verification = React.lazy(() => import('./Pages/Verification'));
 const OnboardedDrivers = React.lazy(() => import('./Pages/OnboardedDrivers'));
@@ -17,7 +14,6 @@ const BusinessInsights = React.lazy(() => import('./Pages/BusinessInsights'));
 const PageNotFound = React.lazy(() => import('./Pages/PageNotFound'));
 const AIMLModels = React.lazy(() => import('./Pages/AIMLModels'));
 const MLFormPage = React.lazy(() => import('./Pages/MLFormPage'));
-const Testing = React.lazy(() => import('../Testing'));
 const RiskVerification = React.lazy(() => import('./Pages/RiskVerification'));
 const VehicleVerification = React.lazy(() =>
   import('./Pages/VehicleVerification')
@@ -29,49 +25,109 @@ const MyProfile = React.lazy(() => import('./Pages/MyProfile'));
 const Signup = React.lazy(() => import('./Pages/SignupPage'));
 const Driver = React.lazy(() => import('./Pages/Driver'));
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000,
+export const toastWarning = (message) => {
+  toast(message, {
+    icon: '⚠️',
+    duration: 5000,
+    style: {
+      fontSize: '16px',
+      maxWidth: '500px',
+      padding: '16px 24px',
+      backgroundColor: '#FFF4E5', // Light orange
+      color: '#7D4C00', // Dark orange
+      boxShadow: '0 10px 20px rgba(0, 0, 0, 0.3)',
     },
-  },
-});
-
+  });
+};
 function App() {
   return (
     <>
       <BrowserRouter>
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route element={<AppLayout />}>
+            <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Navigate replace to="dashboard" />} />
-
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="verification" element={<Verification />} />
               <Route path="onboardedDrivers" element={<OnboardedDrivers />} />
               <Route path="businessInsights" element={<BusinessInsights />} />
               <Route path="AI-ML-models" element={<AIMLModels />} />
             </Route>
-            <Route path="/riskVerification" element={<RiskVerification />} />
+
+            <Route
+              path="/riskVerification"
+              element={
+                <ProtectedRoute>
+                  <RiskVerification />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/vehicleVerification"
-              element={<VehicleVerification />}
+              element={
+                <ProtectedRoute>
+                  <VehicleVerification />
+                </ProtectedRoute>
+              }
             />
             <Route
               path="/creditVerification"
-              element={<CreditVerification />}
+              element={
+                <ProtectedRoute>
+                  <CreditVerification />
+                </ProtectedRoute>
+              }
             />
-            <Route path="/ML-form/:formName" element={<MLFormPage />} />
-            <Route path="/driver/:id" element={<Driver />} />
+            <Route
+              path="/ML-form/:formName"
+              element={
+                <ProtectedRoute>
+                  <MLFormPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/driver/:id"
+              element={
+                <ProtectedRoute>
+                  <Driver />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="signup"
+              element={
+                <ProtectedRoute>
+                  <Signup />
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route
+              path="userManagement"
+              element={
+                <ProtectedRoute>
+                  <UserManagement />
+                </ProtectedRoute>
+              }
+            /> */}
+            <Route
+              path="myProfile"
+              element={
+                <ProtectedRoute>
+                  <MyProfile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<PageNotFound />} />
 
             <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="userManagement" element={<UserManagement />} />
-            <Route path="testing" element={<Testing />} />
-            <Route path="myProfile" element={<MyProfile />} />
-            <Route path="radial" element={<RadialChart />} />
-            <Route path="night" element={<NightingaleChart />} />
-            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
@@ -85,6 +141,9 @@ function App() {
             duration: 3000,
           },
           error: {
+            duration: 5000,
+          },
+          warning: {
             duration: 5000,
           },
           style: {

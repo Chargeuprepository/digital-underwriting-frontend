@@ -4,6 +4,8 @@ import ScoreChart from '../../VerificationResults/UI/ScoreChart';
 import WhereYouStandTable from '../../VerificationResults/RiskScore/RiskUI/WhereYouStandTable';
 import breakCamelCase from '../../../Utils/breakCamelCase';
 import Spinner from '../../../UI/Spinner';
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const StyledRiskModelWindow = styled.div`
   height: 80vh;
@@ -126,7 +128,24 @@ const data = {
   },
 };
 
-export default function RiskModelWindow({ setOpenRiskModelWindow, data }) {
+export default function RiskModelWindow({
+  setOpenRiskModelWindow,
+  onboardedRisk,
+}) {
+  useEffect(
+    function () {
+      if (onboardedRisk?.error?.message) {
+        toast.error(
+          `${onboardedRisk?.error?.status}: ${onboardedRisk?.error?.message}`
+        );
+        setOpenRiskModelWindow(false);
+      }
+    },
+    [onboardedRisk?.error?.message]
+  );
+
+  const data = onboardedRisk?.data;
+
   return (
     <StyledRiskModelWindow onClick={(e) => e.stopPropagation()}>
       {data ? (

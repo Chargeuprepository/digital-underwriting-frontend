@@ -8,6 +8,8 @@ import GridMaker from '../../UI/GridMaker';
 import { useDashboardQueryManager } from './GraphQL/queryManager';
 import { useEffect } from 'react';
 import Spinner from '../../UI/Spinner';
+import TryAgain from '../../UI/TryAgain';
+import toast from 'react-hot-toast';
 
 export default function DashboardLayout() {
   const { fetchDashboardData, loading, error, data } =
@@ -17,14 +19,19 @@ export default function DashboardLayout() {
     fetchDashboardData();
   }, []);
 
+  useEffect(
+    function () {
+      if (data?.dashboard?.error?.message) {
+        toast.error(
+          `${data?.dashboard?.error?.status}: ${data?.dashboard?.error?.message}`
+        );
+      }
+    },
+    [data?.dashboard?.error?.message]
+  );
+
   console.log(data);
-  // const {
-  //   churnedDriversData,
-  //   emiTrendsData,
-  //   lastSixMonthDrivers,
-  //   runKmData,
-  // } = data?.dashboard;
-  const dashboardData = data?.dashboard;
+  const dashboardData = data?.dashboard?.data;
 
   return (
     <>
@@ -36,22 +43,28 @@ export default function DashboardLayout() {
           row="0.92fr 1fr"
           gap="2rem"
         >
-          <BusinessStats
-            drivers={dashboardData?.totalDrivers}
-            emiOnTime={dashboardData?.emiTrendsData.emiOnTime}
-          />
-          <CreditVsRisk
-            creditVsRisk={dashboardData?.riskCreditkarmaData.creditVsRisk}
-          />
-          <CreditVsKarma
-            creditVsKarma={dashboardData?.riskCreditkarmaData.creditVsKarma}
-          />
-          <DistanceTenureMonths runKmData={dashboardData?.runKmData} />
-          <EMITrends emiTrends={dashboardData?.emiTrendsData.emiTrends} />
-          <Churned
-            churnedDriversData={dashboardData?.churnedDriversData}
-            lastSixMonthDrivers={dashboardData?.lastSixMonthDrivers}
-          />
+          {data?.dashboard?.error ? (
+            <TryAgain />
+          ) : (
+            <>
+              <BusinessStats
+                drivers={dashboardData?.totalDrivers}
+                emiOnTime={dashboardData?.emiTrendsData.emiOnTime}
+              />
+              <CreditVsRisk
+                creditVsRisk={dashboardData?.riskCreditkarmaData.creditVsRisk}
+              />
+              <CreditVsKarma
+                creditVsKarma={dashboardData?.riskCreditkarmaData.creditVsKarma}
+              />
+              <DistanceTenureMonths runKmData={dashboardData?.runKmData} />
+              <EMITrends emiTrends={dashboardData?.emiTrendsData.emiTrends} />
+              <Churned
+                churnedDriversData={dashboardData?.churnedDriversData}
+                lastSixMonthDrivers={dashboardData?.lastSixMonthDrivers}
+              />
+            </>
+          )}
         </GridMaker>
       )}
     </>

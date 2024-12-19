@@ -91,12 +91,12 @@ export default function MainNav() {
             <span>AI/ML Models</span>
           </SideNavElement>
         </li> */}
-        <li>
+        {/* <li>
           <SideNavElement to={'/userManagement'}>
             <FaCircleUser />
             <span>User Management</span>
           </SideNavElement>
-        </li>
+        </li> */}
       </SideNav>
     </nav>
   );

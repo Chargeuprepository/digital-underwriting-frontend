@@ -84,9 +84,9 @@ export const RiskCreditContainer = styled.button`
     }};
 `;
 
-export default function Filter({ paramName, options, defaultActive }) {
+export default function Filter({ paramName, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const paramValue = searchParams.get(paramName) || defaultActive;
+  const paramValue = searchParams.get(paramName);
 
   function handleClick(value) {
     searchParams.set(paramName, value);

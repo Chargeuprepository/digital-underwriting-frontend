@@ -3,7 +3,6 @@ import Filter from '../../../../UI/Filter';
 export default function Credit() {
   return (
     <Filter
-      defaultActive={'medium'}
       paramName="credit"
       options={[
         { value: 'high', label: 'High', backColor: '#15ff0087' },

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { IoIosSearch } from 'react-icons/io';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Credit from './filters/Credit';
 import Risk from './filters/Risk';
 import Karma from './filters/Karma';
@@ -83,8 +82,7 @@ const SearchButton = styled.div`
   }
 `;
 
-export default function OnboardedHeader({ length }) {
-  const navigate = useNavigate();
+export default function OnboardedHeader({ length, handleSearch }) {
   const [id, setId] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
@@ -95,11 +93,10 @@ export default function OnboardedHeader({ length }) {
     setIsFocused(false);
   };
   function handleSearchClick() {
-    console.log(id);
-    id.trim() &&
-      navigate(`/driver/${id.toUpperCase().trim()}`, {
-        state: { data: { id: id.toUpperCase().trim() } },
-      });
+    if (id.length > 3) {
+      handleSearch(id.trim().toUpperCase());
+    }
+    setId('');
   }
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {

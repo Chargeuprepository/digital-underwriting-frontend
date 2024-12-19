@@ -40,7 +40,6 @@ export default function GridBody({ driverData }) {
     navigate(`/driver/${val.id}`, { state: { data: val } });
   }
   function handleClickRiskWindow(id) {
-    console.log(id);
     setOpenRiskModelWindow((state) => !state);
     fetchOnboardedDriversData({
       variables: {
@@ -53,12 +52,14 @@ export default function GridBody({ driverData }) {
 
   console.log(onboardedRiskData);
 
+  const multiData = driverData?.onboardedManipulatedData;
+
   return (
     <>
       <StyledGridBody>
         {driverData ? (
-          driverData.onboarded.onboardedManipulatedData.length > 0 ? (
-            driverData.onboarded.onboardedManipulatedData.map((val, i) => {
+          multiData?.length > 0 ? (
+            multiData?.map((val, i) => {
               const creditColor = valueColorHandler('credit', val.credit);
               const riskColor = valueColorHandler('risk', val.risk);
               const karmaColor = valueColorHandler('karma', val.karma);
@@ -136,7 +137,7 @@ export default function GridBody({ driverData }) {
           <Overlay onClick={() => setOpenRiskModelWindow(false)}>
             <RiskModelWindow
               setOpenRiskModelWindow={setOpenRiskModelWindow}
-              data={onboardedRiskData?.onboardedRisk}
+              onboardedRisk={onboardedRiskData?.onboardedRisk}
             />
           </Overlay>,
           document.body

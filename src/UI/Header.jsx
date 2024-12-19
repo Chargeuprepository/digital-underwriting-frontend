@@ -1,6 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaUser } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import Overlay from './Overlay';
+import Loader from './Loader';
 
 const StyledHeader = styled.div`
   grid-column: 2 / -1;
@@ -15,13 +20,8 @@ const HeaderContainer = styled.div`
   width: 28rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-`;
-
-const Name = styled.p`
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--color-gray-800);
+  justify-content: end;
+  gap: 3rem;
 `;
 
 const Profile = styled(NavLink)`
@@ -43,11 +43,7 @@ const Profile = styled(NavLink)`
     transform: scale(0.95);
   }
 `;
-// const Img = styled.img`
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 50%;
-// `;
+
 const Logout = styled.button`
   border: none;
   background: linear-gradient(
@@ -69,15 +65,26 @@ const Logout = styled.button`
 `;
 
 export default function Header() {
+  const navigate = useNavigate();
+  const [onSpinner, setOnSpinner] = useState(false);
+
+  function handleLogout() {
+    setOnSpinner(true);
+    localStorage.removeItem('userCredentials');
+    setTimeout(() => {
+      navigate('/login');
+      toast.success('Logged Out: Come Soon🤗');
+    }, 1000);
+  }
+
   return (
     <StyledHeader>
+      <Loader loading={onSpinner}></Loader>
       <HeaderContainer>
-        <Name>Gaurav</Name>
         <Profile to={'/myProfile'}>
-          {/* <Img src="/img/male.png" /> */}
           <FaUser />
         </Profile>
-        <Logout>Logout</Logout>
+        <Logout onClick={handleLogout}>Logout</Logout>
       </HeaderContainer>
     </StyledHeader>
   );

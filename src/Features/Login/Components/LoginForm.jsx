@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import Astrick from '../../../UI/Astrick';
 import FormLabel from '../../../UI/FormLabel';
 import Form from '../../../UI/Form';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { showWarning } from '../../../App';
 
 const FormContainer = styled.div`
   max-width: 40rem;
@@ -38,7 +42,7 @@ const Input = styled.input`
   border-radius: 0.6rem;
   border: none;
   font-size: 1.4rem;
-  padding-left: 0.8rem;
+  padding: 0 1.4rem;
   color: var(--color-gray-800);
   background-color: var(--color-gray-100);
   box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem var(--color-gray-200);
@@ -99,6 +103,37 @@ const Button = styled.button`
 `;
 
 export default function LoginForm() {
+  const navigate = useNavigate();
+
+  const [userId, setUserId] = useState(
+    'chargeup_digital_underwriting_interface'
+  );
+  const [password, setPassword] = useState('chargeup_digital_@123##');
+  const credentials = {
+    userId: 'chargeup_digital_underwriting_interface',
+    password: 'chargeup_digital_@123##',
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (userId === credentials.userId && password === credentials.password) {
+      localStorage.setItem(
+        'userCredentials',
+        JSON.stringify({ userId, password })
+      );
+      setTimeout(() => {
+        navigate('/');
+        toast.warning('You Are Authenticated: Welcome🤗');
+      }, 300);
+    } else {
+      toast.error('Wrong Credentials💀');
+    }
+
+    setUserId('');
+    setPassword('');
+  }
+
   return (
     <FormContainer>
       <FormImage>
@@ -107,15 +142,23 @@ export default function LoginForm() {
         </Logo>
       </FormImage>
 
-      <Form height="40rem" gap="1.6rem" margin="0 0 0 4rem" position="relative">
+      <Form
+        onSubmit={(e) => handleSubmit(e)}
+        height="40rem"
+        gap="1.6rem"
+        margin="0 0 0 4rem"
+        position="relative"
+      >
         <Value>
-          <FormLabel htmlFor="email">
-            Email<Astrick>*</Astrick>
+          <FormLabel htmlFor="userId">
+            User Id<Astrick>*</Astrick>
           </FormLabel>
           <Input
-            id="email"
-            type="email"
-            placeholder="xyz@example.com"
+            id="userId"
+            type="userId"
+            placeholder="Enter the User ID"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
             required
           ></Input>
         </Value>
@@ -127,6 +170,8 @@ export default function LoginForm() {
             id="password"
             type="password"
             placeholder="Enter the password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           ></Input>
         </Value>
