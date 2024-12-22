@@ -7,6 +7,17 @@ export const GET_BUSINESS_INSIGHTS_DATA = gql`
         status
         message
       }
+      settingGoogleSheetDataInfo {
+        dataSet
+        error {
+          status
+          message
+        }
+      }
+      gettingGoogleSheetDataInfo {
+        status
+        message
+      }
       data {
         length
         avgCredit

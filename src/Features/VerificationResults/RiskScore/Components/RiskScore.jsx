@@ -33,7 +33,15 @@ const ChartContainer = styled.div`
 `;
 const WhereYouStand = styled.div``;
 
-export default function RiskScore({ score, whereIStand }) {
+const whereIStand = [
+  { score: '0-400', percent: '4.76%', color: '#00953c' },
+  { score: '401-500', percent: '32.20%', color: '#1aa050' },
+  { score: '501-600', percent: '40.64%', color: '#f9f906' },
+  { score: '601-750', percent: '22.40%', color: '#ff9c38' },
+  { score: '751-999', percent: '0.00%', color: '#f01010' },
+];
+
+export default function RiskScore({ riskScore }) {
   const heightprop = 'calc(100vh - 13rem)';
 
   return (
@@ -41,13 +49,10 @@ export default function RiskScore({ score, whereIStand }) {
       <RiskScoreContainer>
         <RiskHeading>risk score</RiskHeading>
         <ChartContainer>
-          <ScoreChart param={score} />
+          <ScoreChart param={riskScore} />
         </ChartContainer>
         <WhereYouStand>
-          <WhereYouStandTable
-            CurrentRiskScore={score}
-            whereIStand={whereIStand}
-          />
+          <WhereYouStandTable whereIStand={whereIStand} riskScore={riskScore} />
         </WhereYouStand>
       </RiskScoreContainer>
     </GridTab>

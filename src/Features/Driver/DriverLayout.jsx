@@ -107,6 +107,23 @@ export default function DriverLayout() {
     [driverData?.driver?.error?.message]
   );
 
+  useEffect(
+    function () {
+      if (driverData?.driver?.settingGoogleSheetDataInfo?.dataSet === false) {
+        toastWarning(
+          driverData?.driver?.settingGoogleSheetDataInfo?.error?.message
+        );
+      }
+      if (driverData?.driver?.gettingGoogleSheetDataInfo?.status) {
+        toastWarning(driverData?.driver?.gettingGoogleSheetDataInfo?.message);
+      }
+    },
+    [
+      driverData?.driver?.settingGoogleSheetDataInfo?.dataSet,
+      driverData?.driver?.gettingGoogleSheetDataInfo?.status,
+    ]
+  );
+
   console.log(driverData);
 
   const actualData = driverData?.driver?.data;

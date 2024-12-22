@@ -30,6 +30,23 @@ export default function DashboardLayout() {
     [data?.dashboard?.error?.message]
   );
 
+  useEffect(
+    function () {
+      if (data?.dashboard?.settingGoogleSheetDataInfo?.dataSet === false) {
+        toastWarning(
+          data?.dashboard?.settingGoogleSheetDataInfo?.error?.message
+        );
+      }
+      if (data?.dashboard?.gettingGoogleSheetDataInfo?.status) {
+        toastWarning(data?.dashboard?.gettingGoogleSheetDataInfo?.message);
+      }
+    },
+    [
+      data?.dashboard?.settingGoogleSheetDataInfo?.dataSet,
+      data?.dashboard?.gettingGoogleSheetDataInfo?.status,
+    ]
+  );
+
   console.log(data);
   const dashboardData = data?.dashboard?.data;
 

@@ -108,6 +108,27 @@ export default function OnboardedDriversLayout() {
     [driverData?.onboarded?.error?.message]
   );
 
+  useEffect(
+    function () {
+      if (
+        driverData?.onboarded?.settingGoogleSheetDataInfo?.dataSet === false
+      ) {
+        toastWarning(
+          driverData?.onboarded?.settingGoogleSheetDataInfo?.error?.message
+        );
+      }
+      if (driverData?.onboarded?.gettingGoogleSheetDataInfo?.status) {
+        toastWarning(
+          driverData?.onboarded?.gettingGoogleSheetDataInfo?.message
+        );
+      }
+    },
+    [
+      driverData?.onboarded?.settingGoogleSheetDataInfo?.dataSet,
+      driverData?.onboarded?.gettingGoogleSheetDataInfo?.status,
+    ]
+  );
+
   function handleSearch(id) {
     fetchOnboardedDriversData({
       variables: {

@@ -63,10 +63,7 @@ export default function RiskScoreLayout() {
         padding="2rem"
         gap="2rem"
       >
-        <RiskScore
-          score={riskAPIData?.risk?.data?.riskScore}
-          whereIStand={riskAPIData?.risk?.data?.whereIStand}
-        />
+        <RiskScore riskScore={riskAPIData?.risk?.data?.riskScore} />
         <PositiveNegative
           positiveNegative={riskAPIData?.risk?.data?.insights}
         />

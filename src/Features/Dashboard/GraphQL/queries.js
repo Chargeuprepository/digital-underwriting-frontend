@@ -7,6 +7,17 @@ export const GET_DASHBOARD_DATA = gql`
         status
         message
       }
+      settingGoogleSheetDataInfo {
+        dataSet
+        error {
+          status
+          message
+        }
+      }
+      gettingGoogleSheetDataInfo {
+        status
+        message
+      }
       data {
         totalDrivers
         runKmData {

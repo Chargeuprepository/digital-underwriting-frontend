@@ -5,7 +5,6 @@ import Form from '../../../UI/Form';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { showWarning } from '../../../App';
 
 const FormContainer = styled.div`
   max-width: 40rem;
@@ -124,7 +123,7 @@ export default function LoginForm() {
       );
       setTimeout(() => {
         navigate('/');
-        toast.warning('You Are Authenticated: Welcome🤗');
+        toast.success('You Are Authenticated: Welcome🤗');
       }, 300);
     } else {
       toast.error('Wrong Credentials💀');

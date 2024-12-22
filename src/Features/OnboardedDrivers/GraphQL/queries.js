@@ -7,6 +7,17 @@ export const GET_ONBOARDED_DATA = gql`
         status
         message
       }
+      settingGoogleSheetDataInfo {
+        dataSet
+        error {
+          status
+          message
+        }
+      }
+      gettingGoogleSheetDataInfo {
+        status
+        message
+      }
       data {
         length
         onboardedManipulatedData {
@@ -29,6 +40,17 @@ export const GET_DRIVER = gql`
   query GetDriver($input: String!) {
     driver(input: $input) {
       error {
+        status
+        message
+      }
+      settingGoogleSheetDataInfo {
+        dataSet
+        error {
+          status
+          message
+        }
+      }
+      gettingGoogleSheetDataInfo {
         status
         message
       }
@@ -129,6 +151,17 @@ export const GET_ONBOARDED_RISK = gql`
   query OnboardedRisk($input: OnboardedRiskInput) {
     onboardedRisk(input: $input) {
       error {
+        status
+        message
+      }
+      settingGoogleSheetDataInfo {
+        dataSet
+        error {
+          status
+          message
+        }
+      }
+      gettingGoogleSheetDataInfo {
         status
         message
       }

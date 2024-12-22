@@ -36,6 +36,31 @@ export default function GridBody({ driverData }) {
   const [openRiskModelWindow, setOpenRiskModelWindow] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(
+    function () {
+      if (
+        onboardedRiskData?.onboardedRisk?.settingGoogleSheetDataInfo
+          ?.dataSet === false
+      ) {
+        toastWarning(
+          onboardedRiskData?.onboardedRisk?.settingGoogleSheetDataInfo?.error
+            ?.message
+        );
+      }
+      if (
+        onboardedRiskData?.onboardedRisk?.gettingGoogleSheetDataInfo?.status
+      ) {
+        toastWarning(
+          onboardedRiskData?.onboardedRisk?.gettingGoogleSheetDataInfo?.message
+        );
+      }
+    },
+    [
+      onboardedRiskData?.onboardedRisk?.settingGoogleSheetDataInfo?.dataSet,
+      onboardedRiskData?.onboardedRisk?.gettingGoogleSheetDataInfo?.status,
+    ]
+  );
+
   function handleClickKarma(val) {
     navigate(`/driver/${val.id}`, { state: { data: val } });
   }

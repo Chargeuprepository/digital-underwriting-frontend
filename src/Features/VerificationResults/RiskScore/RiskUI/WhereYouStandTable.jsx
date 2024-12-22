@@ -36,7 +36,7 @@ const ColorColumn = styled.div`
 // ];
 
 export default function WhereYouStandTable({
-  CurrentRiskScore = null,
+  riskScore = null,
   fontSize,
   whereIStand,
 }) {
@@ -45,8 +45,7 @@ export default function WhereYouStandTable({
       {whereIStand?.map((val, i) => {
         const ans = val.score.split('-');
         const res =
-          Math.floor(CurrentRiskScore) >= ans[0] &&
-          Math.floor(CurrentRiskScore) <= ans[1];
+          Math.floor(riskScore) >= ans[0] && Math.floor(riskScore) <= ans[1];
         return (
           <RowContainer
             key={i}

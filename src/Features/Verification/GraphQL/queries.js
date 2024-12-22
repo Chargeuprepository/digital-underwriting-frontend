@@ -147,11 +147,6 @@ export const GET_RISK_DATA = gql`
         workflowId
         workflowName
         riskScore
-        whereIStand {
-          score
-          percent
-          color
-        }
         header {
           name
           mobile

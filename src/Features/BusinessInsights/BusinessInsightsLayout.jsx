@@ -10,6 +10,7 @@ import Spinner from '../../UI/Spinner';
 import { useLocation } from 'react-router-dom';
 import TryAgain from '../../UI/TryAgain';
 import toast from 'react-hot-toast';
+import { toastWarning } from '../../App';
 
 export default function BusinessInsightsLayout() {
   const location = useLocation(); // Get the current location object
@@ -41,6 +42,27 @@ export default function BusinessInsightsLayout() {
       }
     },
     [data?.businessInsights?.error?.message]
+  );
+
+  useEffect(
+    function () {
+      if (
+        data?.businessInsights?.settingGoogleSheetDataInfo?.dataSet === false
+      ) {
+        toastWarning(
+          data?.businessInsights?.settingGoogleSheetDataInfo?.error?.message
+        );
+      }
+      if (data?.businessInsights?.gettingGoogleSheetDataInfo?.status) {
+        toastWarning(
+          data?.businessInsights?.gettingGoogleSheetDataInfo?.message
+        );
+      }
+    },
+    [
+      data?.businessInsights?.settingGoogleSheetDataInfo?.dataSet,
+      data?.businessInsights?.gettingGoogleSheetDataInfo?.status,
+    ]
   );
 
   console.log(data);
