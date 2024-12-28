@@ -130,6 +130,7 @@ export default function OnboardedDriversLayout() {
   );
 
   function handleSearch(id) {
+    console.log(id);
     fetchOnboardedDriversData({
       variables: {
         input: {

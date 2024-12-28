@@ -24,7 +24,7 @@ const Heading = styled.div`
 //   },
 // ];
 
-export default function AreaChart({ heading, series, churnedDriversData }) {
+export default function AreaChart({ heading, series, lastSixMonthDrivers }) {
   const options = {
     chart: {
       type: 'area',
@@ -55,12 +55,12 @@ export default function AreaChart({ heading, series, churnedDriversData }) {
     xaxis: {
       // type: 'datetime',
       categories: [
-        churnedDriversData[0].month,
-        churnedDriversData[1].month,
-        churnedDriversData[2].month,
-        churnedDriversData[3].month,
-        churnedDriversData[4].month,
-        churnedDriversData[5].month,
+        lastSixMonthDrivers[0].month,
+        lastSixMonthDrivers[1].month,
+        lastSixMonthDrivers[2].month,
+        lastSixMonthDrivers[3].month,
+        lastSixMonthDrivers[4].month,
+        lastSixMonthDrivers[5].month,
       ],
       labels: {
         style: {

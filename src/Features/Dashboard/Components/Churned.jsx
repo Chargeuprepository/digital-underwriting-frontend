@@ -57,7 +57,7 @@ export default function Churned({
         <AreaChart
           heading={'Retention Rate'}
           series={series}
-          churnedDriversData={churnedDriversData}
+          lastSixMonthDrivers={lastSixMonthDrivers}
         />
       )}
     </ChurnedContainer>
