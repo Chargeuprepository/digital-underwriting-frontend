@@ -78,7 +78,7 @@ const Button = styled.button`
   border-radius: 0.6rem;
   border: none;
   font-size: 1.6rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
   cursor: pointer;
   color: var(--color-gray-50);
   box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem var(--color-brand-green-0);
@@ -185,9 +185,6 @@ export default function LoginForm() {
             placeholder="Employee, Manager, HOD, Admin"
           ></Input>
         </Value>
-
-        <ForgotPass>Forgot password ?</ForgotPass>
-
         <Button>Login</Button>
       </Form>
     </FormContainer>

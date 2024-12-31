@@ -64,7 +64,6 @@ export default function VerificationForm({
       )
     );
 
-    console.log(uppercaseData);
     // reset();
     setAddress1('');
     setAddress2('');
@@ -78,21 +77,15 @@ export default function VerificationForm({
       if (data !== undefined) {
         setState(false);
         if (data[formParams.type].statusCode === 200) {
-          const timeoutId = setTimeout(() => {
-            navigate(`/${routeName}`, { state: { data } });
-          }, 0);
-
-          // Cleanup function to clear the timeout
-          return () => clearTimeout(timeoutId);
+          console.log(data);
+          navigate(`/${routeName}`, { state: { data } });
         } else {
           toast.error(data[formParams.type].error.message);
         }
       }
     },
-    [data]
+    [data, navigate, routeName]
   );
-
-  console.log(data);
 
   return createPortal(
     <>

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 const details = [
-  { title: 'name', value: 'gaurav joshi' },
-  { title: 'phone', value: '9876543217' },
-  { title: 'email', value: 'gaurav.j@echargeup.com' },
-  { title: 'id', value: 'ECH157' },
-  { title: 'role', value: 'employee' },
+  { title: 'name', value: 'Admin Chargeup' },
+  { title: 'phone', value: '18001230181' },
+  { title: 'email', value: 'admin@echargeup.com' },
+  { title: 'role', value: 'Build such technical innovations' },
 ];
 
 const StyledMyProfileDetails = styled.div`

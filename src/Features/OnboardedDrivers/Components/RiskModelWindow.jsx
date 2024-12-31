@@ -101,33 +101,6 @@ const KeyValue = styled.div`
   color: ${(props) => props.color};
 `;
 
-const data = {
-  digital: {
-    digitalFootprint: 'medium',
-    affluenceScore: '36',
-    digitalPaymentScore: '235',
-    vpa: 'qwerty@ybl',
-  },
-  identity: {
-    identityConfidence: 'low',
-    phoneFootprint: 'medium',
-    digitalAge: '4792',
-    nameMatchScore: '70',
-  },
-  social: {
-    socialFootprint: 'medium',
-    socialMediaScore: '445',
-    socialMediaCount: '6',
-    eCommerceScore: '5',
-  },
-  telecom: {
-    telecomRisk: 'medium',
-    phoneReachable: 'true',
-    billing: 'prepaid',
-    portHistory: 'true',
-  },
-};
-
 export default function RiskModelWindow({
   setOpenRiskModelWindow,
   onboardedRisk,
@@ -160,7 +133,7 @@ export default function RiskModelWindow({
               textColor={'var(--color-gray-50)'}
             ></ScoreChart>
             <WhereYouStandTable
-              CurrentRiskScore={+data?.riskScore}
+              riskScore={+data?.riskScore}
               whereIStand={data?.whereIStand}
               fontSize={'1.45rem'}
             ></WhereYouStandTable>
