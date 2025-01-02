@@ -78,7 +78,7 @@ export default function BusinessStats({ drivers, emiOnTime }) {
             <SlCalender style={{ height: '50%', width: '50%' }} />
           </IconContainer>
           <div>
-            <InsightValue>{emiOnTime}</InsightValue>
+            <InsightValue>{emiOnTime}%</InsightValue>
             <InsightName>EMI On Time</InsightName>
           </div>
         </Insight>

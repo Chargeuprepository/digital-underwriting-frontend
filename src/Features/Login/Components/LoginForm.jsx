@@ -104,13 +104,11 @@ const Button = styled.button`
 export default function LoginForm() {
   const navigate = useNavigate();
 
-  const [userId, setUserId] = useState(
-    'chargeup_digital_underwriting_interface'
-  );
-  const [password, setPassword] = useState('chargeup_digital_@123##');
+  const [userId, setUserId] = useState();
+  const [password, setPassword] = useState();
   const credentials = {
-    userId: 'chargeup_digital_underwriting_interface',
-    password: 'chargeup_digital_@123##',
+    userId: 'underwrite@echargeup.com',
+    password: 'chargeup@2025#',
   };
 
   function handleSubmit(e) {

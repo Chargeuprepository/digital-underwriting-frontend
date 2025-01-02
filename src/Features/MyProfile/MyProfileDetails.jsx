@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const details = [
-  { title: 'name', value: 'Admin Chargeup' },
+  { title: 'name', value: 'Chargeup' },
   { title: 'phone', value: '18001230181' },
   { title: 'email', value: 'admin@echargeup.com' },
   { title: 'role', value: 'Build such technical innovations' },
