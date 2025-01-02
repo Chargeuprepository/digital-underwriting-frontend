@@ -109,6 +109,7 @@ export default function LoginForm() {
   const credentials = {
     userId: 'underwrite@echargeup.com',
     password: 'chargeup@2025#',
+    name: '',
   };
 
   function handleSubmit(e) {
