@@ -5,7 +5,7 @@ import GlobalStyle from './Styles/GlobalStyle.js';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'http://underwrite.echargeup.com/graphql',
+  uri: 'https://underwrite.echargeup.com/graphql',
   // uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache({ addTypename: false }),
 });
