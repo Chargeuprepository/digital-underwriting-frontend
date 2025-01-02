@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(), eslint],
   server: {
     host: '0.0.0.0',
+    https: true,
     port: 5173,
   },
 });
